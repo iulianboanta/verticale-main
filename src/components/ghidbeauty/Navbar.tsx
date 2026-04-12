@@ -34,7 +34,7 @@ const Navbar = () => {
           <img
             src={scrolled ? logo : logoWhite}
             alt="GhidBeauty.ro"
-            className="h-9 transition-all duration-300"
+            className="h-11 transition-all duration-300"
           />
         </a>
 
@@ -62,8 +62,8 @@ const Navbar = () => {
             size="sm"
             className={
               scrolled
-                ? ""
-                : "border-white/40 text-white bg-white/10 hover:bg-white hover:text-foreground"
+                ? "hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                : "border-white/40 text-white bg-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary"
             }
           >
             Autentificare
@@ -73,7 +73,7 @@ const Navbar = () => {
             className={
               scrolled
                 ? ""
-                : "bg-white text-foreground hover:bg-white/90"
+                : "bg-primary text-primary-foreground hover:bg-primary/90"
             }
           >
             Adaugă companie
