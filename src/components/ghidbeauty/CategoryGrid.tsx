@@ -4,15 +4,7 @@ const CategoryGrid = () => {
   return (
     <section id="categorii" className="py-16">
       <div className="container">
-        <h2 className="text-center text-2xl font-bold text-foreground md:text-3xl">
-          Explorează categorii
-        </h2>
-        <p className="mx-auto mt-2 max-w-md text-center text-sm text-muted-foreground">
-          Alege domeniul care te interesează și descoperă profesioniștii din
-          zona ta.
-        </p>
-
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+        <div className="mt-0 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
           {categories.map((cat) => {
             const Icon = cat.icon;
             return (
