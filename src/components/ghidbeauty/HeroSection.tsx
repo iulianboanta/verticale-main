@@ -5,7 +5,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden pt-28 pb-20 md:pt-40 md:pb-32">
-      {/* Background image with overlay */}
+      {/* Background image – full color, subtle dark overlay for readability */}
       <img
         src={heroBg}
         alt=""
@@ -13,14 +13,14 @@ const HeroSection = () => {
         width={1920}
         height={800}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
+      <div className="absolute inset-0 bg-black/40" />
 
       <div className="container relative z-10 flex flex-col items-center text-center">
-        <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.5rem]">
+        <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem] drop-shadow-lg">
           Găsește profesioniștii din{" "}
-          <span className="text-primary">beauty</span> lângă tine
+          <span className="text-primary-glow">beauty</span> lângă tine
         </h1>
-        <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">
+        <p className="mt-4 max-w-xl text-base text-white/80 md:text-lg drop-shadow">
           Saloane, spa-uri, studiouri de unghii, cosmetică, tatuaje și mai mult
           — toate într-un singur loc.
         </p>
@@ -51,8 +51,8 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <p className="mt-4 text-xs text-muted-foreground">
-          Peste <span className="font-semibold text-primary">2.500</span> de
+        <p className="mt-4 text-xs text-white/70">
+          Peste <span className="font-semibold text-primary-glow">2.500</span> de
           afaceri listate &bull; Acoperire națională
         </p>
       </div>
