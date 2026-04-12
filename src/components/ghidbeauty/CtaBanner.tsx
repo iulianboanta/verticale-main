@@ -50,6 +50,7 @@ const CtaBanner = ({ variant }: Props) => {
               <ArrowRight size={14} className="ml-1" />
             </Button>
           </div>
+        </div>
       </div>
     </section>
   );
