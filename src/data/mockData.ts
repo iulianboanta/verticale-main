@@ -1,0 +1,91 @@
+import {
+  Scissors,
+  Sparkles,
+  Hand,
+  Palette,
+  PenTool,
+  Sun,
+  Droplets,
+  UserRound,
+} from "lucide-react";
+
+export type PlanTier = "premium" | "pro" | "free";
+
+export interface Listing {
+  id: string;
+  name: string;
+  category: string;
+  city: string;
+  county: string;
+  rating: number;
+  reviewCount: number;
+  plan: PlanTier;
+  image: string;
+  views?: number;
+  isNew?: boolean;
+}
+
+export interface Article {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  image: string;
+}
+
+export const categories = [
+  { name: "Saloane", icon: Scissors, slug: "saloane" },
+  { name: "Spa & Wellness", icon: Droplets, slug: "spa" },
+  { name: "Unghii", icon: Hand, slug: "unghii" },
+  { name: "Cosmetică", icon: Sparkles, slug: "cosmetica" },
+  { name: "Tatuaje", icon: PenTool, slug: "tatuaje" },
+  { name: "PMU", icon: Palette, slug: "pmu" },
+  { name: "Bronzare", icon: Sun, slug: "bronzare" },
+  { name: "Barbershop", icon: UserRound, slug: "barbershop" },
+];
+
+export const featuredListings: Listing[] = [
+  { id: "1", name: "Glamour Studio", category: "Saloane", city: "București", county: "București", rating: 4.9, reviewCount: 128, plan: "premium", image: "" },
+  { id: "2", name: "Zen Spa & Relax", category: "Spa & Wellness", city: "Cluj-Napoca", county: "Cluj", rating: 4.8, reviewCount: 95, plan: "premium", image: "" },
+  { id: "3", name: "NailArt Pro", category: "Unghii", city: "Timișoara", county: "Timiș", rating: 4.7, reviewCount: 67, plan: "pro", image: "" },
+  { id: "4", name: "Beauty Queens", category: "Cosmetică", city: "Iași", county: "Iași", rating: 4.6, reviewCount: 54, plan: "pro", image: "" },
+  { id: "5", name: "Ink Master Studio", category: "Tatuaje", city: "Brașov", county: "Brașov", rating: 4.9, reviewCount: 112, plan: "premium", image: "" },
+  { id: "6", name: "Perfect Brows", category: "PMU", city: "Constanța", county: "Constanța", rating: 4.5, reviewCount: 43, plan: "free", image: "" },
+  { id: "7", name: "SunKiss Tanning", category: "Bronzare", city: "Oradea", county: "Bihor", rating: 4.3, reviewCount: 31, plan: "free", image: "" },
+  { id: "8", name: "The Barber House", category: "Barbershop", city: "Sibiu", county: "Sibiu", rating: 4.8, reviewCount: 89, plan: "pro", image: "" },
+];
+
+export const mostVisitedListings: Listing[] = [
+  { id: "v1", name: "Glamour Studio", category: "Saloane", city: "București", county: "București", rating: 4.9, reviewCount: 128, plan: "premium", image: "", views: 12450 },
+  { id: "v2", name: "Ink Master Studio", category: "Tatuaje", city: "Brașov", county: "Brașov", rating: 4.9, reviewCount: 112, plan: "premium", image: "", views: 9870 },
+  { id: "v3", name: "Zen Spa & Relax", category: "Spa & Wellness", city: "Cluj-Napoca", county: "Cluj", rating: 4.8, reviewCount: 95, plan: "pro", image: "", views: 8340 },
+  { id: "v4", name: "The Barber House", category: "Barbershop", city: "Sibiu", county: "Sibiu", rating: 4.8, reviewCount: 89, plan: "pro", image: "", views: 7210 },
+  { id: "v5", name: "NailArt Pro", category: "Unghii", city: "Timișoara", county: "Timiș", rating: 4.7, reviewCount: 67, plan: "pro", image: "", views: 6500 },
+  { id: "v6", name: "Beauty Queens", category: "Cosmetică", city: "Iași", county: "Iași", rating: 4.6, reviewCount: 54, plan: "free", image: "", views: 5120 },
+];
+
+export const recentListings: Listing[] = [
+  { id: "r1", name: "Lash & Glow", category: "Cosmetică", city: "Pitești", county: "Argeș", rating: 0, reviewCount: 0, plan: "free", image: "", isNew: true },
+  { id: "r2", name: "Studio Mirage", category: "Saloane", city: "Galați", county: "Galați", rating: 0, reviewCount: 0, plan: "pro", image: "", isNew: true },
+  { id: "r3", name: "InkZone Tattoo", category: "Tatuaje", city: "Ploiești", county: "Prahova", rating: 0, reviewCount: 0, plan: "free", image: "", isNew: true },
+  { id: "r4", name: "Browistry", category: "PMU", city: "Craiova", county: "Dolj", rating: 0, reviewCount: 0, plan: "premium", image: "", isNew: true },
+];
+
+export const articles: Article[] = [
+  { id: "a1", title: "Tendințe în coafură pentru vara 2025", excerpt: "Descoperă cele mai noi stiluri și tehnici de hairstyling care domină sezonul cald.", category: "Tendințe", date: "2025-06-10", image: "" },
+  { id: "a2", title: "Cum să alegi salonul potrivit", excerpt: "Ghid complet pentru a găsi cel mai bun salon de beauty în orașul tău.", category: "Ghiduri", date: "2025-06-08", image: "" },
+  { id: "a3", title: "Îngrijirea unghiilor: 5 greșeli frecvente", excerpt: "Evită aceste greșeli comune pentru unghii sănătoase și frumoase.", category: "Sfaturi", date: "2025-06-05", image: "" },
+];
+
+export const articleCategories = ["Tendințe", "Ghiduri", "Sfaturi", "Interviuri", "Noutăți", "Evenimente"];
+
+export const romanianCounties = [
+  "Alba", "Arad", "Argeș", "Bacău", "Bihor", "Bistrița-Năsăud",
+  "Botoșani", "Brașov", "Brăila", "București", "Buzău", "Caraș-Severin",
+  "Călărași", "Cluj", "Constanța", "Covasna", "Dâmbovița", "Dolj",
+  "Galați", "Giurgiu", "Gorj", "Harghita", "Hunedoara", "Ialomița",
+  "Iași", "Ilfov", "Maramureș", "Mehedinți", "Mureș", "Neamț",
+  "Olt", "Prahova", "Satu Mare", "Sălaj", "Sibiu", "Suceava",
+  "Teleorman", "Timiș", "Tulcea", "Vaslui", "Vâlcea", "Vrancea",
+];
