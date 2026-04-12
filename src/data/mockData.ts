@@ -81,10 +81,14 @@ export const recentListings: Listing[] = [
   { id: "r4", name: "Browistry", category: "PMU", city: "Craiova", county: "Dolj", rating: 0, reviewCount: 0, plan: "premium", image: listingPmu, isNew: true },
 ];
 
+import articleHair from "@/assets/article-hair.jpg";
+import articleSalon from "@/assets/article-salon.jpg";
+import articleNails from "@/assets/article-nails.jpg";
+
 export const articles: Article[] = [
-  { id: "a1", title: "Tendințe în coafură pentru vara 2025", excerpt: "Descoperă cele mai noi stiluri și tehnici de hairstyling care domină sezonul cald.", category: "Tendințe", date: "2025-06-10", image: "" },
-  { id: "a2", title: "Cum să alegi salonul potrivit", excerpt: "Ghid complet pentru a găsi cel mai bun salon de beauty în orașul tău.", category: "Ghiduri", date: "2025-06-08", image: "" },
-  { id: "a3", title: "Îngrijirea unghiilor: 5 greșeli frecvente", excerpt: "Evită aceste greșeli comune pentru unghii sănătoase și frumoase.", category: "Sfaturi", date: "2025-06-05", image: "" },
+  { id: "a1", title: "Tendințe în coafură pentru vara 2025", excerpt: "Descoperă cele mai noi stiluri și tehnici de hairstyling care domină sezonul cald.", category: "Tendințe", date: "2025-06-10", image: articleHair },
+  { id: "a2", title: "Cum să alegi salonul potrivit", excerpt: "Ghid complet pentru a găsi cel mai bun salon de beauty în orașul tău.", category: "Ghiduri", date: "2025-06-08", image: articleSalon },
+  { id: "a3", title: "Îngrijirea unghiilor: 5 greșeli frecvente", excerpt: "Evită aceste greșeli comune pentru unghii sănătoase și frumoase.", category: "Sfaturi", date: "2025-06-05", image: articleNails },
 ];
 
 export const articleCategories = ["Tendințe", "Ghiduri", "Sfaturi", "Interviuri", "Noutăți", "Evenimente"];
