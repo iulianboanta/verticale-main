@@ -1,14 +1,12 @@
+import logoWhite from "@/assets/ghidbeauty-logo-white.png";
+
 const Footer = () => (
   <footer id="contact" className="bg-foreground text-background">
     <div className="container py-12">
       <div className="grid gap-8 md:grid-cols-4">
         {/* Brand */}
         <div className="md:col-span-1">
-          <div className="flex items-center gap-1">
-            <span className="text-lg font-bold text-primary-glow">Ghid</span>
-            <span className="text-lg font-bold">Beauty</span>
-            <span className="text-xs opacity-60">.ro</span>
-          </div>
+          <img src={logoWhite} alt="GhidBeauty.ro" className="h-8" />
           <p className="mt-3 text-sm opacity-70 leading-relaxed">
             Directorul #1 de beauty din România. Conectăm clienții cu
             profesioniștii din industria frumuseții.
