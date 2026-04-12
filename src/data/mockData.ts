@@ -55,14 +55,14 @@ export const categories = [
 ];
 
 export const featuredListings: Listing[] = [
-  { id: "1", name: "Glamour Studio", category: "Saloane", city: "București", county: "București", rating: 4.9, reviewCount: 128, plan: "premium", image: listingSalon },
-  { id: "2", name: "Zen Spa & Relax", category: "Spa & Wellness", city: "Cluj-Napoca", county: "Cluj", rating: 4.8, reviewCount: 95, plan: "premium", image: listingSpa },
-  { id: "3", name: "NailArt Pro", category: "Unghii", city: "Timișoara", county: "Timiș", rating: 4.7, reviewCount: 67, plan: "pro", image: listingNails },
-  { id: "4", name: "Beauty Queens", category: "Cosmetică", city: "Iași", county: "Iași", rating: 4.6, reviewCount: 54, plan: "pro", image: listingCosmetics },
-  { id: "5", name: "Ink Master Studio", category: "Tatuaje", city: "Brașov", county: "Brașov", rating: 4.9, reviewCount: 112, plan: "premium", image: listingTattoo },
-  { id: "6", name: "Perfect Brows", category: "PMU", city: "Constanța", county: "Constanța", rating: 4.5, reviewCount: 43, plan: "free", image: listingPmu },
-  { id: "7", name: "SunKiss Tanning", category: "Bronzare", city: "Oradea", county: "Bihor", rating: 4.3, reviewCount: 31, plan: "free", image: listingTanning },
-  { id: "8", name: "The Barber House", category: "Barbershop", city: "Sibiu", county: "Sibiu", rating: 4.8, reviewCount: 89, plan: "pro", image: listingBarber },
+  { id: "1", name: "Glamour Studio", category: "Saloane", city: "București", county: "București", rating: 4.9, reviewCount: 128, plan: "premium", image: listingSalon, views: 12450 },
+  { id: "2", name: "Zen Spa & Relax", category: "Spa & Wellness", city: "Cluj-Napoca", county: "Cluj", rating: 4.8, reviewCount: 95, plan: "premium", image: listingSpa, views: 8340 },
+  { id: "3", name: "NailArt Pro", category: "Unghii", city: "Timișoara", county: "Timiș", rating: 4.7, reviewCount: 67, plan: "pro", image: listingNails, views: 6500 },
+  { id: "4", name: "Beauty Queens", category: "Cosmetică", city: "Iași", county: "Iași", rating: 4.6, reviewCount: 54, plan: "pro", image: listingCosmetics, views: 5120 },
+  { id: "5", name: "Ink Master Studio", category: "Tatuaje", city: "Brașov", county: "Brașov", rating: 4.9, reviewCount: 112, plan: "premium", image: listingTattoo, views: 9870 },
+  { id: "6", name: "Perfect Brows", category: "PMU", city: "Constanța", county: "Constanța", rating: 4.5, reviewCount: 43, plan: "free", image: listingPmu, views: 3200 },
+  { id: "7", name: "SunKiss Tanning", category: "Bronzare", city: "Oradea", county: "Bihor", rating: 4.3, reviewCount: 31, plan: "free", image: listingTanning, views: 2100 },
+  { id: "8", name: "The Barber House", category: "Barbershop", city: "Sibiu", county: "Sibiu", rating: 4.8, reviewCount: 89, plan: "pro", image: listingBarber, views: 7210 },
 ];
 
 export const mostVisitedListings: Listing[] = [

@@ -4,13 +4,13 @@ import { Badge } from "@/components/ui/badge";
 
 const planStyles: Record<string, string> = {
   premium: "card-premium",
-  pro: "card-pro",
+  pro: "",
   free: "",
 };
 
 const planBadge: Record<string, { label: string; className: string } | null> = {
   premium: { label: "Recomandat", className: "bg-primary text-primary-foreground" },
-  pro: { label: "Pro", className: "bg-primary/15 text-primary border border-primary/30" },
+  pro: null,
   free: null,
 };
 
@@ -26,7 +26,7 @@ const ListingCard = ({ listing, compact = false }: Props) => {
     <div
       className={`group relative flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${planStyles[listing.plan]}`}
     >
-      {/* Image placeholder */}
+      {/* Image */}
       <div className="relative aspect-[16/9] w-full bg-secondary overflow-hidden">
         {listing.image ? (
           <img src={listing.image} alt={listing.name} className="h-full w-full object-cover" />
@@ -50,42 +50,36 @@ const ListingCard = ({ listing, compact = false }: Props) => {
         )}
       </div>
 
-      {/* Content */}
-      <div className={`flex flex-1 flex-col p-4 ${compact ? "p-3" : ""}`}>
-        <h3 className="text-sm font-semibold text-foreground line-clamp-1 group-hover:text-primary transition-colors">
-          {listing.name}
-        </h3>
-        <p className="mt-0.5 text-xs text-muted-foreground">{listing.category}</p>
-
-        <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
-          <MapPin size={12} />
-          <span>
-            {listing.city}, {listing.county}
-          </span>
+      {/* Content – compact: name, category + location + rating + views on fewer lines */}
+      <div className="flex flex-1 flex-col p-3">
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="text-sm font-semibold text-foreground line-clamp-1 group-hover:text-primary transition-colors">
+            {listing.name}
+          </h3>
+          {listing.rating > 0 && (
+            <div className="flex items-center gap-0.5 shrink-0">
+              <Star size={12} className="fill-accent text-accent" />
+              <span className="text-xs font-semibold text-foreground">{listing.rating}</span>
+              <span className="text-[10px] text-muted-foreground">({listing.reviewCount})</span>
+            </div>
+          )}
         </div>
 
-        <div className="mt-auto flex items-center justify-between pt-3">
-          {listing.rating > 0 ? (
-            <div className="flex items-center gap-1">
-              <Star size={13} className="fill-accent text-accent" />
-              <span className="text-xs font-semibold text-foreground">
-                {listing.rating}
-              </span>
-              <span className="text-[10px] text-muted-foreground">
-                ({listing.reviewCount})
-              </span>
-            </div>
-          ) : (
-            <span className="text-[10px] text-muted-foreground italic">
-              Fără recenzii
-            </span>
-          )}
-
+        <div className="mt-1 flex items-center justify-between gap-2 text-xs text-muted-foreground">
+          <div className="flex items-center gap-1 min-w-0">
+            <span className="truncate">{listing.category}</span>
+            <span className="text-muted-foreground/40">·</span>
+            <MapPin size={11} className="shrink-0" />
+            <span className="truncate">{listing.city}</span>
+          </div>
           {listing.views != null && (
-            <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
-              <Eye size={12} />
+            <div className="flex items-center gap-0.5 shrink-0 text-[10px]">
+              <Eye size={11} />
               <span>{listing.views.toLocaleString("ro-RO")}</span>
             </div>
+          )}
+          {listing.rating === 0 && (
+            <span className="text-[10px] italic shrink-0">Fără recenzii</span>
           )}
         </div>
       </div>
