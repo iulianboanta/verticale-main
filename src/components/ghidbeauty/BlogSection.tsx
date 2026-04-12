@@ -5,7 +5,7 @@ import { CalendarDays, Sparkles } from "lucide-react";
 const BlogSection = () => (
   <section id="blog" className="py-16">
     <div className="container">
-      <h2 className="text-2xl font-bold text-foreground md:text-3xl">Blog & Articole</h2>
+      <h2 className="text-2xl font-bold text-foreground md:text-3xl">Articole</h2>
       <p className="mt-1 text-sm text-muted-foreground">Sfaturi, tendințe și noutăți din lumea beauty.</p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_260px]">

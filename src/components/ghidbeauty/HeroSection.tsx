@@ -1,12 +1,19 @@
 import { Search, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="bg-hero relative overflow-hidden py-20 md:py-32">
-      {/* Decorative circles */}
-      <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
-      <div className="absolute -bottom-32 -left-16 h-80 w-80 rounded-full bg-primary-glow/10 blur-3xl" />
+    <section className="relative overflow-hidden py-20 md:py-32">
+      {/* Background image with overlay */}
+      <img
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        width={1920}
+        height={800}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
 
       <div className="container relative z-10 flex flex-col items-center text-center">
         <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.5rem]">
