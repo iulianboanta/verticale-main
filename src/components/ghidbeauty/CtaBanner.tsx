@@ -27,7 +27,7 @@ const CtaBanner = ({ variant }: Props) => {
   return (
     <section className="py-4">
       <div className="container">
-        <div className="relative overflow-hidden rounded-2xl h-48 md:h-56">
+        <div className={`relative overflow-hidden rounded-2xl ${variant === 'register' ? 'h-32 md:h-36' : 'h-48 md:h-56'}`}>
           <img
             src={c.image}
             alt=""
@@ -37,17 +37,33 @@ const CtaBanner = ({ variant }: Props) => {
             height={512}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent" />
-          <div className="relative z-10 flex h-full flex-col justify-center px-6 md:px-12 max-w-lg">
-            <h2 className="text-xl font-bold text-primary-foreground md:text-2xl">{c.title}</h2>
-            <p className="mt-1 text-sm text-primary-foreground/90">{c.subtitle}</p>
-            <Button
-              size="sm"
-              className="mt-4 w-fit bg-card text-primary hover:bg-card/90 rounded-full px-6 font-semibold"
-            >
-              {c.cta}
-              <ArrowRight size={14} className="ml-1" />
-            </Button>
-          </div>
+          {variant === 'register' ? (
+            <div className="relative z-10 flex h-full items-center justify-between gap-6 px-6 md:px-12">
+              <div className="min-w-0">
+                <h2 className="text-xl font-bold text-primary-foreground md:text-2xl">{c.title}</h2>
+                <p className="mt-1 text-sm text-primary-foreground/90 whitespace-nowrap">{c.subtitle}</p>
+              </div>
+              <Button
+                size="sm"
+                className="shrink-0 bg-card text-primary hover:bg-card/90 rounded-full px-6 font-semibold"
+              >
+                {c.cta}
+                <ArrowRight size={14} className="ml-1" />
+              </Button>
+            </div>
+          ) : (
+            <div className="relative z-10 flex h-full flex-col justify-center px-6 md:px-12 max-w-lg">
+              <h2 className="text-xl font-bold text-primary-foreground md:text-2xl">{c.title}</h2>
+              <p className="mt-1 text-sm text-primary-foreground/90">{c.subtitle}</p>
+              <Button
+                size="sm"
+                className="mt-4 w-fit bg-card text-primary hover:bg-card/90 rounded-full px-6 font-semibold"
+              >
+                {c.cta}
+                <ArrowRight size={14} className="ml-1" />
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </section>
