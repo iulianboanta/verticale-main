@@ -11,12 +11,12 @@ const CategoryGrid = () => {
               <a
                 key={cat.slug}
                 href={`#${cat.slug}`}
-                className="group flex flex-col items-center gap-3 rounded-xl bg-card p-5 shadow-sm border border-border transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
+                className="group flex flex-col items-center gap-3 rounded-xl bg-primary p-5 shadow-sm border border-primary transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:bg-primary-dark hover:border-primary-dark"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-light text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-primary-foreground transition-colors group-hover:bg-white/30">
                   <Icon size={22} />
                 </div>
-                <span className="text-xs font-medium text-foreground text-center">
+                <span className="text-xs font-medium text-primary-foreground text-center">
                   {cat.name}
                 </span>
               </a>
