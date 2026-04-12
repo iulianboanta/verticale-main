@@ -16,8 +16,12 @@ const BlogSection = () => (
               key={a.id}
               className="group flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all hover:-translate-y-1 hover:shadow-md"
             >
-              <div className="aspect-[16/9] bg-secondary flex items-center justify-center text-muted-foreground/30">
-                <Sparkles size={28} />
+              <div className="aspect-[16/9] bg-secondary overflow-hidden">
+                {a.image ? (
+                  <img src={a.image} alt={a.title} className="w-full h-full object-cover" loading="lazy" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground/30"><Sparkles size={28} /></div>
+                )}
               </div>
               <div className="flex flex-1 flex-col p-4">
                 <Badge variant="secondary" className="w-fit text-[10px]">

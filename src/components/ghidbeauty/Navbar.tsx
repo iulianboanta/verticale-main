@@ -50,7 +50,7 @@ const Navbar = () => {
           <Button variant="outline" size="sm">
             Autentificare
           </Button>
-          <Button size="sm">Înregistrare</Button>
+          <Button size="sm">Adaugă companie</Button>
         </div>
 
         {/* Mobile toggle */}
@@ -83,7 +83,7 @@ const Navbar = () => {
               Autentificare
             </Button>
             <Button size="sm" className="flex-1">
-              Înregistrare
+              Adaugă companie
             </Button>
           </div>
         </div>
