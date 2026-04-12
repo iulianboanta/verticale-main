@@ -9,7 +9,7 @@ const planStyles: Record<string, string> = {
 };
 
 const planBadge: Record<string, { label: string; className: string } | null> = {
-  premium: { label: "Premium", className: "bg-primary text-primary-foreground" },
+  premium: { label: "Recomandat", className: "bg-primary text-primary-foreground" },
   pro: { label: "Pro", className: "bg-primary/15 text-primary border border-primary/30" },
   free: null,
 };
@@ -27,10 +27,14 @@ const ListingCard = ({ listing, compact = false }: Props) => {
       className={`group relative flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${planStyles[listing.plan]}`}
     >
       {/* Image placeholder */}
-      <div className="relative aspect-[16/10] w-full bg-secondary">
-        <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-          <Sparkles size={32} />
-        </div>
+      <div className="relative aspect-[16/9] w-full bg-secondary overflow-hidden">
+        {listing.image ? (
+          <img src={listing.image} alt={listing.name} className="h-full w-full object-cover" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
+            <Sparkles size={32} />
+          </div>
+        )}
         {badge && (
           <span
             className={`absolute top-2 right-2 inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${badge.className}`}
