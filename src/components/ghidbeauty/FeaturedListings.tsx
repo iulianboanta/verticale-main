@@ -2,7 +2,7 @@ import { featuredListings } from "@/data/mockData";
 import ListingCard from "./ListingCard";
 
 const FeaturedListings = () => (
-  <section className="py-16 bg-secondary/30">
+  <section className="pt-8 pb-16 bg-secondary/30">
     <div className="container">
       <h2 className="text-2xl font-bold text-foreground md:text-3xl">Afaceri recomandate</h2>
       <p className="mt-1 text-sm text-muted-foreground">Profesioniști verificați, aleși pentru tine.</p>
