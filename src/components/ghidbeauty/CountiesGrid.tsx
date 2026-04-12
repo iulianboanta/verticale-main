@@ -1,0 +1,28 @@
+import { romanianCounties } from "@/data/mockData";
+import { MapPin } from "lucide-react";
+
+const CountiesGrid = () => (
+  <section id="judete" className="py-16 bg-secondary/30">
+    <div className="container">
+      <h2 className="text-2xl font-bold text-foreground md:text-3xl">Caută după județ</h2>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Explorează afaceri din beauty în toate cele 42 de județe ale României.
+      </p>
+
+      <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        {romanianCounties.map((county) => (
+          <a
+            key={county}
+            href={`#judet-${county.toLowerCase().replace(/[ăâîșț\s-]/g, "")}`}
+            className="group flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:shadow-sm hover:border-primary/40 hover:text-primary"
+          >
+            <MapPin size={14} className="shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
+            {county}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+export default CountiesGrid;
