@@ -78,9 +78,6 @@ const ListingCard = ({ listing, compact = false }: Props) => {
               <span>{listing.views.toLocaleString("ro-RO")}</span>
             </div>
           )}
-          {listing.rating === 0 && (
-            <span className="text-[10px] italic shrink-0">Fără recenzii</span>
-          )}
         </div>
       </div>
     </div>
