@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
+import logoWhite from "@/assets/ghidbeauty-logo-white.png";
 
 const navLinks = [
   { label: "Acasă", href: "#" },
@@ -21,14 +22,20 @@ const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-shadow duration-300 bg-card ${
-        scrolled ? "shadow-md" : ""
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "bg-card shadow-md"
+          : "bg-transparent"
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center">
-          <img src={logo} alt="GhidBeauty.ro" className="h-9" />
+          <img
+            src={scrolled ? logo : logoWhite}
+            alt="GhidBeauty.ro"
+            className="h-9 transition-all duration-300"
+          />
         </a>
 
         {/* Desktop nav */}
@@ -37,7 +44,11 @@ const Navbar = () => {
             <a
               key={l.label}
               href={l.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className={`text-sm font-medium transition-colors ${
+                scrolled
+                  ? "text-muted-foreground hover:text-primary"
+                  : "text-white/80 hover:text-white"
+              }`}
             >
               {l.label}
             </a>
@@ -46,15 +57,32 @@ const Navbar = () => {
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="outline" size="sm">
+          <Button
+            variant="outline"
+            size="sm"
+            className={
+              scrolled
+                ? ""
+                : "border-white/40 text-white bg-white/10 hover:bg-white hover:text-foreground"
+            }
+          >
             Autentificare
           </Button>
-          <Button size="sm">Adaugă companie</Button>
+          <Button
+            size="sm"
+            className={
+              scrolled
+                ? ""
+                : "bg-white text-foreground hover:bg-white/90"
+            }
+          >
+            Adaugă companie
+          </Button>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground"
+          className={`md:hidden ${scrolled ? "text-foreground" : "text-white"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Meniu"
         >

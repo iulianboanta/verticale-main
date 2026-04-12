@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32">
+    <section className="relative overflow-hidden pt-28 pb-20 md:pt-40 md:pb-32">
       {/* Background image with overlay */}
       <img
         src={heroBg}
