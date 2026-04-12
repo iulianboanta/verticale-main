@@ -2,9 +2,9 @@ import { categories } from "@/data/mockData";
 
 const CategoryGrid = () => {
   return (
-    <section id="categorii" className="py-16">
+    <section id="categorii" className="relative z-10 -mt-16 pb-16">
       <div className="container">
-        <div className="mt-0 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
           {categories.map((cat) => {
             const Icon = cat.icon;
             return (
