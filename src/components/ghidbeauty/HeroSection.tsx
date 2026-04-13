@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -125,6 +126,14 @@ const AutosuggestInput = ({ icon, placeholder, suggestions, value, onChange }: A
 const HeroSection = () => {
   const [ceValue, setCeValue] = useState("");
   const [undeValue, setUndeValue] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (ceValue.trim()) params.set("q", ceValue.trim());
+    if (undeValue.trim()) params.set("unde", undeValue.trim());
+    navigate(`/cautare?${params.toString()}`);
+  };
 
   return (
     <section className="relative overflow-hidden pt-28 pb-36 md:pt-40 md:pb-48">
@@ -164,7 +173,7 @@ const HeroSection = () => {
               value={undeValue}
               onChange={setUndeValue}
             />
-            <Button className="rounded-xl sm:rounded-full px-6">
+            <Button className="rounded-xl sm:rounded-full px-6" onClick={handleSearch}>
               <Search size={18} />
               <span className="sm:hidden md:inline ml-1">Caută</span>
             </Button>
