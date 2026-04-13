@@ -216,7 +216,7 @@ const CompanyBody = ({ company }: Props) => {
       </SectionCard>
 
       {/* Documente & oferte */}
-      <SectionCard title="Documente & oferte">
+      <SectionCard title="Documente">
         <div className="space-y-2">
           {company.documents.map((d: any) => (
             <div
@@ -230,7 +230,7 @@ const CompanyBody = ({ company }: Props) => {
                   <p className="text-[10px] text-muted-foreground">{d.size}</p>
                 </div>
               </div>
-              <Button size="sm" variant="ghost" className="gap-1 text-xs">
+              <Button size="sm" variant="ghost" className="gap-1 text-xs hover:text-primary hover:bg-primary/10 transition-colors">
                 <Download size={12} />
                 Descarcă
               </Button>
