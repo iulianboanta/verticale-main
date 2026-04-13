@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 
 const planStyles: Record<string, string> = {
   premium: "card-premium",
-  pro: "",
+  pro: "card-pro",
   free: "",
 };
 
