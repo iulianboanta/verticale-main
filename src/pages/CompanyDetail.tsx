@@ -16,6 +16,10 @@ const CompanyDetail = () => {
   const [showStickyBar, setShowStickyBar] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  useEffect(() => {
     const onScroll = () => setShowStickyBar(window.scrollY > 400);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
