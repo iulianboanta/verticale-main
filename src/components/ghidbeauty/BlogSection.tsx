@@ -9,47 +9,54 @@ const BlogSection = () => (
       <p className="mt-1 text-sm text-muted-foreground">Sfaturi, tendințe și noutăți din lumea beauty.</p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_260px]">
-        {/* Articles grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {articles.map((a) => (
-            <article
-              key={a.id}
-              className="group flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all hover:-translate-y-1 hover:shadow-md"
-            >
-              <div className="aspect-[16/8] bg-secondary overflow-hidden">
-                {a.image ? (
-                  <img src={a.image} alt={a.title} className="w-full h-full object-cover" loading="lazy" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground/30"><Sparkles size={28} /></div>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col p-4">
-                <h3 className="text-sm font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
-                  {a.title}
-                </h3>
-                <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
-                  {a.excerpt}
-                </p>
-                <div className="mt-auto flex items-center gap-3 pt-3">
-                  <Badge variant="secondary" className="text-[10px]">
-                    {a.category}
-                  </Badge>
-                  <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
-                    <CalendarDays size={11} />
-                    {new Date(a.date).toLocaleDateString("ro-RO", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </span>
+        {/* Articles grid + banner below */}
+        <div className="flex flex-col gap-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {articles.map((a) => (
+              <article
+                key={a.id}
+                className="group flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all hover:-translate-y-1 hover:shadow-md"
+              >
+                <div className="aspect-[16/7] bg-secondary overflow-hidden">
+                  {a.image ? (
+                    <img src={a.image} alt={a.title} className="w-full h-full object-cover" loading="lazy" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-muted-foreground/30"><Sparkles size={28} /></div>
+                  )}
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className="flex flex-1 flex-col p-3">
+                  <h3 className="text-xs font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                    {a.title}
+                  </h3>
+                  <p className="mt-0.5 text-[11px] text-muted-foreground line-clamp-1">
+                    {a.excerpt}
+                  </p>
+                  <div className="mt-auto flex items-center gap-2 pt-2">
+                    <Badge variant="secondary" className="text-[10px]">
+                      {a.category}
+                    </Badge>
+                    <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                      <CalendarDays size={11} />
+                      {new Date(a.date).toLocaleDateString("ro-RO", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Banner placeholder in remaining space */}
+          <div className="flex h-[90px] w-full items-center justify-center rounded-xl border-2 border-dashed border-border bg-muted/50 text-xs text-muted-foreground">
+            Spațiu publicitar &bull; Banner articole
+          </div>
         </div>
 
         {/* Sidebar */}
-        <aside className="rounded-xl border border-border bg-gradient-to-b from-primary/5 to-card p-5 shadow-sm">
+        <aside className="rounded-xl border border-border bg-gradient-to-b from-primary/5 to-card p-5 shadow-sm self-start">
           <div className="flex items-center gap-2 mb-4">
             <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
               <Sparkles size={16} className="text-primary" />
