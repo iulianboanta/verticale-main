@@ -1,18 +1,37 @@
 
 
-## Plan: Fix butoane navigare și închidere în lightbox
+## Plan: Modificări modul info companie (dreapta galeriei)
 
-### Problema
-Butoanele de navigare (stânga/dreapta) și butonul X de închidere există deja în cod, dar sunt ascunse de clasa CSS `[&>button]:hidden` aplicată pe `DialogContent`. Această clasă este menită să ascundă butonul default de close al Dialog-ului, dar ascunde și butoanele custom.
+### 1. Logo + Nume + Categorie/Locație pe un rând
 
-### Modificare
+Sub badge-uri, înlocuim layout-ul curent (h1 + paragraf separate) cu un **flex row**: logo circular în stânga, iar în dreapta numele companiei, categoria și locația.
 
-**`src/components/ghidbeauty/company/CompanyHeader.tsx`**
-1. Înlocuim `[&>button]:hidden` cu un selector mai specific care ascunde doar butonul default de close al Radix Dialog: `[&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:hidden` — sau mai simplu, mutăm butoanele custom într-un `<div>` wrapper ca să nu mai fie direct children ai `DialogContent`.
-2. Alternativ, facem butoanele mai vizibile cu dimensiuni mai mari și fundal semi-transparent mai pronunțat.
+```text
+[Badges: Recomandat | Verificat]
 
-### Rezultat
-- Butonul X de închidere vizibil în colțul dreapta-sus
-- Săgețile stânga/dreapta vizibile pe laterale
-- Navigare funcțională între poze
+[LOGO]  Salon Lumiere
+        Coafură · Cluj-Napoca, Cluj
+```
+
+### 2. Eliminare badge "Profesional"
+
+Ștergem linia `<Badge>Profesional</Badge>`.
+
+### 3. Telefon cu click-to-reveal
+
+Înlocuim afișarea directă a numărului cu un buton "Afișează telefonul". La click, se dezvăluie numărul ca link `tel:`. State nou: `phoneVisible`.
+
+### 4. Program: ziua curentă + status + link scroll
+
+Păstrăm rândul cu programul zilei curente și badge-ul "Deschis acum". Eliminăm dropdown-ul cu tot programul (scheduleOpen) și în loc punem un link "Vezi programul complet" care face smooth scroll la secțiunea din body. Adăugăm `id="program-section"` pe `SectionCard` din CompanyBody.
+
+### 5. Link WhatsApp
+
+Adăugăm câmp `whatsapp` în mock data și un link WhatsApp cu icon `MessageCircle` lângă celelalte contacte.
+
+### Fișiere modificate
+
+- **`src/data/companyMockData.ts`** — adăugăm `logo` (placeholder) și `whatsapp`
+- **`src/components/ghidbeauty/company/CompanyHeader.tsx`** — layout logo+text, eliminare badge tier, phone reveal, program simplificat cu scroll link, link WhatsApp
+- **`src/components/ghidbeauty/company/CompanyBody.tsx`** — `id="program-section"` pe secțiunea Program
 
