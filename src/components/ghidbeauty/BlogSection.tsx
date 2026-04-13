@@ -5,8 +5,15 @@ import { CalendarDays, Sparkles } from "lucide-react";
 const BlogSection = () => (
   <section id="blog" className="py-16">
     <div className="container">
-      <h2 className="text-2xl font-bold text-foreground md:text-3xl">Articole</h2>
-      <p className="mt-1 text-sm text-muted-foreground">Sfaturi, tendințe și noutăți din lumea beauty.</p>
+      <div className="flex items-end justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-foreground md:text-3xl">Articole</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Sfaturi, tendințe și noutăți din lumea beauty.</p>
+        </div>
+        <a href="#" className="text-xs font-semibold text-primary hover:underline transition-colors">
+          Vezi toate →
+        </a>
+      </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_260px]">
         {/* Articles grid + banner below */}
@@ -62,9 +69,6 @@ const BlogSection = () => (
 
         {/* Sidebar */}
         <aside className="rounded-xl border border-border bg-gradient-to-b from-primary/5 to-card p-5 shadow-sm self-start">
-          <a href="#" className="mb-4 block text-right text-xs font-semibold text-primary hover:underline transition-colors">
-            Vezi toate →
-          </a>
           <div className="flex items-center gap-2 mb-4">
             <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
               <Sparkles size={16} className="text-primary" />
