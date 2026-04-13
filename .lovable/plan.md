@@ -1,25 +1,21 @@
 
 
-## Plan: Navbar pe fond violet (primary) pe pagini interioare
-
-### Abordare
-Navbar-ul detectează dacă pagina are hero (homepage) sau nu (pagini interioare). Pe pagini fără hero, fundalul inițial e `bg-primary` cu text alb, iar la scroll trece pe `bg-card` cu text întunecat — exact cum funcționează acum.
+## Plan: Mută harta înaintea cardului de contact în sidebar
 
 ### Modificări
 
-**`src/components/ghidbeauty/Navbar.tsx`**
-- Adăugăm un prop opțional `variant?: "transparent" | "solid"` (default `"transparent"` pentru homepage)
-- Când `variant="solid"` și `!scrolled`: fundal `bg-primary`, logo alb, linkuri albe
-- Când `scrolled`: comportamentul rămâne identic (bg-card, logo color, linkuri dark)
-- Actualizăm și butoanele CTA pentru consistență pe fond violet
+**`CompanySidebar.tsx`**
+1. Adăugăm blocul de hartă (placeholder Google Maps 160px + adresă + link "Indicații rutiere") ca **primul element** din sidebar, înainte de cardul de contact
+2. Ștergem blocul de hartă din `CompanyHeader.tsx` (liniile ~212-226)
 
-**`src/pages/Index.tsx`**
-- Navbar rămâne fără prop (default transparent) — comportament neschimbat
+**`CompanyHeader.tsx`**
+1. Ștergem secțiunea de hartă din coloana dreaptă (div-ul cu Google Maps placeholder, adresa și linkul "Indicații rutiere")
 
-**`src/pages/CompanyDetail.tsx`**
-- Navbar primește `variant="solid"`
-
-### Rezultat
-- Homepage: navbar transparent → alb la scroll (neschimbat)
-- Pagini interioare: navbar violet → alb la scroll (fix)
+### Ordine finală sidebar
+1. Google Maps placeholder + adresă
+2. Contact card (telefon, WhatsApp, formular)
+3. Informații legale
+4. Statistici
+5. Banner publicitar
+6. Saloane similare
 
