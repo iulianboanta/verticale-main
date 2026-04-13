@@ -32,6 +32,7 @@ export interface Listing {
   image: string;
   views?: number;
   isNew?: boolean;
+  slug?: string;
 }
 
 export interface Article {
