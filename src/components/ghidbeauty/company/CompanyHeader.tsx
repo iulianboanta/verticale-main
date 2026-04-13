@@ -268,7 +268,7 @@ const CompanyHeader = ({ company }: Props) => {
             onTouchEnd={(e) => {
               const diff = touchStartX.current - e.changedTouches[0].clientX;
               if (Math.abs(diff) > 50) {
-                diff > 0 ? goNext() : goPrev();
+                if (diff > 0) { goNext(); } else { goPrev(); }
               }
             }}
           >
