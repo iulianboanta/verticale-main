@@ -17,9 +17,9 @@ const Index = () => (
       <HeroSection />
       <CategoryGrid />
       <FeaturedListings />
+      <AdBanner />
       <CtaBanner variant="register" />
       <MostVisited />
-      <AdBanner />
       <RecentlyAdded />
       <CtaBanner variant="upgrade" />
       <BlogSection />
