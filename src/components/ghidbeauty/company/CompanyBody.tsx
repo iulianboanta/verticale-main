@@ -88,7 +88,7 @@ const CompanyBody = ({ company }: Props) => {
         <>
           <button
             onClick={() => setVideoOpen(true)}
-            className="w-full h-16 rounded-xl border bg-card hover:bg-accent/50 transition-colors flex items-center justify-center gap-3 px-6 group"
+            className="w-full h-16 rounded-xl border bg-card hover:bg-primary/10 hover:border-primary transition-colors flex items-center justify-center gap-3 px-6 group"
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-destructive/90 group-hover:bg-destructive transition-colors">
               <Play size={18} className="text-white fill-white ml-0.5" />

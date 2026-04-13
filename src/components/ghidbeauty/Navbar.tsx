@@ -75,8 +75,8 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
             size="sm"
             className={
               scrolled
-                ? ""
-                : "bg-primary text-primary-foreground hover:bg-primary/90"
+                ? "hover:bg-primary-foreground hover:text-primary hover:ring-2 hover:ring-primary transition-all"
+                : "bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary hover:ring-2 hover:ring-primary transition-all"
             }
           >
             Adaugă companie
@@ -112,7 +112,7 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
             <Button variant="outline" size="sm" className="flex-1">
               Autentificare
             </Button>
-            <Button size="sm" className="flex-1">
+            <Button size="sm" className="flex-1 hover:bg-primary-foreground hover:text-primary hover:ring-2 hover:ring-primary transition-all">
               Adaugă companie
             </Button>
           </div>
