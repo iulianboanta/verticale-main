@@ -243,13 +243,15 @@ const CompanyHeader = ({ company }: Props) => {
       {/* Lightbox modal */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
         <DialogContent className="max-w-none w-screen h-screen p-0 border-none bg-black/95 [&>button]:hidden">
-          {/* Close button */}
-          <button
-            onClick={() => setLightboxOpen(false)}
-            className="absolute top-4 right-4 z-50 text-white/70 hover:text-white transition-colors"
-          >
-            <X size={28} />
-          </button>
+          {/* Close button — wrapped in div to avoid [&>button]:hidden */}
+          <div className="absolute top-4 right-4 z-50">
+            <button
+              onClick={() => setLightboxOpen(false)}
+              className="text-white/70 hover:text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition-colors"
+            >
+              <X size={28} />
+            </button>
+          </div>
 
           {/* Counter */}
           <div className="absolute top-4 left-4 z-50 text-white/70 text-sm font-medium">
@@ -265,21 +267,25 @@ const CompanyHeader = ({ company }: Props) => {
             />
           </div>
 
-          {/* Navigation arrows */}
+          {/* Navigation arrows — wrapped in divs */}
           {company.images.length > 1 && (
             <>
-              <button
-                onClick={goPrev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white/60 hover:text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition-colors"
-              >
-                <ChevronLeft size={28} />
-              </button>
-              <button
-                onClick={goNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white/60 hover:text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition-colors"
-              >
-                <ChevronRight size={28} />
-              </button>
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 z-50">
+                <button
+                  onClick={goPrev}
+                  className="text-white/60 hover:text-white bg-black/40 hover:bg-black/60 rounded-full p-3 transition-colors"
+                >
+                  <ChevronLeft size={32} />
+                </button>
+              </div>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 z-50">
+                <button
+                  onClick={goNext}
+                  className="text-white/60 hover:text-white bg-black/40 hover:bg-black/60 rounded-full p-3 transition-colors"
+                >
+                  <ChevronRight size={32} />
+                </button>
+              </div>
             </>
           )}
         </DialogContent>
