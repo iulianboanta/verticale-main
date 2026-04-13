@@ -8,11 +8,13 @@ import {
   Download,
   Copy,
   ChevronDown,
+  Play,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Props {
   company: any;
@@ -34,9 +36,17 @@ const SectionCard = ({
   </Card>
 );
 
+const getYouTubeId = (url: string): string | null => {
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/))([^?&/#]+)/);
+  return match ? match[1] : null;
+};
+
 const CompanyBody = ({ company }: Props) => {
   const [descExpanded, setDescExpanded] = useState(false);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  const youtubeId = company.videoUrl ? getYouTubeId(company.videoUrl) : null;
 
   const handleCopy = (code: string) => {
     navigator.clipboard.writeText(code);

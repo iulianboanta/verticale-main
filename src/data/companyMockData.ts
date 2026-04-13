@@ -23,6 +23,7 @@ export const companyData = {
   address: "Str. Eroilor nr. 24, Cluj-Napoca, Cluj",
   description:
     "Salon Lumiere este un salon premium de coafură și înfrumusețare din inima Clujului. Cu o echipă de 8 profesioniști experimentați, oferim servicii complete de hairstyling, coloristică, tratamente capilare și makeup. Suntem dedicați excelenței și folosim exclusiv produse profesionale de top. Fiecare client beneficiază de o consultație personalizată pentru a obține look-ul perfect.",
+  videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   images: [listingSalon, listingSpa, listingNails, listingSalon, listingSpa, listingNails, listingSalon, listingSpa, listingNails, listingSalon],
   schedule: [
     { day: "Luni", hours: "09:00 – 20:00" },
