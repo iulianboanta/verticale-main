@@ -3,15 +3,15 @@ import type { Listing } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 
 const planStyles: Record<string, string> = {
-  premium: "card-premium",
-  pro: "",
-  free: "",
+  profesional: "card-premium",
+  intro: "",
+  gratuit: "",
 };
 
 const planBadge: Record<string, { label: string; className: string } | null> = {
-  premium: { label: "Recomandat", className: "bg-primary text-primary-foreground" },
-  pro: null,
-  free: null,
+  profesional: { label: "Recomandat", className: "bg-primary text-primary-foreground" },
+  intro: null,
+  gratuit: null,
 };
 
 interface Props {
@@ -39,7 +39,7 @@ const ListingCard = ({ listing, compact = false }: Props) => {
           <span
             className={`absolute top-2 right-2 inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${badge.className}`}
           >
-            {listing.plan === "premium" && <Star size={10} />}
+            {listing.plan === "profesional" && <Star size={10} />}
             {badge.label}
           </span>
         )}
