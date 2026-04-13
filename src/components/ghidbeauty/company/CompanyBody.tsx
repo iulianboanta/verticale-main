@@ -128,6 +128,7 @@ const CompanyBody = ({ company }: Props) => {
           })}
         </div>
       </SectionCard>
+      </div>
 
       {/* Promoții active */}
       <SectionCard title="Promoții active">
