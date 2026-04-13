@@ -12,14 +12,13 @@ const navLinks = [
 
 const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid" }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const showLight = !scrolled && (variant === "transparent" || variant === "solid");
 
   return (
     <header
