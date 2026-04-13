@@ -10,9 +10,8 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid" }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -20,12 +19,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const showLight = !scrolled && (variant === "transparent" || variant === "solid");
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         scrolled
           ? "bg-card shadow-md"
-          : "bg-transparent"
+          : variant === "solid"
+            ? "bg-primary"
+            : "bg-transparent"
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
