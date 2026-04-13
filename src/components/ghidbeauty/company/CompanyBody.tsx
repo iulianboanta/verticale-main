@@ -286,6 +286,7 @@ const CompanyBody = ({ company }: Props) => {
           Intră în cont și scrie o recenzie
         </Button>
       </SectionCard>
+      </div>
     </div>
   );
 };
