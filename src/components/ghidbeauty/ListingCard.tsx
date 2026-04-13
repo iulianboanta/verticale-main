@@ -1,4 +1,5 @@
 import { Star, Eye, MapPin, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { Listing } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 
@@ -23,7 +24,8 @@ const ListingCard = ({ listing, compact = false }: Props) => {
   const badge = planBadge[listing.plan];
 
   return (
-    <div
+    <Link
+      to={`/companie/${listing.slug ?? listing.id}`}
       className={`group relative flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${planStyles[listing.plan]}`}
     >
       {/* Image */}
@@ -80,7 +82,7 @@ const ListingCard = ({ listing, compact = false }: Props) => {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
