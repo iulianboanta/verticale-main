@@ -5,6 +5,8 @@ import listingNails from "@/assets/listing-nails.jpg";
 export const companyData = {
   slug: "salon-lumiere",
   name: "Salon Lumiere",
+  logo: "https://ui-avatars.com/api/?name=Salon+Lumiere&size=128&background=7c3aed&color=fff&rounded=true",
+  whatsapp: "https://wa.me/40744123456",
   category: "Coafură",
   city: "Cluj-Napoca",
   county: "Cluj",

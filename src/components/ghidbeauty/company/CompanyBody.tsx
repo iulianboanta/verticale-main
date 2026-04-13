@@ -109,6 +109,7 @@ const CompanyBody = ({ company }: Props) => {
       </SectionCard>
 
       {/* Program de funcționare */}
+      <div id="program-section">
       <SectionCard title="Program de funcționare">
         <div className="space-y-1.5">
           {company.schedule.map((s: any) => {
@@ -127,6 +128,7 @@ const CompanyBody = ({ company }: Props) => {
           })}
         </div>
       </SectionCard>
+      </div>
 
       {/* Promoții active */}
       <SectionCard title="Promoții active">
