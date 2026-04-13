@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"; 
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhite from "@/assets/ghidbeauty-logo-white.png";
@@ -32,13 +33,13 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
     >
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img
             src={scrolled ? logo : logoWhite}
             alt="GhidBeauty.ro"
             className="h-12 transition-all duration-300"
           />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
