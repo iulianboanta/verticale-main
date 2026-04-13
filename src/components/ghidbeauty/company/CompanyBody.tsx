@@ -8,11 +8,13 @@ import {
   Download,
   Copy,
   ChevronDown,
+  Play,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Props {
   company: any;
@@ -34,9 +36,17 @@ const SectionCard = ({
   </Card>
 );
 
+const getYouTubeId = (url: string): string | null => {
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/))([^?&/#]+)/);
+  return match ? match[1] : null;
+};
+
 const CompanyBody = ({ company }: Props) => {
   const [descExpanded, setDescExpanded] = useState(false);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  const youtubeId = company.videoUrl ? getYouTubeId(company.videoUrl) : null;
 
   const handleCopy = (code: string) => {
     navigator.clipboard.writeText(code);
@@ -72,6 +82,38 @@ const CompanyBody = ({ company }: Props) => {
           />
         </button>
       </SectionCard>
+
+      {/* Video YouTube button */}
+      {youtubeId && (
+        <>
+          <button
+            onClick={() => setVideoOpen(true)}
+            className="w-full h-16 rounded-xl border bg-card hover:bg-accent/50 transition-colors flex items-center justify-center gap-3 px-6 group"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-destructive/90 group-hover:bg-destructive transition-colors">
+              <Play size={18} className="text-white fill-white ml-0.5" />
+            </div>
+            <span className="text-sm font-semibold text-foreground">Vezi prezentare video</span>
+            <svg viewBox="0 0 90 20" className="h-4 ml-auto opacity-60 shrink-0">
+              <text x="0" y="15" fill="currentColor" fontSize="14" fontFamily="Arial, sans-serif" fontWeight="bold">YouTube</text>
+            </svg>
+          </button>
+
+          <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
+            <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-none">
+              <div className="aspect-video w-full">
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`}
+                  title="Prezentare video"
+                  className="w-full h-full"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
+        </>
+      )}
 
       {/* Servicii oferite */}
       <SectionCard title="Servicii oferite">
