@@ -1,8 +1,6 @@
 import { articles, articleCategories } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, Sparkles } from "lucide-react";
-import bannerPublish from "@/assets/banner-article-publish.jpg";
-import bannerPress from "@/assets/banner-press-release.jpg";
 
 const BlogSection = () => (
   <section id="blog" className="py-16">
@@ -60,12 +58,12 @@ const BlogSection = () => (
 
           {/* Banner placeholders */}
           <div className="grid grid-cols-2 gap-4">
-            <a href="#" className="block overflow-hidden rounded-xl transition-shadow hover:shadow-md">
-              <img src={bannerPublish} alt="Publică un articol" className="h-[90px] w-full object-cover" loading="lazy" width={1024} height={512} />
-            </a>
-            <a href="#" className="block overflow-hidden rounded-xl transition-shadow hover:shadow-md">
-              <img src={bannerPress} alt="Comunicate de presă" className="h-[90px] w-full object-cover" loading="lazy" width={1024} height={512} />
-            </a>
+            <div className="flex h-[90px] w-full items-center justify-center rounded-xl border-2 border-dashed border-border bg-muted/50 text-xs text-muted-foreground">
+              Spațiu publicitar &bull; Banner 1
+            </div>
+            <div className="flex h-[90px] w-full items-center justify-center rounded-xl border-2 border-dashed border-border bg-muted/50 text-xs text-muted-foreground">
+              Spațiu publicitar &bull; Banner 2
+            </div>
           </div>
         </div>
 

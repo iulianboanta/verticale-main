@@ -16,8 +16,8 @@ const content = {
   },
   upgrade: {
     title: "Vrei mai multă vizibilitate?",
-    subtitle: "Treci la planul CTO și apari primul în rezultatele de căutare.",
-    cta: "Upgrade la CTO",
+    subtitle: "Treci la planul Premium și apari primul în rezultatele de căutare.",
+    cta: "Upgrade la Premium",
     image: ctaUpgrade,
   },
 };
