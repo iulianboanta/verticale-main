@@ -126,6 +126,14 @@ const AutosuggestInput = ({ icon, placeholder, suggestions, value, onChange }: A
 const HeroSection = () => {
   const [ceValue, setCeValue] = useState("");
   const [undeValue, setUndeValue] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (ceValue.trim()) params.set("q", ceValue.trim());
+    if (undeValue.trim()) params.set("unde", undeValue.trim());
+    navigate(`/cautare?${params.toString()}`);
+  };
 
   return (
     <section className="relative overflow-hidden pt-28 pb-36 md:pt-40 md:pb-48">
