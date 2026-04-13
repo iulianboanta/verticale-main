@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"; 
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhite from "@/assets/ghidbeauty-logo-white.png";
