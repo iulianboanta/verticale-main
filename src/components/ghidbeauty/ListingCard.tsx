@@ -82,7 +82,7 @@ const ListingCard = ({ listing, compact = false }: Props) => {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
