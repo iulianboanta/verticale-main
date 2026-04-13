@@ -17,7 +17,7 @@ const BlogSection = () => (
                 key={a.id}
                 className="group flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="aspect-[16/7] bg-secondary overflow-hidden">
+                <div className="aspect-[16/8] bg-secondary overflow-hidden">
                   {a.image ? (
                     <img src={a.image} alt={a.title} className="w-full h-full object-cover" loading="lazy" />
                   ) : (
@@ -49,14 +49,22 @@ const BlogSection = () => (
             ))}
           </div>
 
-          {/* Banner placeholder in remaining space */}
-          <div className="flex h-[90px] w-full items-center justify-center rounded-xl border-2 border-dashed border-border bg-muted/50 text-xs text-muted-foreground">
-            Spațiu publicitar &bull; Banner articole
+          {/* Banner placeholders */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex h-[90px] w-full items-center justify-center rounded-xl border-2 border-dashed border-border bg-muted/50 text-xs text-muted-foreground">
+              Spațiu publicitar &bull; Banner 1
+            </div>
+            <div className="flex h-[90px] w-full items-center justify-center rounded-xl border-2 border-dashed border-border bg-muted/50 text-xs text-muted-foreground">
+              Spațiu publicitar &bull; Banner 2
+            </div>
           </div>
         </div>
 
         {/* Sidebar */}
         <aside className="rounded-xl border border-border bg-gradient-to-b from-primary/5 to-card p-5 shadow-sm self-start">
+          <a href="#" className="mb-4 block text-right text-xs font-semibold text-primary hover:underline transition-colors">
+            Vezi toate →
+          </a>
           <div className="flex items-center gap-2 mb-4">
             <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
               <Sparkles size={16} className="text-primary" />

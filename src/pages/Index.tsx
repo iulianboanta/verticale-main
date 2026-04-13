@@ -20,10 +20,10 @@ const Index = () => (
       <AdBanner />
       <CtaBanner variant="register" />
       <MostVisited />
-      <CountiesGrid />
       <RecentlyAdded />
       <CtaBanner variant="upgrade" />
       <BlogSection />
+      <CountiesGrid />
     </main>
     <Footer />
   </div>
