@@ -8,6 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
+  Flag,
   X,
 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
