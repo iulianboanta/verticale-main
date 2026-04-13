@@ -23,7 +23,7 @@ const CompanyDetail = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
+      <Navbar variant="solid" />
       <CompanyStickyBar company={company} visible={showStickyBar} />
 
       <main className="flex-1 pt-16">
