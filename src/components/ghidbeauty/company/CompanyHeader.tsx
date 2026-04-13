@@ -239,6 +239,51 @@ const CompanyHeader = ({ company }: Props) => {
         </div>
 
       </div>
+
+      {/* Lightbox modal */}
+      <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+        <DialogContent className="max-w-none w-screen h-screen p-0 border-none bg-black/95 [&>button]:hidden">
+          {/* Close button */}
+          <button
+            onClick={() => setLightboxOpen(false)}
+            className="absolute top-4 right-4 z-50 text-white/70 hover:text-white transition-colors"
+          >
+            <X size={28} />
+          </button>
+
+          {/* Counter */}
+          <div className="absolute top-4 left-4 z-50 text-white/70 text-sm font-medium">
+            {lightboxIndex + 1} / {company.images.length}
+          </div>
+
+          {/* Image */}
+          <div className="flex items-center justify-center w-full h-full">
+            <img
+              src={company.images[lightboxIndex]}
+              alt={`${company.name} - foto ${lightboxIndex + 1}`}
+              className="max-w-[90vw] max-h-[85vh] object-contain"
+            />
+          </div>
+
+          {/* Navigation arrows */}
+          {company.images.length > 1 && (
+            <>
+              <button
+                onClick={goPrev}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white/60 hover:text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition-colors"
+              >
+                <ChevronLeft size={28} />
+              </button>
+              <button
+                onClick={goNext}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white/60 hover:text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition-colors"
+              >
+                <ChevronRight size={28} />
+              </button>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
