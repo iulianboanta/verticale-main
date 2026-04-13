@@ -1,11 +1,29 @@
 
 
-## Plan: Scroll to top la navigare pe pagina de detalii
+## Plan: Lightbox modal cu carousel pentru galeria de poze
 
-Când navighezi de pe homepage pe pagina de detalii, browser-ul păstrează poziția de scroll. Trebuie să facem scroll la top automat.
+### Abordare
+Adăugăm un Dialog modal fullscreen care se deschide la click pe orice poză din galeria CompanyHeader. În modal, pozele se afișează cu `object-contain` pe fundal negru, cu navigare stânga/dreapta.
 
-### Modificare
+### Modificări
 
-**`src/pages/CompanyDetail.tsx`**
-- Adăugăm `window.scrollTo(0, 0)` în `useEffect` existent (sau unul nou) care rulează la montarea componentei, pentru a poziționa pagina sus la fiecare navigare.
+**`src/components/ghidbeauty/company/CompanyHeader.tsx`**
+1. Importăm `Dialog`, `DialogContent` din UI + iconițe `ChevronLeft`, `ChevronRight`, `X`
+2. Adăugăm state: `lightboxOpen` (boolean) și `lightboxIndex` (number)
+3. La click pe orice imagine din grid → `setLightboxOpen(true)` + `setLightboxIndex(i)`
+4. Butonul "Vezi toate fotografiile" → deschide lightbox-ul la index 0
+5. Adăugăm componenta Dialog cu:
+   - Overlay negru (`bg-black/90`)
+   - Imagine centrată cu `object-contain` (se adaptează la orice aspect ratio)
+   - Butoane săgeți stânga/dreapta pentru navigare
+   - Counter "3 / 12" sus
+   - Buton X de închidere
+   - Suport taste keyboard (←, →, Escape)
+   - Cursor pointer pe imagini în grid
+
+### Rezultat
+- Pozele se văd integral, indiferent de dimensiune
+- Navigare fluidă între poze
+- Pattern familiar (Airbnb/Google style)
+- Funcționează pe desktop și mobile
 
