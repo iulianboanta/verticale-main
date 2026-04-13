@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   Star,
   Eye,
-  MapPin,
+  
   Phone,
   Globe,
   Clock,
@@ -209,21 +209,6 @@ const CompanyHeader = ({ company }: Props) => {
           <span>{company.views.toLocaleString("ro-RO")} vizualizări luna aceasta</span>
         </div>
 
-        {/* Map */}
-        <div className="mt-2 rounded-lg overflow-hidden border">
-          <div className="h-[160px] bg-secondary flex items-center justify-center text-muted-foreground text-sm">
-            Google Maps Placeholder
-          </div>
-          <div className="p-3 text-sm">
-            <div className="flex items-center gap-1.5 text-foreground">
-              <MapPin size={14} className="text-primary shrink-0" />
-              {company.address}
-            </div>
-            <a href="#" className="text-primary text-xs hover:underline mt-1 inline-block">
-              Indicații rutiere →
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   );
