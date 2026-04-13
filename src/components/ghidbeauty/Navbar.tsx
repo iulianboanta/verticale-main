@@ -33,13 +33,13 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
     >
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img
             src={scrolled ? logo : logoWhite}
             alt="GhidBeauty.ro"
             className="h-12 transition-all duration-300"
           />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
