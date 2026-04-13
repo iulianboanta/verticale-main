@@ -258,13 +258,39 @@ const CompanyHeader = ({ company }: Props) => {
             {lightboxIndex + 1} / {company.images.length}
           </div>
 
-          {/* Image */}
-          <div className="flex items-center justify-center w-full h-full">
+          {/* Image with swipe support */}
+          <div
+            className="flex items-center justify-center w-full h-full"
+            onTouchStart={(e) => {
+              touchStartX.current = e.touches[0].clientX;
+            }}
+            onTouchEnd={(e) => {
+              const diff = touchStartX.current - e.changedTouches[0].clientX;
+              if (Math.abs(diff) > 50) {
+                diff > 0 ? goNext() : goPrev();
+              }
+            }}
+          >
             <img
               src={company.images[lightboxIndex]}
               alt={`${company.name} - foto ${lightboxIndex + 1}`}
-              className="max-w-[90vw] max-h-[85vh] object-contain"
+              className="max-w-[90vw] max-h-[70vh] object-contain"
             />
+          </div>
+
+          {/* Thumbnails */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex gap-2 max-w-[90vw] overflow-x-auto px-2 py-2 rounded-lg bg-black/50">
+            {company.images.map((img: string, i: number) => (
+              <button
+                key={i}
+                onClick={() => setLightboxIndex(i)}
+                className={`shrink-0 w-14 h-14 rounded-md overflow-hidden border-2 transition-all ${
+                  i === lightboxIndex ? "border-white opacity-100" : "border-transparent opacity-50 hover:opacity-80"
+                }`}
+              >
+                <img src={img} alt="" className="w-full h-full object-cover" />
+              </button>
+            ))}
           </div>
 
           {/* Navigation arrows — wrapped in divs */}
