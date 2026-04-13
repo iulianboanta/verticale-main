@@ -9,7 +9,6 @@ import {
   ChevronRight,
   ExternalLink,
   X,
-  MessageCircle,
 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
