@@ -5,12 +5,11 @@ import {
   Phone,
   Globe,
   Clock,
-  ChevronDown,
-  ChevronUp,
   ChevronLeft,
   ChevronRight,
   ExternalLink,
   X,
+  MessageCircle,
 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
@@ -20,8 +19,8 @@ interface Props {
 }
 
 const CompanyHeader = ({ company }: Props) => {
-  const [scheduleOpen, setScheduleOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [phoneVisible, setPhoneVisible] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const touchStartX = useRef(0);
 
@@ -105,19 +104,25 @@ const CompanyHeader = ({ company }: Props) => {
             <Star size={12} className="mr-1" />
             Recomandat
           </Badge>
-          <Badge className="bg-primary-light text-primary-dark">Profesional</Badge>
           {company.verified && (
             <Badge className="bg-green-100 text-green-700">Verificat</Badge>
           )}
         </div>
 
-        {/* Name */}
-        <h1 className="text-2xl font-bold text-foreground lg:text-3xl">{company.name}</h1>
-
-        {/* Category + City */}
-        <p className="text-sm text-muted-foreground">
-          {company.category} · {company.city}, {company.county}
-        </p>
+        {/* Logo + Name + Category */}
+        <div className="flex items-center gap-3">
+          <img
+            src={company.logo}
+            alt={`${company.name} logo`}
+            className="w-14 h-14 rounded-full object-cover border-2 border-border shrink-0"
+          />
+          <div>
+            <h1 className="text-2xl font-bold text-foreground lg:text-3xl">{company.name}</h1>
+            <p className="text-sm text-muted-foreground">
+              {company.category} · {company.city}, {company.county}
+            </p>
+          </div>
+        </div>
 
         {/* Rating block */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
@@ -164,7 +169,7 @@ const CompanyHeader = ({ company }: Props) => {
 
         {/* Meta list */}
         <div className="space-y-2 text-sm">
-          {/* Opening hours */}
+          {/* Opening hours — today only + scroll link */}
           <div className="flex items-center gap-2">
             <Clock size={16} className="text-muted-foreground shrink-0" />
             <span className="text-foreground">{todayCapitalized}: {todaySchedule?.hours || "—"}</span>
@@ -174,30 +179,39 @@ const CompanyHeader = ({ company }: Props) => {
               </Badge>
             )}
             <button
-              onClick={() => setScheduleOpen(!scheduleOpen)}
-              className="text-primary hover:underline ml-auto flex items-center gap-0.5 text-xs"
+              onClick={() => document.getElementById("program-section")?.scrollIntoView({ behavior: "smooth" })}
+              className="text-primary hover:underline ml-auto text-xs"
             >
-              {scheduleOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+              Vezi programul complet
             </button>
           </div>
-          {scheduleOpen && (
-            <div className="ml-6 space-y-1 text-xs text-muted-foreground">
-              {company.schedule.map((s: any) => (
-                <div key={s.day} className="flex justify-between max-w-[200px]">
-                  <span>{s.day}</span>
-                  <span className="font-medium text-foreground">{s.hours}</span>
-                </div>
-              ))}
-            </div>
-          )}
 
-          {/* Phone */}
+          {/* Phone — click to reveal */}
           <div className="flex items-center gap-2">
             <Phone size={16} className="text-muted-foreground shrink-0" />
-            <a href={`tel:${company.phone}`} className="text-primary hover:underline">
-              {company.phone}
-            </a>
+            {phoneVisible ? (
+              <a href={`tel:${company.phone}`} className="text-primary hover:underline">
+                {company.phone}
+              </a>
+            ) : (
+              <button
+                onClick={() => setPhoneVisible(true)}
+                className="text-primary hover:underline"
+              >
+                Afișează telefonul
+              </button>
+            )}
           </div>
+
+          {/* WhatsApp */}
+          {company.whatsapp && (
+            <div className="flex items-center gap-2">
+              <MessageCircle size={16} className="text-muted-foreground shrink-0" />
+              <a href={company.whatsapp} target="_blank" rel="noopener" className="text-primary hover:underline">
+                Trimite mesaj WhatsApp
+              </a>
+            </div>
+          )}
 
           {/* Website */}
           <div className="flex items-center gap-2">
