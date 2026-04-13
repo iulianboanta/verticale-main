@@ -18,7 +18,7 @@ import listingPmu from "@/assets/listing-pmu.jpg";
 import listingTanning from "@/assets/listing-tanning.jpg";
 import listingBarber from "@/assets/listing-barber.jpg";
 
-export type PlanTier = "premium" | "pro" | "free";
+export type PlanTier = "cto" | "profesional" | "free";
 
 export interface Listing {
   id: string;
