@@ -29,10 +29,34 @@ const CompanyDetail = () => {
       <main className="flex-1 pt-16">
         <div className="container py-6">
           <CompanyBreadcrumb category={company.category} city={company.city} name={company.name} />
-          <CompanyHeader company={company} />
 
-          <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
-            <CompanyBody company={company} />
+          {/* Gallery — full width */}
+          <div className="mb-6">
+            <div className="grid grid-cols-3 gap-2 rounded-xl overflow-hidden aspect-[16/10] max-h-[400px]">
+              <div className="col-span-2 row-span-2 relative">
+                <img src={company.images[0]} alt={company.name} className="h-full w-full object-cover" />
+              </div>
+              <div className="relative">
+                <img src={company.images[1]} alt="" className="h-full w-full object-cover" />
+              </div>
+              <div className="relative">
+                <img src={company.images[2]} alt="" className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                  <span className="text-white text-sm font-semibold">+{company.images.length - 3} foto</span>
+                </div>
+              </div>
+            </div>
+            <button className="mt-2 text-sm text-primary hover:underline">
+              Vezi toate fotografiile ({company.images.length})
+            </button>
+          </div>
+
+          {/* Two-column: info+body left, sidebar right */}
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
+            <div className="space-y-6">
+              <CompanyHeader company={company} />
+              <CompanyBody company={company} />
+            </div>
             <CompanySidebar company={company} />
           </div>
         </div>
