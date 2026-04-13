@@ -47,17 +47,27 @@ const BlogSection = () => (
         </div>
 
         {/* Sidebar */}
-        <aside className="rounded-xl border border-border bg-card p-5">
-          <h3 className="text-sm font-semibold text-foreground">Categorii articole</h3>
-          <ul className="mt-3 flex flex-col gap-2">
-            {articleCategories.map((c) => (
+        <aside className="rounded-xl border border-border bg-gradient-to-b from-primary/5 to-card p-5 shadow-sm">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
+              <Sparkles size={16} className="text-primary" />
+            </div>
+            <h3 className="text-sm font-bold text-foreground">Categorii articole</h3>
+          </div>
+          <ul className="flex flex-col gap-1.5">
+            {articleCategories.map((c, i) => (
               <li key={c}>
                 <a
                   href="#"
-                  className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  className="group/cat flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:shadow-sm"
                 >
-                  {c}
-                  <span className="text-[10px]">→</span>
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-md bg-primary/10 text-[10px] font-semibold text-primary transition-colors group-hover/cat:bg-white/20 group-hover/cat:text-primary-foreground">
+                      {i + 1}
+                    </span>
+                    {c}
+                  </span>
+                  <span className="text-xs opacity-0 transition-opacity group-hover/cat:opacity-100">→</span>
                 </a>
               </li>
             ))}
