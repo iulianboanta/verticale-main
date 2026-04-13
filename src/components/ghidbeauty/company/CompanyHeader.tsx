@@ -23,6 +23,7 @@ const CompanyHeader = ({ company }: Props) => {
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const touchStartX = useRef(0);
 
   const today = new Date().toLocaleDateString("ro-RO", { weekday: "long" });
   const todayCapitalized = today.charAt(0).toUpperCase() + today.slice(1);
