@@ -1,4 +1,5 @@
 import { Star, Eye, MapPin, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { Listing } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 
