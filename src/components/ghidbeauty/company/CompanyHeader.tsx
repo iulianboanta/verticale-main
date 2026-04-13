@@ -30,10 +30,6 @@ const CompanyHeader = ({ company }: Props) => {
   );
   const isOpen = todaySchedule && todaySchedule.hours !== "Închis";
 
-  const totalRatings = Object.values(company.ratingDistribution as Record<number, number>).reduce(
-    (a: number, b: number) => a + b,
-    0
-  );
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -97,15 +93,37 @@ const CompanyHeader = ({ company }: Props) => {
 
       {/* RIGHT — Company info */}
       <div className="flex flex-col gap-4">
-        {/* Badges */}
-        <div className="flex flex-wrap gap-2">
-          <Badge className="bg-primary text-primary-foreground">
-            <Star size={12} className="mr-1" />
-            Recomandat
-          </Badge>
-          {company.verified && (
-            <Badge className="bg-green-100 text-green-700">Verificat</Badge>
-          )}
+        {/* Badges + Rating */}
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap gap-2">
+            <Badge className="bg-primary text-primary-foreground">
+              <Star size={12} className="mr-1" />
+              Recomandat
+            </Badge>
+            {company.verified && (
+              <Badge className="bg-green-100 text-green-700">Verificat</Badge>
+            )}
+          </div>
+          <button
+            onClick={() => document.getElementById("reviews-section")?.scrollIntoView({ behavior: "smooth" })}
+            className="flex items-center gap-1.5 text-sm hover:opacity-80 transition-opacity"
+          >
+            <span className="font-bold text-foreground">{company.rating}</span>
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <Star
+                  key={i}
+                  size={14}
+                  className={
+                    i <= Math.round(company.rating)
+                      ? "fill-accent text-accent"
+                      : "text-muted-foreground/30"
+                  }
+                />
+              ))}
+            </div>
+            <span className="text-xs text-muted-foreground">{company.reviewCount} recenzii</span>
+          </button>
         </div>
 
         {/* Logo + Name + Category */}
@@ -113,7 +131,7 @@ const CompanyHeader = ({ company }: Props) => {
           <img
             src={company.logo}
             alt={`${company.name} logo`}
-            className="w-14 h-14 rounded-full object-cover border-2 border-border shrink-0"
+            className="w-28 h-28 rounded-full object-cover border-2 border-border shrink-0"
           />
           <div>
             <h1 className="text-2xl font-bold text-foreground lg:text-3xl">{company.name}</h1>
@@ -123,48 +141,6 @@ const CompanyHeader = ({ company }: Props) => {
           </div>
         </div>
 
-        {/* Rating block */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-          <div className="flex items-center gap-2">
-            <span className="text-3xl font-bold text-foreground">{company.rating}</span>
-            <div>
-              <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star
-                    key={i}
-                    size={16}
-                    className={
-                      i <= Math.round(company.rating)
-                        ? "fill-accent text-accent"
-                        : "text-muted-foreground/30"
-                    }
-                  />
-                ))}
-              </div>
-              <span className="text-xs text-muted-foreground">{company.reviewCount} recenzii</span>
-            </div>
-          </div>
-
-          {/* Distribution bars */}
-          <div className="flex-1 space-y-1">
-            {[5, 4, 3, 2, 1].map((star) => {
-              const count = (company.ratingDistribution as any)[star] || 0;
-              const pct = totalRatings > 0 ? (count / totalRatings) * 100 : 0;
-              return (
-                <div key={star} className="flex items-center gap-2 text-xs">
-                  <span className="w-4 text-right text-muted-foreground">{star}★</span>
-                  <div className="flex-1 h-2 rounded-full bg-secondary overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-accent"
-                      style={{ width: `${pct}%` }}
-                    />
-                  </div>
-                  <span className="w-6 text-muted-foreground">{count}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Meta list */}
         <div className="space-y-2 text-sm">

@@ -198,6 +198,7 @@ const CompanyBody = ({ company }: Props) => {
       </SectionCard>
 
       {/* Recenzii clienți */}
+      <div id="reviews-section">
       <SectionCard title="Recenzii clienți">
         {/* Summary */}
         <div className="flex items-start gap-4 mb-6">
@@ -285,6 +286,7 @@ const CompanyBody = ({ company }: Props) => {
           Intră în cont și scrie o recenzie
         </Button>
       </SectionCard>
+      </div>
     </div>
   );
 };
