@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   Star,
   Eye,
-  MapPin,
+  
   Phone,
   Globe,
   Clock,
