@@ -16,7 +16,7 @@ const BlogSection = () => (
               key={a.id}
               className="group flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all hover:-translate-y-1 hover:shadow-md"
             >
-              <div className="aspect-[16/9] bg-secondary overflow-hidden">
+              <div className="aspect-[16/8] bg-secondary overflow-hidden">
                 {a.image ? (
                   <img src={a.image} alt={a.title} className="w-full h-full object-cover" loading="lazy" />
                 ) : (
@@ -24,22 +24,24 @@ const BlogSection = () => (
                 )}
               </div>
               <div className="flex flex-1 flex-col p-4">
-                <Badge variant="secondary" className="w-fit text-[10px]">
-                  {a.category}
-                </Badge>
-                <h3 className="mt-2 text-sm font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                <h3 className="text-sm font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                   {a.title}
                 </h3>
                 <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
                   {a.excerpt}
                 </p>
-                <div className="mt-auto flex items-center gap-1 pt-3 text-[10px] text-muted-foreground">
-                  <CalendarDays size={11} />
-                  {new Date(a.date).toLocaleDateString("ro-RO", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
+                <div className="mt-auto flex items-center gap-3 pt-3">
+                  <Badge variant="secondary" className="text-[10px]">
+                    {a.category}
+                  </Badge>
+                  <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                    <CalendarDays size={11} />
+                    {new Date(a.date).toLocaleDateString("ro-RO", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </span>
                 </div>
               </div>
             </article>
