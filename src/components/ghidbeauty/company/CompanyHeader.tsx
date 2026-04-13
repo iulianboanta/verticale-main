@@ -8,6 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
+  Flag,
   X,
 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -226,9 +227,18 @@ const CompanyHeader = ({ company }: Props) => {
         </div>
 
         {/* Views */}
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <Eye size={14} />
-          <span>{company.views.toLocaleString("ro-RO")} vizualizări luna aceasta</span>
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <div className="flex items-center gap-1.5">
+            <Eye size={14} />
+            <span>{company.views.toLocaleString("ro-RO")} vizualizări luna aceasta</span>
+          </div>
+          <a
+            href="#"
+            className="flex items-center gap-1 text-muted-foreground hover:text-destructive transition-colors"
+          >
+            <Flag size={12} />
+            Sesizează neregularitate
+          </a>
         </div>
 
       </div>
