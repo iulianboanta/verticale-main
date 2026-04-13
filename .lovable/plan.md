@@ -1,37 +1,25 @@
 
 
-## Plan: Modificări modul info companie (dreapta galeriei)
+## Plan: Logo mai mare, rating simplificat pe linia badge-urilor
 
-### 1. Logo + Nume + Categorie/Locație pe un rând
+### Modificări în `CompanyHeader.tsx`
 
-Sub badge-uri, înlocuim layout-ul curent (h1 + paragraf separate) cu un **flex row**: logo circular în stânga, iar în dreapta numele companiei, categoria și locația.
+**1. Logo dublu** — schimbăm `w-14 h-14` → `w-28 h-28` (linia 116)
 
+**2. Eliminare bloc recenzii** — ștergem complet secțiunea "Rating block" (liniile 126-167): scorul mare, stelele, distribuția pe bare
+
+**3. Scor + stele pe linia badge-urilor, aliniat dreapta** — în div-ul de badges (linia 101), adăugăm `justify-between items-center` și inserăm la dreapta un buton clickable cu scorul (ex: `4.8`), 5 stele și textul `142 recenzii`. La click face smooth scroll la secțiunea de recenzii (`#reviews-section`).
+
+Layout rezultat:
 ```text
-[Badges: Recomandat | Verificat]
-
-[LOGO]  Salon Lumiere
-        Coafură · Cluj-Napoca, Cluj
+[Recomandat] [Verificat]          4.8 ★★★★★ 142 recenzii →
 ```
 
-### 2. Eliminare badge "Profesional"
+**4. Eliminare `totalRatings`** — ștergem calculul (liniile 33-36) care nu mai e necesar
 
-Ștergem linia `<Badge>Profesional</Badge>`.
+**5. `id="reviews-section"`** — adăugăm pe secțiunea de recenzii din `CompanyBody.tsx` (trebuie verificat dacă există deja)
 
-### 3. Telefon cu click-to-reveal
-
-Înlocuim afișarea directă a numărului cu un buton "Afișează telefonul". La click, se dezvăluie numărul ca link `tel:`. State nou: `phoneVisible`.
-
-### 4. Program: ziua curentă + status + link scroll
-
-Păstrăm rândul cu programul zilei curente și badge-ul "Deschis acum". Eliminăm dropdown-ul cu tot programul (scheduleOpen) și în loc punem un link "Vezi programul complet" care face smooth scroll la secțiunea din body. Adăugăm `id="program-section"` pe `SectionCard` din CompanyBody.
-
-### 5. Link WhatsApp
-
-Adăugăm câmp `whatsapp` în mock data și un link WhatsApp cu icon `MessageCircle` lângă celelalte contacte.
-
-### Fișiere modificate
-
-- **`src/data/companyMockData.ts`** — adăugăm `logo` (placeholder) și `whatsapp`
-- **`src/components/ghidbeauty/company/CompanyHeader.tsx`** — layout logo+text, eliminare badge tier, phone reveal, program simplificat cu scroll link, link WhatsApp
-- **`src/components/ghidbeauty/company/CompanyBody.tsx`** — `id="program-section"` pe secțiunea Program
+### Fișiere
+- `src/components/ghidbeauty/company/CompanyHeader.tsx`
+- `src/components/ghidbeauty/company/CompanyBody.tsx` (adăugare id anchor)
 
