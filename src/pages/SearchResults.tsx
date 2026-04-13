@@ -201,7 +201,7 @@ const SearchResultsPage = () => {
                     <SearchResultCard
                       key={item.id}
                       listing={item}
-                      view={view}
+                      view={view === "map" ? "list" : view}
                     />
                   );
                 })}
