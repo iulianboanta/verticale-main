@@ -34,7 +34,7 @@ const Navbar = () => {
           <img
             src={scrolled ? logo : logoWhite}
             alt="GhidBeauty.ro"
-            className="h-11 transition-all duration-300"
+            className="h-12 transition-all duration-300"
           />
         </a>
 
