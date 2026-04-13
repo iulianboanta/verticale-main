@@ -1,29 +1,18 @@
 
 
-## Plan: Lightbox modal cu carousel pentru galeria de poze
+## Plan: Fix butoane navigare și închidere în lightbox
 
-### Abordare
-Adăugăm un Dialog modal fullscreen care se deschide la click pe orice poză din galeria CompanyHeader. În modal, pozele se afișează cu `object-contain` pe fundal negru, cu navigare stânga/dreapta.
+### Problema
+Butoanele de navigare (stânga/dreapta) și butonul X de închidere există deja în cod, dar sunt ascunse de clasa CSS `[&>button]:hidden` aplicată pe `DialogContent`. Această clasă este menită să ascundă butonul default de close al Dialog-ului, dar ascunde și butoanele custom.
 
-### Modificări
+### Modificare
 
 **`src/components/ghidbeauty/company/CompanyHeader.tsx`**
-1. Importăm `Dialog`, `DialogContent` din UI + iconițe `ChevronLeft`, `ChevronRight`, `X`
-2. Adăugăm state: `lightboxOpen` (boolean) și `lightboxIndex` (number)
-3. La click pe orice imagine din grid → `setLightboxOpen(true)` + `setLightboxIndex(i)`
-4. Butonul "Vezi toate fotografiile" → deschide lightbox-ul la index 0
-5. Adăugăm componenta Dialog cu:
-   - Overlay negru (`bg-black/90`)
-   - Imagine centrată cu `object-contain` (se adaptează la orice aspect ratio)
-   - Butoane săgeți stânga/dreapta pentru navigare
-   - Counter "3 / 12" sus
-   - Buton X de închidere
-   - Suport taste keyboard (←, →, Escape)
-   - Cursor pointer pe imagini în grid
+1. Înlocuim `[&>button]:hidden` cu un selector mai specific care ascunde doar butonul default de close al Radix Dialog: `[&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:hidden` — sau mai simplu, mutăm butoanele custom într-un `<div>` wrapper ca să nu mai fie direct children ai `DialogContent`.
+2. Alternativ, facem butoanele mai vizibile cu dimensiuni mai mari și fundal semi-transparent mai pronunțat.
 
 ### Rezultat
-- Pozele se văd integral, indiferent de dimensiune
-- Navigare fluidă între poze
-- Pattern familiar (Airbnb/Google style)
-- Funcționează pe desktop și mobile
+- Butonul X de închidere vizibil în colțul dreapta-sus
+- Săgețile stânga/dreapta vizibile pe laterale
+- Navigare funcțională între poze
 
