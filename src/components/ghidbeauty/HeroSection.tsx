@@ -173,7 +173,7 @@ const HeroSection = () => {
               value={undeValue}
               onChange={setUndeValue}
             />
-            <Button className="rounded-xl sm:rounded-full px-6">
+            <Button className="rounded-xl sm:rounded-full px-6" onClick={handleSearch}>
               <Search size={18} />
               <span className="sm:hidden md:inline ml-1">Caută</span>
             </Button>
