@@ -21,6 +21,9 @@ interface Props {
 
 const CompanyHeader = ({ company }: Props) => {
   const [scheduleOpen, setScheduleOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   const today = new Date().toLocaleDateString("ro-RO", { weekday: "long" });
   const todayCapitalized = today.charAt(0).toUpperCase() + today.slice(1);
   const todaySchedule = company.schedule.find(
@@ -33,26 +36,49 @@ const CompanyHeader = ({ company }: Props) => {
     0
   );
 
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const goNext = useCallback(() => {
+    setLightboxIndex((i) => (i + 1) % company.images.length);
+  }, [company.images.length]);
+
+  const goPrev = useCallback(() => {
+    setLightboxIndex((i) => (i - 1 + company.images.length) % company.images.length);
+  }, [company.images.length]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxOpen, goNext, goPrev]);
+
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
       {/* LEFT — Photo gallery */}
       <div>
         <div className="grid grid-cols-3 gap-2 rounded-xl overflow-hidden aspect-[16/10]">
-          <div className="col-span-2 row-span-2 relative">
+          <div className="col-span-2 row-span-2 relative cursor-pointer" onClick={() => openLightbox(0)}>
             <img
               src={company.images[0]}
               alt={company.name}
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="relative">
+          <div className="relative cursor-pointer" onClick={() => openLightbox(1)}>
             <img
               src={company.images[1]}
               alt=""
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="relative">
+          <div className="relative cursor-pointer" onClick={() => openLightbox(2)}>
             <img
               src={company.images[2]}
               alt=""
@@ -65,7 +91,7 @@ const CompanyHeader = ({ company }: Props) => {
             </div>
           </div>
         </div>
-        <button className="mt-2 text-sm text-primary hover:underline">
+        <button onClick={() => openLightbox(0)} className="mt-2 text-sm text-primary hover:underline">
           Vezi toate fotografiile ({company.images.length})
         </button>
       </div>
