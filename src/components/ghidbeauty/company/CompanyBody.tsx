@@ -83,6 +83,38 @@ const CompanyBody = ({ company }: Props) => {
         </button>
       </SectionCard>
 
+      {/* Video YouTube button */}
+      {youtubeId && (
+        <>
+          <button
+            onClick={() => setVideoOpen(true)}
+            className="w-full h-16 rounded-xl border bg-card hover:bg-accent/50 transition-colors flex items-center justify-center gap-3 px-6 group"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-destructive/90 group-hover:bg-destructive transition-colors">
+              <Play size={18} className="text-white fill-white ml-0.5" />
+            </div>
+            <span className="text-sm font-semibold text-foreground">Vezi prezentare video</span>
+            <svg viewBox="0 0 90 20" className="h-4 ml-auto opacity-60 shrink-0">
+              <text x="0" y="15" fill="currentColor" fontSize="14" fontFamily="Arial, sans-serif" fontWeight="bold">YouTube</text>
+            </svg>
+          </button>
+
+          <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
+            <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-none">
+              <div className="aspect-video w-full">
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`}
+                  title="Prezentare video"
+                  className="w-full h-full"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
+        </>
+      )}
+
       {/* Servicii oferite */}
       <SectionCard title="Servicii oferite">
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
