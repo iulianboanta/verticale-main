@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, Globe, Send, MapPin } from "lucide-react";
+import { Phone, MessageCircle, Globe, Send } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,22 +12,6 @@ interface Props {
 
 const CompanySidebar = ({ company }: Props) => (
   <div className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-    {/* Map */}
-    <div className="rounded-lg overflow-hidden border">
-      <div className="h-[160px] bg-secondary flex items-center justify-center text-muted-foreground text-sm">
-        Google Maps Placeholder
-      </div>
-      <div className="p-3 text-sm">
-        <div className="flex items-center gap-1.5 text-foreground">
-          <MapPin size={14} className="text-primary shrink-0" />
-          {company.address}
-        </div>
-        <a href="#" className="text-primary text-xs hover:underline mt-1 inline-block">
-          Indicații rutiere →
-        </a>
-      </div>
-    </div>
-
     {/* Contact card */}
     <Card>
       <CardHeader className="pb-3">
