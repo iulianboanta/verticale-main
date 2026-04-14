@@ -101,7 +101,7 @@ const StepPlans = ({ onSelect }: { onSelect: (plan: Plan) => void }) => (
         Alege planul potrivit pentru afacerea ta
       </h1>
       <p className="text-sm text-muted-foreground mt-2">
-        Poți upgrade oricând. Planurile Intro și Profesional sunt valabile 1 an de la activare.
+        Poți upgrada oricând la un plan de promovare superior.
       </p>
     </div>
 
