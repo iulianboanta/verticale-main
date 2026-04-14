@@ -185,16 +185,58 @@ const StepForm = ({
             </div>
           </div>
           {isPro && (
-            <div>
-              <Label>Categorii suplimentare (max 2)</Label>
-              <Select>
-                <SelectTrigger className="mt-1"><SelectValue placeholder="Adaugă categorie" /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="salon">Salon coafură</SelectItem>
-                  <SelectItem value="cosmetica">Cosmetică</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label>Categorie suplimentară 1 (opțional)</Label>
+                  <Select>
+                    <SelectTrigger className="mt-1"><SelectValue placeholder="Selectează" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="salon">Salon coafură</SelectItem>
+                      <SelectItem value="cosmetica">Cosmetică</SelectItem>
+                      <SelectItem value="manichiura">Manichiură / Pedichiură</SelectItem>
+                      <SelectItem value="spa">SPA & Wellness</SelectItem>
+                      <SelectItem value="barbershop">Barbershop</SelectItem>
+                      <SelectItem value="dermatologie">Dermatologie estetică</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label>Subcategorie (opțional)</Label>
+                  <Select>
+                    <SelectTrigger className="mt-1"><SelectValue placeholder="Selectează categoria întâi" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sub1">Subcategorie 1</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label>Categorie suplimentară 2 (opțional)</Label>
+                  <Select>
+                    <SelectTrigger className="mt-1"><SelectValue placeholder="Selectează" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="salon">Salon coafură</SelectItem>
+                      <SelectItem value="cosmetica">Cosmetică</SelectItem>
+                      <SelectItem value="manichiura">Manichiură / Pedichiură</SelectItem>
+                      <SelectItem value="spa">SPA & Wellness</SelectItem>
+                      <SelectItem value="barbershop">Barbershop</SelectItem>
+                      <SelectItem value="dermatologie">Dermatologie estetică</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label>Subcategorie (opțional)</Label>
+                  <Select>
+                    <SelectTrigger className="mt-1"><SelectValue placeholder="Selectează categoria întâi" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sub1">Subcategorie 1</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </>
           )}
           <div>
             <Label>Cuvinte cheie</Label>
