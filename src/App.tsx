@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
 import SearchResults from "./pages/SearchResults.tsx";
 import SearchMapView from "./pages/SearchMapView.tsx";
+import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/companie/:slug" element={<CompanyDetail />} />
           <Route path="/cautare" element={<SearchResults />} />
           <Route path="/cautare/harta" element={<SearchMapView />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
