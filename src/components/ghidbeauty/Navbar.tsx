@@ -6,9 +6,9 @@ import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhite from "@/assets/ghidbeauty-logo-white.png";
 
 const navLinks = [
-  { label: "Acasă", href: "#" },
+  { label: "Acasă", href: "/" },
   { label: "Articole", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid" }) => {
@@ -43,19 +43,33 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              className={`text-sm font-medium transition-colors ${
-                scrolled
-                  ? "text-muted-foreground hover:text-primary"
-                  : "text-white/80 hover:text-white"
-              }`}
-            >
-              {l.label}
-            </a>
-          ))}
+          {navLinks.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link
+                key={l.label}
+                to={l.href}
+                className={`text-sm font-medium transition-colors ${
+                  scrolled
+                    ? "text-muted-foreground hover:text-primary"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.label}
+                href={l.href}
+                className={`text-sm font-medium transition-colors ${
+                  scrolled
+                    ? "text-muted-foreground hover:text-primary"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                {l.label}
+              </a>
+            )
+          )}
         </nav>
 
         {/* Desktop CTAs */}
@@ -97,16 +111,27 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
       {mobileOpen && (
         <div className="md:hidden border-t bg-card pb-4">
           <nav className="flex flex-col gap-1 px-4 pt-2">
-            {navLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="py-2 text-sm font-medium text-muted-foreground hover:text-primary"
-                onClick={() => setMobileOpen(false)}
-              >
-                {l.label}
-              </a>
-            ))}
+            {navLinks.map((l) =>
+              l.href.startsWith("/") ? (
+                <Link
+                  key={l.label}
+                  to={l.href}
+                  className="py-2 text-sm font-medium text-muted-foreground hover:text-primary"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  className="py-2 text-sm font-medium text-muted-foreground hover:text-primary"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {l.label}
+                </a>
+              )
+            )}
           </nav>
           <div className="flex gap-3 px-4 pt-3">
             <Button variant="outline" size="sm" className="flex-1">
