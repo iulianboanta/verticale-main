@@ -114,7 +114,7 @@ const SearchResultsPage = () => {
         onViewChange={setView}
       />
 
-      <main className="flex-1 container pt-10 pb-6">
+      <main className="flex-1 container pt-6 mt-[112px] pb-6">
         <div className="flex gap-6">
           {/* Filters sidebar — desktop */}
           <aside className="hidden lg:block w-[240px] shrink-0">
