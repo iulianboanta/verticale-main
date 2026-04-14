@@ -1,18 +1,14 @@
 
 
-## Plan: Fix search bar hidden behind navbar + ensure toggle visibility
+## Plan: Show view toggle on mobile in search results
 
 ### Problem
-The Navbar uses `position: fixed` (out of normal flow), so the flex column in `SearchMapView` starts at the top of the screen — the search bar renders *behind* the navbar. The view toggle also gets cut off.
+The `ToggleGroup` in `ResultsTopBar.tsx` has class `hidden sm:flex`, hiding it below 640px.
 
-### Changes
-
-**`src/pages/SearchMapView.tsx`**
-
-1. Add a spacer `div` after `<Navbar>` to push content below the fixed navbar (~64px), OR change the outer container to add `pt-16` (64px = navbar height) so the search bar starts below the navbar.
-
-2. Remove `hidden sm:flex` from the ToggleGroup — make it always visible (or use a lower breakpoint if needed on mobile).
+### Fix
+**`src/components/ghidbeauty/search/ResultsTopBar.tsx`** line 130:
+- Change `hidden sm:flex` → `flex` to make the toggle always visible.
 
 ### Files modified
-- `src/pages/SearchMapView.tsx`
+- `src/components/ghidbeauty/search/ResultsTopBar.tsx`
 
