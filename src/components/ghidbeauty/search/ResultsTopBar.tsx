@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import { X, ChevronRight, List, LayoutGrid, Map } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,7 @@ interface Props {
   onRemoveFilter: (type: keyof ActiveFilters, value?: string) => void;
   view: "list" | "grid" | "map";
   onViewChange: (v: "list" | "grid" | "map") => void;
+  mobileFilterSlot?: ReactNode;
 }
 
 const ResultsTopBar = ({
@@ -33,6 +35,7 @@ const ResultsTopBar = ({
   onRemoveFilter,
   view,
   onViewChange,
+  mobileFilterSlot,
 }: Props) => {
   const navigate = useNavigate();
 
@@ -70,45 +73,56 @@ const ResultsTopBar = ({
 
   return (
     <div className="space-y-2">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
-        <Link to="/" className="hover:text-primary transition-colors">
-          Acasă
-        </Link>
-        {query && (
-          <>
-            <ChevronRight size={12} />
-            <span className="text-foreground">{query}</span>
-          </>
-        )}
-        {location && (
-          <>
-            <ChevronRight size={12} />
-            <span className="text-foreground">{location}</span>
-          </>
-        )}
-      </nav>
-
-      {/* Results count + sort + view toggle */}
-      <div className="flex items-center justify-between gap-4 flex-wrap">
-        <p className="text-[13px] text-muted-foreground">
-          <span className="font-bold text-foreground">{totalResults}</span>{" "}
-          rezultate
+      {/* Breadcrumb + mobile results count */}
+      <nav className="flex items-center justify-between gap-1.5 text-xs text-muted-foreground">
+        <div className="flex items-center gap-1.5">
+          <Link to="/" className="hover:text-primary transition-colors">
+            Acasă
+          </Link>
           {query && (
             <>
-              {" "}
-              pentru{" "}
-              <span className="font-semibold text-foreground">{query}</span>
+              <ChevronRight size={12} />
+              <span className="text-foreground">{query}</span>
             </>
           )}
           {location && (
             <>
-              {" "}
-              în{" "}
-              <span className="font-semibold text-foreground">{location}</span>
+              <ChevronRight size={12} />
+              <span className="text-foreground">{location}</span>
             </>
           )}
-        </p>
+        </div>
+        <span className="lg:hidden text-[13px] text-muted-foreground">
+          <span className="font-bold text-foreground">{totalResults}</span> rezultate
+        </span>
+      </nav>
+
+      {/* Results count + sort + view toggle */}
+      <div className="flex items-center justify-between gap-4 flex-wrap">
+        {/* Mobile: filter button | Desktop: results count */}
+        <div className="flex items-center gap-2">
+          {mobileFilterSlot && (
+            <div className="lg:hidden">{mobileFilterSlot}</div>
+          )}
+          <p className="hidden lg:block text-[13px] text-muted-foreground">
+            <span className="font-bold text-foreground">{totalResults}</span>{" "}
+            rezultate
+            {query && (
+              <>
+                {" "}
+                pentru{" "}
+                <span className="font-semibold text-foreground">{query}</span>
+              </>
+            )}
+            {location && (
+              <>
+                {" "}
+                în{" "}
+                <span className="font-semibold text-foreground">{location}</span>
+              </>
+            )}
+          </p>
+        </div>
 
         <div className="flex items-center gap-2">
           <Select value={sort} onValueChange={onSortChange}>
