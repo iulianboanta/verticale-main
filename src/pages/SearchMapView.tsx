@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useRef, useEffect } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Search, MapPin, List, LayoutGrid, Map, SlidersHorizontal, X, SearchX } from "lucide-react";
 import AutosuggestInput, { ceSuggestions, undeSuggestions } from "@/components/ghidbeauty/search/AutosuggestInput";
