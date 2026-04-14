@@ -144,7 +144,6 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
                 Adaugă companie
               </Button>
             </Link>
-            </Button>
           </div>
         </div>
       )}
