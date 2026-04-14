@@ -312,7 +312,7 @@ const CompanyBody = ({ company }: Props) => {
 
               {r.reply && (
                 <div className="ml-12 rounded-lg bg-secondary/50 p-3">
-                  <Badge className="bg-primary/10 text-primary text-[10px] mb-1">
+                  <Badge className="bg-primary/10 text-primary text-[10px] mb-1 hover:bg-primary/20 cursor-default transition-colors">
                     Răspuns {r.reply.author}
                   </Badge>
                   <p className="text-sm text-muted-foreground">{r.reply.text}</p>
