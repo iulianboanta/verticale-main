@@ -6,7 +6,7 @@ import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhite from "@/assets/ghidbeauty-logo-white.png";
 
 const navLinks = [
-  { label: "Acasă", href: "/" },
+  { label: "Despre noi", href: "/despre-noi" },
   { label: "Articole", href: "#blog" },
   { label: "Contact", href: "/contact" },
 ];
