@@ -119,7 +119,7 @@ const StepPlans = ({ onSelect }: { onSelect: (plan: Plan) => void }) => (
             {plan.included.map((f) => (
               <div key={f} className="flex items-start gap-2 text-sm">
                 <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                <span>{f}</span>
+                <span className={f.startsWith("Tot ce include") ? "font-semibold text-primary" : ""}>{f}</span>
               </div>
             ))}
           </div>
