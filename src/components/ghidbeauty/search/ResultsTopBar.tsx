@@ -35,6 +35,7 @@ const ResultsTopBar = ({
   onRemoveFilter,
   view,
   onViewChange,
+  mobileFilterSlot,
 }: Props) => {
   const navigate = useNavigate();
 
