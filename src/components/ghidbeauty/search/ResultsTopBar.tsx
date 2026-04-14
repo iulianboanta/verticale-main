@@ -1,4 +1,5 @@
-import { X } from "lucide-react";
+import { X, ChevronRight, List, LayoutGrid, Map } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
@@ -7,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import type { ActiveFilters } from "./SearchFilters";
 
 interface Props {
@@ -17,6 +19,8 @@ interface Props {
   onSortChange: (v: string) => void;
   filters: ActiveFilters;
   onRemoveFilter: (type: keyof ActiveFilters, value?: string) => void;
+  view: "list" | "grid" | "map";
+  onViewChange: (v: "list" | "grid" | "map") => void;
 }
 
 const ResultsTopBar = ({
@@ -27,10 +31,22 @@ const ResultsTopBar = ({
   onSortChange,
   filters,
   onRemoveFilter,
+  view,
+  onViewChange,
 }: Props) => {
+  const navigate = useNavigate();
+
+  const handleViewChange = (val: string) => {
+    if (!val) return;
+    if (val === "map") {
+      navigate(`/cautare/harta?q=${encodeURIComponent(query)}&unde=${encodeURIComponent(location)}`);
+      return;
+    }
+    onViewChange(val as "list" | "grid");
+  };
+
   // Build pills from active filters
-  const pills: { label: string; type: keyof ActiveFilters; value?: string }[] =
-    [];
+  const pills: { label: string; type: keyof ActiveFilters; value?: string }[] = [];
 
   filters.categories.forEach((c) =>
     pills.push({ label: c, type: "categories", value: c })
@@ -54,6 +70,26 @@ const ResultsTopBar = ({
 
   return (
     <div className="space-y-2">
+      {/* Breadcrumb */}
+      <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
+        <Link to="/" className="hover:text-primary transition-colors">
+          Acasă
+        </Link>
+        {query && (
+          <>
+            <ChevronRight size={12} />
+            <span className="text-foreground">{query}</span>
+          </>
+        )}
+        {location && (
+          <>
+            <ChevronRight size={12} />
+            <span className="text-foreground">{location}</span>
+          </>
+        )}
+      </nav>
+
+      {/* Results count + sort + view toggle */}
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <p className="text-[13px] text-muted-foreground">
           <span className="font-bold text-foreground">{totalResults}</span>{" "}
@@ -74,17 +110,48 @@ const ResultsTopBar = ({
           )}
         </p>
 
-        <Select value={sort} onValueChange={onSortChange}>
-          <SelectTrigger className="w-[170px] h-8 text-xs">
-            <SelectValue placeholder="Sortare" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="relevance">Relevanță</SelectItem>
-            <SelectItem value="rating">Rating</SelectItem>
-            <SelectItem value="reviews">Nr. recenzii</SelectItem>
-            <SelectItem value="alpha">Alfabetic</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="flex items-center gap-2">
+          <Select value={sort} onValueChange={onSortChange}>
+            <SelectTrigger className="w-[170px] h-8 text-xs">
+              <SelectValue placeholder="Sortare" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="relevance">Relevanță</SelectItem>
+              <SelectItem value="rating">Rating</SelectItem>
+              <SelectItem value="reviews">Nr. recenzii</SelectItem>
+              <SelectItem value="alpha">Alfabetic</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <ToggleGroup
+            type="single"
+            value={view}
+            onValueChange={handleViewChange}
+            className="shrink-0 hidden sm:flex"
+          >
+            <ToggleGroupItem
+              value="list"
+              aria-label="Listă"
+              className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+            >
+              <List size={15} />
+            </ToggleGroupItem>
+            <ToggleGroupItem
+              value="grid"
+              aria-label="Grid"
+              className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+            >
+              <LayoutGrid size={15} />
+            </ToggleGroupItem>
+            <ToggleGroupItem
+              value="map"
+              aria-label="Hartă"
+              className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+            >
+              <Map size={15} />
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </div>
       </div>
 
       {pills.length > 0 && (
