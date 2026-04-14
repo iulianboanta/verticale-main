@@ -127,7 +127,7 @@ const ResultsTopBar = ({
             type="single"
             value={view}
             onValueChange={handleViewChange}
-            className="shrink-0 hidden sm:flex"
+            className="shrink-0 flex"
           >
             <ToggleGroupItem
               value="list"
