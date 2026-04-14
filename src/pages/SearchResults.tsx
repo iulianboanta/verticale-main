@@ -118,7 +118,7 @@ const SearchResultsPage = () => {
         <div className="flex gap-6">
           {/* Filters sidebar — desktop */}
           <aside className="hidden lg:block w-[240px] shrink-0">
-            <div className="sticky top-[7.5rem] max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
+            <div className="sticky top-[8rem] max-h-[calc(100vh-9rem)] overflow-y-auto pr-2">
               {filtersContent}
             </div>
           </aside>
