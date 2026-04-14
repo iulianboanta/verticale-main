@@ -100,6 +100,8 @@ const SearchMapView = () => {
     <div className="h-screen flex flex-col overflow-hidden bg-background">
       {/* Navbar */}
       <Navbar variant="solid" />
+      {/* Spacer for fixed navbar */}
+      <div className="shrink-0 h-16" />
 
       {/* Search bar */}
       <div className="shrink-0 z-40 bg-background border-b border-border">
@@ -138,7 +140,7 @@ const SearchMapView = () => {
               type="single"
               value="map"
               onValueChange={handleViewChange}
-              className="shrink-0 hidden sm:flex"
+              className="shrink-0 flex"
             >
               <ToggleGroupItem
                 value="list"

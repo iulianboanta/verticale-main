@@ -1,6 +1,5 @@
-import { Star, MapPin, Clock, Phone } from "lucide-react";
+import { Star, MapPin, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { SearchListing } from "@/data/searchMockData";
 
@@ -37,19 +36,28 @@ const MapCard = ({ listing, index, isActive, onClick }: Props) => {
         {index + 1}
       </div>
 
-      {/* Thumbnail */}
-      <div className="shrink-0 w-[72px] h-[60px] rounded-md overflow-hidden bg-secondary">
-        {listing.image ? (
-          <img
-            src={listing.image}
-            alt={listing.name}
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center text-muted-foreground/30 text-[10px]">
-            Foto
-          </div>
-        )}
+      {/* Thumbnail + open/closed badge */}
+      <div className="shrink-0 flex flex-col items-center gap-1">
+        <div className="w-[72px] h-[60px] rounded-md overflow-hidden bg-secondary">
+          {listing.image ? (
+            <img
+              src={listing.image}
+              alt={listing.name}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-muted-foreground/30 text-[10px]">
+              Foto
+            </div>
+          )}
+        </div>
+        <span
+          className={`text-[9px] font-medium ${
+            listing.isOpen ? "text-green-600" : "text-destructive"
+          }`}
+        >
+          {listing.isOpen ? "Deschis" : "Închis"}
+        </span>
       </div>
 
       {/* Content */}
@@ -77,33 +85,20 @@ const MapCard = ({ listing, index, isActive, onClick }: Props) => {
             <MapPin size={9} />
             {listing.city}
           </span>
-          <span
-            className={`flex items-center gap-0.5 ${
-              listing.isOpen ? "text-green-600" : "text-destructive"
-            }`}
-          >
-            <Clock size={9} />
-            {listing.isOpen ? "Deschis" : "Închis"}
-          </span>
         </div>
 
         {/* Actions */}
         <div className="flex items-center gap-1.5 mt-1">
-          <Button size="sm" className="text-[10px] h-6 px-2.5">
-            <Phone size={10} className="mr-0.5" />
-            Sună
-          </Button>
           <Button
-            variant="ghost"
             size="sm"
-            className="text-[10px] h-6 px-2 text-muted-foreground hover:text-primary hover:bg-primary/10"
+            className="text-[10px] h-6 px-2.5"
             asChild
           >
             <Link
               to={`/companie/${listing.slug ?? listing.id}`}
               onClick={(e) => e.stopPropagation()}
             >
-              Profil →
+              Vezi detalii
             </Link>
           </Button>
         </div>
