@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import ListingCard from "@/components/ghidbeauty/ListingCard";
 
 interface Props {
@@ -53,6 +55,13 @@ const CompanySidebar = ({ company }: Props) => (
           <Input placeholder="Numele tău" />
           <Input placeholder="Email" type="email" />
           <Textarea placeholder="Mesajul tău..." className="min-h-[80px]" />
+          <div className="flex items-start gap-2">
+            <Checkbox id="terms" className="mt-0.5" />
+            <Label htmlFor="terms" className="text-xs text-muted-foreground leading-snug cursor-pointer">
+              Accept <a href="#" className="text-primary underline">termenii și condițiile</a> site-ului și{" "}
+              <a href="#" className="text-primary underline">politica de confidențialitate</a>
+            </Label>
+          </div>
           <Button className="w-full gap-2 bg-foreground text-background hover:bg-foreground/90">
             <Send size={14} />
             Trimite mesaj
