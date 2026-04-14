@@ -162,7 +162,64 @@ const SearchFilters = ({ filters, onChange, onReset }: Props) => {
         />
       </FilterGroup>
 
-      {/* Rating */}
+      {/* Doar din județ — sub Localitate */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-sm text-foreground">Doar din județ</span>
+            <p className="text-[10px] text-muted-foreground">
+              Exclude zone deservite
+            </p>
+          </div>
+          <Switch
+            checked={filters.onlyCounty}
+            onCheckedChange={(v) => onChange({ ...filters, onlyCounty: v })}
+          />
+        </div>
+        <Separator />
+      </div>
+
+      {/* Program */}
+      <FilterGroup title="Program">
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-sm text-foreground">Deschis acum</span>
+            <p className="text-[10px] text-muted-foreground">{today}</p>
+          </div>
+          <Switch
+            checked={filters.openNow}
+            onCheckedChange={(v) => onChange({ ...filters, openNow: v })}
+          />
+        </div>
+      </FilterGroup>
+
+      {/* Servicii */}
+      <FilterGroup title="Servicii oferite">
+        <CheckboxList
+          items={filterServices}
+          selected={filters.services}
+          onToggle={(n) =>
+            onChange({ ...filters, services: toggle(filters.services, n) })
+          }
+          maxVisible={4}
+        />
+      </FilterGroup>
+
+      {/* Facilități */}
+      <FilterGroup title="Facilități">
+        <CheckboxList
+          items={filterFacilities}
+          selected={filters.facilities}
+          onToggle={(n) =>
+            onChange({
+              ...filters,
+              facilities: toggle(filters.facilities, n),
+            })
+          }
+        />
+      </FilterGroup>
+
+      {/* Rating minim — mutat sub Facilități */}
       <FilterGroup title="Rating minim">
         <div className="space-y-1.5">
           {ratingOptions.map((opt) => (
@@ -209,46 +266,6 @@ const SearchFilters = ({ filters, onChange, onReset }: Props) => {
         </div>
       </FilterGroup>
 
-      {/* Program */}
-      <FilterGroup title="Program">
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-sm text-foreground">Deschis acum</span>
-            <p className="text-[10px] text-muted-foreground">{today}</p>
-          </div>
-          <Switch
-            checked={filters.openNow}
-            onCheckedChange={(v) => onChange({ ...filters, openNow: v })}
-          />
-        </div>
-      </FilterGroup>
-
-      {/* Servicii */}
-      <FilterGroup title="Servicii oferite">
-        <CheckboxList
-          items={filterServices}
-          selected={filters.services}
-          onToggle={(n) =>
-            onChange({ ...filters, services: toggle(filters.services, n) })
-          }
-          maxVisible={4}
-        />
-      </FilterGroup>
-
-      {/* Facilități */}
-      <FilterGroup title="Facilități">
-        <CheckboxList
-          items={filterFacilities}
-          selected={filters.facilities}
-          onToggle={(n) =>
-            onChange({
-              ...filters,
-              facilities: toggle(filters.facilities, n),
-            })
-          }
-        />
-      </FilterGroup>
-
       {/* Vizibilitate */}
       <div className="space-y-3">
         <h4 className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -268,18 +285,6 @@ const SearchFilters = ({ filters, onChange, onReset }: Props) => {
             </Badge>
           </span>
         </label>
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-sm text-foreground">Doar din județ</span>
-            <p className="text-[10px] text-muted-foreground">
-              Exclude zone deservite
-            </p>
-          </div>
-          <Switch
-            checked={filters.onlyCounty}
-            onCheckedChange={(v) => onChange({ ...filters, onlyCounty: v })}
-          />
-        </div>
       </div>
     </div>
   );
