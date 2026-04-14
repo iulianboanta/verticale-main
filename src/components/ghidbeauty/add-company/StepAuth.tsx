@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const StepAuth = ({ onNext }: { onNext: () => void }) => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -12,10 +13,11 @@ const StepAuth = ({ onNext }: { onNext: () => void }) => {
   const [regEmail, setRegEmail] = useState("");
   const [regPass, setRegPass] = useState("");
   const [regConfirm, setRegConfirm] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-[440px] bg-card border border-border/50 rounded-2xl p-8 sm:p-10 shadow-sm">
+      <div className="w-full max-w-[880px] bg-card border border-border/50 rounded-2xl p-8 sm:p-10 shadow-sm">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -127,20 +129,28 @@ const StepAuth = ({ onNext }: { onNext: () => void }) => {
                   className="mt-1"
                 />
               </div>
+
+              <div className="flex items-start space-x-2 pt-1">
+                <Checkbox
+                  id="terms"
+                  checked={acceptTerms}
+                  onCheckedChange={(checked) => setAcceptTerms(checked === true)}
+                  className="mt-0.5"
+                />
+                <label htmlFor="terms" className="text-[11px] text-muted-foreground leading-relaxed cursor-pointer">
+                  Sunt de acord cu{" "}
+                  <a href="#" className="text-primary hover:underline">Termenii și condițiile</a>{" "}
+                  și{" "}
+                  <a href="#" className="text-primary hover:underline">Politica de confidențialitate</a>.
+                </label>
+              </div>
+
               <Button variant="outline" className="w-full bg-foreground text-background hover:bg-foreground/90" onClick={onNext}>
-                Creează cont gratuit
+                Creează cont
               </Button>
             </div>
           </div>
         </div>
-
-        {/* Terms */}
-        <p className="text-[11px] text-muted-foreground text-center mt-6 leading-relaxed">
-          Continuând, ești de acord cu{" "}
-          <a href="#" className="text-primary hover:underline">Termenii și condițiile</a>{" "}
-          și{" "}
-          <a href="#" className="text-primary hover:underline">Politica de confidențialitate</a>.
-        </p>
       </div>
     </div>
   );
