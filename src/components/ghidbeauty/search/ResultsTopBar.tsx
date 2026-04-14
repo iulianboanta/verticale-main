@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import { X, ChevronRight, List, LayoutGrid, Map } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,7 @@ interface Props {
   onRemoveFilter: (type: keyof ActiveFilters, value?: string) => void;
   view: "list" | "grid" | "map";
   onViewChange: (v: "list" | "grid" | "map") => void;
+  mobileFilterSlot?: ReactNode;
 }
 
 const ResultsTopBar = ({

@@ -112,7 +112,7 @@ const SearchResultsPage = () => {
         onLocationChange={setLocation}
       />
 
-      <main className="flex-1 container pt-3 mt-[112px] pb-6">
+      <main className="flex-1 container pt-3 mt-14 pb-6">
         <div className="flex gap-6">
           {/* Filters sidebar — desktop */}
           <aside className="hidden lg:block w-[240px] shrink-0">
@@ -123,23 +123,6 @@ const SearchResultsPage = () => {
 
           {/* Results */}
           <div className="flex-1 min-w-0">
-            {/* Mobile filter trigger */}
-            <div className="lg:hidden mb-4">
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <SlidersHorizontal size={15} />
-                    Filtre
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="bottom" className="max-h-[80vh] overflow-y-auto">
-                  <SheetHeader>
-                    <SheetTitle>Filtre</SheetTitle>
-                  </SheetHeader>
-                  <div className="mt-4">{filtersContent}</div>
-                </SheetContent>
-              </Sheet>
-            </div>
 
             <ResultsTopBar
               totalResults={sorted.length}
@@ -151,6 +134,22 @@ const SearchResultsPage = () => {
               onRemoveFilter={handleRemoveFilter}
               view={view}
               onViewChange={setView}
+              mobileFilterSlot={
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <SlidersHorizontal size={15} />
+                      Filtre
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="bottom" className="max-h-[80vh] overflow-y-auto">
+                    <SheetHeader>
+                      <SheetTitle>Filtre</SheetTitle>
+                    </SheetHeader>
+                    <div className="mt-4">{filtersContent}</div>
+                  </SheetContent>
+                </Sheet>
+              }
             />
 
             {/* Results */}
