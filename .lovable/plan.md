@@ -1,11 +1,17 @@
 
 
-## Plan: Remove crossed-out features from plan cards
+## Plan: Highlight first feature line in Intro & Profesional plans
 
 **File:** `src/components/ghidbeauty/add-company/StepPlans.tsx`
 
-1. Remove the `notIncluded` arrays from all three plan objects in the `plans` data (lines ~39-42, ~56-60, ~73)
-2. Remove the `notIncluded` property from the TypeScript type definition
-3. Remove the JSX block that renders `notIncluded` items with the `X` icon and `line-through` styling (~lines 131-136)
-4. Remove the `X` import from lucide-react since it's no longer needed
+In the feature list rendering loop, detect when the feature text starts with "Tot ce include" and render it with bold font weight and primary color instead of the default style. This makes the inheritance line visually distinct from the rest of the features.
+
+**Change:** In the JSX mapping `plan.included`, wrap the `<span>` with conditional styling:
+```tsx
+<span className={f.startsWith("Tot ce include") ? "font-semibold text-primary" : ""}>
+  {f}
+</span>
+```
+
+Single file, single line change.
 
