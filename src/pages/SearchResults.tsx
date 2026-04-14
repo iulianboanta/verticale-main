@@ -114,7 +114,7 @@ const SearchResultsPage = () => {
         onViewChange={setView}
       />
 
-      <main className="flex-1 container py-6">
+      <main className="flex-1 container pt-10 pb-6">
         <div className="flex gap-6">
           {/* Filters sidebar — desktop */}
           <aside className="hidden lg:block w-[240px] shrink-0">
@@ -188,11 +188,11 @@ const SearchResultsPage = () => {
                       <div
                         key="ad-banner"
                         className={`banner-slot flex items-center justify-center rounded-xl border-2 border-dashed border-muted-foreground/20 bg-muted/30 ${
-                          view === "grid" ? "col-span-full h-[250px]" : "h-[250px] max-w-[300px] mx-auto w-full"
+                          view === "grid" ? "col-span-full h-[60px]" : "h-[60px] max-w-[600px] mx-auto w-full"
                         }`}
                       >
                         <span className="text-xs text-muted-foreground">
-                          300×250 · Banner publicitar
+                          600×60 · Banner publicitar
                         </span>
                       </div>
                     );

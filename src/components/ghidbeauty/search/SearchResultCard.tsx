@@ -186,7 +186,7 @@ const SearchResultCard = ({ listing, view }: Props) => {
         <Button
           variant="ghost"
           size="sm"
-          className="text-xs h-8 text-muted-foreground hover:text-primary"
+          className="text-xs h-8 text-muted-foreground hover:text-primary hover:bg-primary/10"
           asChild
         >
           <Link to={`/companie/${listing.slug ?? listing.id}`}>
