@@ -1,41 +1,28 @@
 
 
-## Plan: Create Contact Page for GhidBeauty.ro
+## Plan: Fix Search Page Spacing & Mobile Filter Layout
 
-### New files
-**`src/pages/Contact.tsx`** — Full contact page with:
+### Problem 1 — Too much white space at the top
+The `main` element has `mt-[112px]` (margin-top for fixed navbar + search bar). The SearchTopBar is `sticky top-16` and already accounts for the navbar. The `mt-[112px]` is excessive — reducing it to ~`mt-[56px]` (roughly 50% less) will close the gap while keeping content below the sticky search bar.
 
-1. **Company info card** — Directories Management Systems SRL, address (Iuliu Maniu 18-20, Sector 6, București), CUI RO30832163, phone 031.404.44.40. Logo placeholder (image slot ready for future upload).
+### Problem 2 — Mobile: Filtre button placement & results count on breadcrumb line
+Currently the mobile filter button sits in its own `div` above ResultsTopBar. Instead, on mobile:
+- Move the "Filtre" button into the ResultsTopBar, placed where the results count currently is (left side, below breadcrumb)
+- Move the results count text to the **breadcrumb line** on the right side (same row as "Acasă > query > location")
 
-2. **"Despre noi" button** — Link styled as outline button pointing to `/despre-noi`.
+### Changes
 
-3. **Info notice** — Styled alert/callout: "Pentru contactarea companiilor de pe site, vă rugăm folosiți formularul de contact din pagina companiei respective."
+**`src/pages/SearchResults.tsx`**
+- Change `mt-[112px]` to `mt-14` (~56px, half the current spacing)
+- Remove the standalone mobile filter `div` block (lines 127-142)
+- Pass the mobile filter trigger as a prop (or render slot) into `ResultsTopBar`
 
-4. **Contact form** with fields:
-   - Nume / Prenume (two inputs, side by side)
-   - Telefon
-   - Dropdown "Tip solicitare" with options: Vreau să mă listez / Cerere informații / Actualizare date companie / Financiar
-   - Mesaj (textarea)
-   - Checkbox: Accept termenii și condițiile + politica de confidențialitate
-   - Button: Trimite mesaj
-
-5. **Additional elements I'll include:**
-   - Email address (contact@ghidbeauty.ro)
-   - Social media links row (Facebook, Instagram — placeholder hrefs)
-   - Program de lucru (Luni-Vineri 09:00-18:00)
-
-Page layout: Navbar (solid) + container with two-column grid on desktop (company info left, form right), single column on mobile. Footer at bottom.
-
-### Route registration
-**`src/App.tsx`** — Add route `/contact` → `<Contact />`.
+**`src/components/ghidbeauty/search/ResultsTopBar.tsx`**
+- Accept a new `mobileFilterSlot` prop (ReactNode)
+- Breadcrumb row: on mobile, add results count text to the right side using `flex justify-between`
+- Results count + sort row: on mobile, show the Filtre button on the left (where count was), hide the count text (already shown in breadcrumb). Sort + view toggles stay on the right.
 
 ### Technical details
-- Uses existing components: Navbar, Footer, Card, Input, Textarea, Button, Checkbox, Label, Select, Separator
-- Follows same page structure as CompanyDetail (Navbar solid, pt-16 for fixed nav, container layout)
-- Form uses `onSubmit` with `e.preventDefault()` + toast notification on submit
-- Responsive: stacked on mobile, side-by-side on desktop
-
-### Files modified
-- `src/pages/Contact.tsx` (new)
-- `src/App.tsx` (add route)
-
+- Breadcrumb nav becomes `flex items-center justify-between` — left: breadcrumb links, right (mobile only): `"X rezultate"` as `<span className="lg:hidden">`
+- The existing results count paragraph gets `hidden lg:block` so it only shows on desktop in its original position
+- The mobile filter Sheet trigger moves inside ResultsTopBar's sort/view row with `lg:hidden`
