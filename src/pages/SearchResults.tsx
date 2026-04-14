@@ -110,8 +110,6 @@ const SearchResultsPage = () => {
         location={location}
         onQueryChange={setQuery}
         onLocationChange={setLocation}
-        view={view}
-        onViewChange={setView}
       />
 
       <main className="flex-1 container pt-6 mt-[112px] pb-6">
@@ -151,6 +149,8 @@ const SearchResultsPage = () => {
               onSortChange={setSort}
               filters={filters}
               onRemoveFilter={handleRemoveFilter}
+              view={view}
+              onViewChange={setView}
             />
 
             {/* Results */}
