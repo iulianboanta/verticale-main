@@ -1,18 +1,42 @@
 
 
-## Plan: Fix content hidden under sticky navbar + search bar
+## Plan: Restructurare SearchTopBar și ResultsTopBar
 
-The issue is that `<main>` has only `pt-10` (40px) of top padding, but the Navbar (64px, fixed) + SearchTopBar (~48px, sticky below navbar) together occupy ~112px. Content starts behind them.
+### Rezumat
+1. Scoatem breadcrumb-ul și view toggle din `SearchTopBar` — bara rămâne doar cu câmpurile de căutare, centrate.
+2. Mutăm breadcrumb-ul în `ResultsTopBar`, deasupra liniei cu rezultate + sortare.
+3. Mutăm view toggle în `ResultsTopBar`, pe aceeași linie cu dropdown-ul de sortare (la dreapta).
 
-### Changes
+### Structura finală
 
-**`src/pages/SearchResults.tsx`** — line 117:
-- Change `pt-10` → `pt-6 mt-[112px]` or simply increase to `pt-28` (112px) to push content below both sticky bars.
+```text
+┌─────────────────────────────────────────────────┐
+│  [🔍 Ce cauți?  |  📍 Unde?  🔍]              │ ← SearchTopBar (sticky, centrat, fără breadcrumb/toggle)
+├─────────────────────────────────────────────────┤
+│  Acasă › Coafură › Cluj-Napoca                  │ ← breadcrumb (mutat aici)
+│  67 rezultate pentru "coafor" în "Cluj"   [Sort ▾] [☰ ⊞ 🗺] │ ← rezultate + sort + view toggle
+│  [pill] [pill] [pill]                           │ ← filtre active
+└─────────────────────────────────────────────────┘
+```
 
-**`src/components/ghidbeauty/search/SearchFilters.tsx`** — sticky sidebar:
-- Update `top-[7.5rem]` to match the combined height so the sidebar doesn't scroll behind the bars.
+### Modificări per fișier
 
-### Files modified
+**`SearchTopBar.tsx`**
+- Ștergem blocul breadcrumb (liniile 62-75) și blocul ToggleGroup (liniile 77-105).
+- Scoatem props `view` și `onViewChange` din interfață.
+- Câmpul de căutare rămâne singur în bar → se centrează natural cu `max-w-2xl mx-auto`.
+
+**`ResultsTopBar.tsx`**
+- Adăugăm props: `view`, `onViewChange`, `query` (deja există), `location` (deja există) — pentru breadcrumb și toggle.
+- Adăugăm breadcrumb deasupra liniei cu rezultate (Acasă › query › location).
+- Pe linia cu "67 rezultate..." adăugăm ToggleGroup (Listă/Grid/Hartă) lângă dropdown-ul de sortare.
+
+**`SearchResults.tsx`**
+- Scoatem `view`/`onViewChange` din props-urile SearchTopBar.
+- Adăugăm `view`/`onViewChange` la ResultsTopBar.
+
+### Fișiere modificate
+- `src/components/ghidbeauty/search/SearchTopBar.tsx`
+- `src/components/ghidbeauty/search/ResultsTopBar.tsx`
 - `src/pages/SearchResults.tsx`
-- `src/components/ghidbeauty/search/SearchFilters.tsx` (sticky top value)
 
