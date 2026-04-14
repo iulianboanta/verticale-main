@@ -1,4 +1,4 @@
-import { Check, X, Clock } from "lucide-react";
+import { Check, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ProgressIndicator from "./ProgressIndicator";
@@ -15,7 +15,7 @@ const plans: {
   cta: string;
   ctaVariant: "ghost" | "outline" | "default";
   included: string[];
-  notIncluded: string[];
+  
 }[] = [
   {
     id: "gratuit",
@@ -35,12 +35,6 @@ const plans: {
       "Recenzii clienți",
       "1 categorie",
     ],
-    notIncluded: [
-      "Imagini galerie",
-      "Hartă în profil",
-      "Cuvinte cheie SEO",
-      "Badge Recomandat",
-    ],
   },
   {
     id: "intro",
@@ -59,12 +53,6 @@ const plans: {
       "Editor HTML descriere",
       "Servicii/produse în filtre",
       "Descriere 2.000 caractere",
-    ],
-    notIncluded: [
-      "Badge Recomandat",
-      "Prioritate în rezultate",
-      "Zone deservite",
-      "Promoții",
     ],
   },
   {
@@ -88,7 +76,7 @@ const plans: {
       "Promoții și cupoane",
       "Fișiere PDF",
     ],
-    notIncluded: [],
+    
   },
 ];
 
@@ -132,12 +120,6 @@ const StepPlans = ({ onSelect }: { onSelect: (plan: Plan) => void }) => (
               <div key={f} className="flex items-start gap-2 text-sm">
                 <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                 <span>{f}</span>
-              </div>
-            ))}
-            {plan.notIncluded.map((f) => (
-              <div key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <X className="w-4 h-4 mt-0.5 shrink-0" />
-                <span className="line-through">{f}</span>
               </div>
             ))}
           </div>
