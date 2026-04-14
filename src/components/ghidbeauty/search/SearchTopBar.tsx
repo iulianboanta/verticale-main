@@ -1,5 +1,6 @@
 import { Search, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AutosuggestInput, { ceSuggestions, undeSuggestions } from "./AutosuggestInput";
 
 interface Props {
   query: string;
@@ -19,22 +20,22 @@ const SearchTopBar = ({
       <div className="container py-2.5">
         <div className="flex items-center justify-center">
           <div className="flex flex-1 max-w-2xl items-center gap-2 rounded-lg border border-input bg-card px-3 py-1.5">
-            <Search size={15} className="text-muted-foreground shrink-0" />
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => onQueryChange(e.target.value)}
+            <AutosuggestInput
+              icon={<Search size={15} />}
               placeholder="Ce cauți?"
-              className="flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground min-w-0"
+              suggestions={ceSuggestions}
+              value={query}
+              onChange={onQueryChange}
+              variant="compact"
             />
             <div className="w-px h-5 bg-border shrink-0" />
-            <MapPin size={15} className="text-muted-foreground shrink-0" />
-            <input
-              type="text"
-              value={location}
-              onChange={(e) => onLocationChange(e.target.value)}
+            <AutosuggestInput
+              icon={<MapPin size={15} />}
               placeholder="Unde?"
-              className="flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground min-w-0"
+              suggestions={undeSuggestions}
+              value={location}
+              onChange={onLocationChange}
+              variant="compact"
             />
             <Button size="sm" className="h-7 px-3 text-xs shrink-0">
               <Search size={13} />
