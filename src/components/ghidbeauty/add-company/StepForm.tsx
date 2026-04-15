@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, Upload, Plus, X, ArrowLeft, Info } from "lucide-react";
+import { ChevronDown, Upload, Plus, X, ArrowLeft, Info, MapPin, Bold, Italic, Underline, Link, List, ListOrdered } from "lucide-react";
 import { toast } from "sonner";
 import ProgressIndicator from "./ProgressIndicator";
 import type { Plan } from "./StepPlans";
@@ -93,10 +93,28 @@ const StepForm = ({
   const [kwInput, setKwInput] = useState("");
   const [serveOtherCounties, setServeOtherCounties] = useState(false);
   const [national, setNational] = useState(false);
+  const [selectedCounties, setSelectedCounties] = useState<string[]>([]);
+  const [countySearch, setCountySearch] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [contractAccepted, setContractAccepted] = useState(false);
   const [galleryFiles, setGalleryFiles] = useState<string[]>([]);
   const maxGallery = plan === "profesional" ? 10 : plan === "intro" ? 1 : 0;
+  const editorRef = useRef<HTMLDivElement>(null);
+
+  const filteredCounties = counties.filter(
+    (c) => !selectedCounties.includes(c) && c.toLowerCase().includes(countySearch.toLowerCase())
+  );
+
+  const execCommand = useCallback((command: string, value?: string) => {
+    document.execCommand(command, false, value);
+    editorRef.current?.focus();
+  }, []);
+
+  const handleEditorInput = () => {
+    if (editorRef.current) {
+      setDescription(editorRef.current.innerText);
+    }
+  };
 
   const isPaid = plan !== "gratuit";
   const isPro = plan === "profesional";
@@ -335,6 +353,19 @@ const StepForm = ({
             </div>
           </div>
 
+          {/* Google Maps placeholder */}
+          <div>
+            <Label>Locație pe hartă</Label>
+            <div className="mt-1 rounded-lg bg-muted border border-border flex flex-col items-center justify-center h-[200px]">
+              <MapPin className="w-8 h-8 text-muted-foreground" />
+              <span className="text-sm text-muted-foreground mt-2">Google Maps</span>
+            </div>
+            <Button variant="outline" className="mt-2 gap-2" type="button">
+              <MapPin className="w-4 h-4" />
+              Poziționare manuală
+            </Button>
+          </div>
+
           {/* Zone deservite */}
           <div className={!isPro ? "opacity-50 pointer-events-none relative" : ""}>
             {!isPro && (
@@ -352,10 +383,56 @@ const StepForm = ({
               <Label className="font-normal">Deservesc și alte județe</Label>
             </div>
             {serveOtherCounties && (
-              <div className="ml-6 mt-2 space-y-2">
+              <div className="ml-6 mt-3 space-y-3">
                 <div className="flex items-center gap-2">
-                  <Checkbox checked={national} onCheckedChange={(v) => setNational(!!v)} />
+                  <Checkbox
+                    checked={national}
+                    onCheckedChange={(v) => {
+                      setNational(!!v);
+                      if (v) setSelectedCounties([...counties]);
+                      else setSelectedCounties([]);
+                    }}
+                  />
                   <Label className="font-normal text-sm">Deservesc la nivel național</Label>
+                </div>
+                <div>
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {selectedCounties.map((c) => (
+                      <Badge key={c} variant="secondary" className="gap-1">
+                        {c}
+                        <button onClick={() => {
+                          setSelectedCounties((p) => p.filter((x) => x !== c));
+                          setNational(false);
+                        }}>
+                          <X className="w-3 h-3" />
+                        </button>
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="relative">
+                    <Input
+                      placeholder="Caută și adaugă județe..."
+                      value={countySearch}
+                      onChange={(e) => setCountySearch(e.target.value)}
+                    />
+                    {countySearch && filteredCounties.length > 0 && (
+                      <div className="absolute z-20 top-full left-0 right-0 mt-1 bg-popover border border-border rounded-md shadow-md max-h-48 overflow-y-auto">
+                        {filteredCounties.map((c) => (
+                          <button
+                            key={c}
+                            type="button"
+                            className="w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                            onClick={() => {
+                              setSelectedCounties((p) => [...p, c]);
+                              setCountySearch("");
+                            }}
+                          >
+                            {c}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -366,13 +443,40 @@ const StepForm = ({
         <Section title="Descriere" number={4}>
           <div>
             <Label>Descriere *</Label>
-            <Textarea
-              placeholder="Descrieți afacerea dvs..."
-              className="mt-1 min-h-[150px]"
-              maxLength={descMaxChars[plan]}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+            <div className="mt-1 border border-input rounded-md overflow-hidden">
+              <div className="flex items-center gap-1 px-2 py-1.5 border-b border-input bg-muted/30">
+                <button type="button" onClick={() => execCommand('bold')} className="p-1.5 rounded hover:bg-accent" title="Bold">
+                  <Bold className="w-4 h-4" />
+                </button>
+                <button type="button" onClick={() => execCommand('italic')} className="p-1.5 rounded hover:bg-accent" title="Italic">
+                  <Italic className="w-4 h-4" />
+                </button>
+                <button type="button" onClick={() => execCommand('underline')} className="p-1.5 rounded hover:bg-accent" title="Underline">
+                  <Underline className="w-4 h-4" />
+                </button>
+                <div className="w-px h-5 bg-border mx-1" />
+                <button type="button" onClick={() => {
+                  const url = prompt('Introdu URL-ul:');
+                  if (url) execCommand('createLink', url);
+                }} className="p-1.5 rounded hover:bg-accent" title="Link">
+                  <Link className="w-4 h-4" />
+                </button>
+                <div className="w-px h-5 bg-border mx-1" />
+                <button type="button" onClick={() => execCommand('insertUnorderedList')} className="p-1.5 rounded hover:bg-accent" title="Listă">
+                  <List className="w-4 h-4" />
+                </button>
+                <button type="button" onClick={() => execCommand('insertOrderedList')} className="p-1.5 rounded hover:bg-accent" title="Listă numerotată">
+                  <ListOrdered className="w-4 h-4" />
+                </button>
+              </div>
+              <div
+                ref={editorRef}
+                contentEditable
+                onInput={handleEditorInput}
+                className="min-h-[150px] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                data-placeholder="Descrieți afacerea dvs..."
+              />
+            </div>
             <p className="text-xs text-muted-foreground mt-1 text-right">
               {description.length} / {descMaxChars[plan]} caractere
             </p>

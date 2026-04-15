@@ -123,3 +123,9 @@
     @apply border-l-2 border-l-primary/50;
   }
 }
+
+[contenteditable][data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+}
