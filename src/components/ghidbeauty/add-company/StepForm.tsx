@@ -443,13 +443,40 @@ const StepForm = ({
         <Section title="Descriere" number={4}>
           <div>
             <Label>Descriere *</Label>
-            <Textarea
-              placeholder="Descrieți afacerea dvs..."
-              className="mt-1 min-h-[150px]"
-              maxLength={descMaxChars[plan]}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+            <div className="mt-1 border border-input rounded-md overflow-hidden">
+              <div className="flex items-center gap-1 px-2 py-1.5 border-b border-input bg-muted/30">
+                <button type="button" onClick={() => execCommand('bold')} className="p-1.5 rounded hover:bg-accent" title="Bold">
+                  <Bold className="w-4 h-4" />
+                </button>
+                <button type="button" onClick={() => execCommand('italic')} className="p-1.5 rounded hover:bg-accent" title="Italic">
+                  <Italic className="w-4 h-4" />
+                </button>
+                <button type="button" onClick={() => execCommand('underline')} className="p-1.5 rounded hover:bg-accent" title="Underline">
+                  <Underline className="w-4 h-4" />
+                </button>
+                <div className="w-px h-5 bg-border mx-1" />
+                <button type="button" onClick={() => {
+                  const url = prompt('Introdu URL-ul:');
+                  if (url) execCommand('createLink', url);
+                }} className="p-1.5 rounded hover:bg-accent" title="Link">
+                  <Link className="w-4 h-4" />
+                </button>
+                <div className="w-px h-5 bg-border mx-1" />
+                <button type="button" onClick={() => execCommand('insertUnorderedList')} className="p-1.5 rounded hover:bg-accent" title="Listă">
+                  <List className="w-4 h-4" />
+                </button>
+                <button type="button" onClick={() => execCommand('insertOrderedList')} className="p-1.5 rounded hover:bg-accent" title="Listă numerotată">
+                  <ListOrdered className="w-4 h-4" />
+                </button>
+              </div>
+              <div
+                ref={editorRef}
+                contentEditable
+                onInput={handleEditorInput}
+                className="min-h-[150px] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                data-placeholder="Descrieți afacerea dvs..."
+              />
+            </div>
             <p className="text-xs text-muted-foreground mt-1 text-right">
               {description.length} / {descMaxChars[plan]} caractere
             </p>
