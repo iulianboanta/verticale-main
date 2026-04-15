@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { categories } from "@/data/mockData";
 
 const CategoryGrid = () => {
@@ -8,9 +9,9 @@ const CategoryGrid = () => {
           {categories.map((cat) => {
             const Icon = cat.icon;
             return (
-              <a
+              <Link
                 key={cat.slug}
-                href={`#${cat.slug}`}
+                to={`/cautare?q=${encodeURIComponent(cat.name)}`}
                 className="group flex flex-col items-center gap-3 rounded-xl bg-primary p-5 shadow-sm border border-primary transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:bg-primary-dark hover:border-primary-dark"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-primary-foreground transition-colors group-hover:bg-white/30">
@@ -19,7 +20,7 @@ const CategoryGrid = () => {
                 <span className="text-xs font-medium text-primary-foreground text-center">
                   {cat.name}
                 </span>
-              </a>
+              </Link>
             );
           })}
         </div>
