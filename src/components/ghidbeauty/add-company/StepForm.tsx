@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, Upload, Plus, X, ArrowLeft, Info } from "lucide-react";
+import { ChevronDown, Upload, Plus, X, ArrowLeft, Info, MapPin, Bold, Italic, Underline, Link, List, ListOrdered } from "lucide-react";
 import { toast } from "sonner";
 import ProgressIndicator from "./ProgressIndicator";
 import type { Plan } from "./StepPlans";
