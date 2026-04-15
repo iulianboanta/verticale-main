@@ -129,3 +129,32 @@
   color: hsl(var(--muted-foreground));
   pointer-events: none;
 }
+
+/* Article body typography */
+.prose-custom {
+  @apply text-[15px] leading-[1.8] text-muted-foreground;
+}
+.prose-custom h2 {
+  @apply text-xl font-medium text-foreground mt-8 mb-3;
+}
+.prose-custom h3 {
+  @apply text-[17px] font-medium text-foreground mt-6 mb-2;
+}
+.prose-custom p {
+  @apply mb-4;
+}
+.prose-custom blockquote {
+  @apply border-l-[3px] border-primary pl-5 italic text-muted-foreground my-6;
+}
+.prose-custom ul, .prose-custom ol {
+  @apply pl-6 mb-4 space-y-1;
+}
+.prose-custom li {
+  @apply list-disc marker:text-primary;
+}
+.prose-custom a {
+  @apply text-primary hover:underline;
+}
+.prose-custom img {
+  @apply w-full rounded-lg my-4;
+}
