@@ -8,7 +8,7 @@ import logoWhiteSolid from "@/assets/logo_beauty_white.png";
 
 const navLinks = [
   { label: "Despre noi", href: "/despre-noi" },
-  { label: "Articole", href: "#blog" },
+  { label: "Articole", href: "/informatii" },
   { label: "Contact", href: "/contact" },
 ];
 
