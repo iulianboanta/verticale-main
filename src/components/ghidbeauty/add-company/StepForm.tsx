@@ -353,6 +353,19 @@ const StepForm = ({
             </div>
           </div>
 
+          {/* Google Maps placeholder */}
+          <div>
+            <Label>Locație pe hartă</Label>
+            <div className="mt-1 rounded-lg bg-muted border border-border flex flex-col items-center justify-center h-[200px]">
+              <MapPin className="w-8 h-8 text-muted-foreground" />
+              <span className="text-sm text-muted-foreground mt-2">Google Maps</span>
+            </div>
+            <Button variant="outline" className="mt-2 gap-2" type="button">
+              <MapPin className="w-4 h-4" />
+              Poziționare manuală
+            </Button>
+          </div>
+
           {/* Zone deservite */}
           <div className={!isPro ? "opacity-50 pointer-events-none relative" : ""}>
             {!isPro && (
@@ -370,10 +383,56 @@ const StepForm = ({
               <Label className="font-normal">Deservesc și alte județe</Label>
             </div>
             {serveOtherCounties && (
-              <div className="ml-6 mt-2 space-y-2">
+              <div className="ml-6 mt-3 space-y-3">
                 <div className="flex items-center gap-2">
-                  <Checkbox checked={national} onCheckedChange={(v) => setNational(!!v)} />
+                  <Checkbox
+                    checked={national}
+                    onCheckedChange={(v) => {
+                      setNational(!!v);
+                      if (v) setSelectedCounties([...counties]);
+                      else setSelectedCounties([]);
+                    }}
+                  />
                   <Label className="font-normal text-sm">Deservesc la nivel național</Label>
+                </div>
+                <div>
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {selectedCounties.map((c) => (
+                      <Badge key={c} variant="secondary" className="gap-1">
+                        {c}
+                        <button onClick={() => {
+                          setSelectedCounties((p) => p.filter((x) => x !== c));
+                          setNational(false);
+                        }}>
+                          <X className="w-3 h-3" />
+                        </button>
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="relative">
+                    <Input
+                      placeholder="Caută și adaugă județe..."
+                      value={countySearch}
+                      onChange={(e) => setCountySearch(e.target.value)}
+                    />
+                    {countySearch && filteredCounties.length > 0 && (
+                      <div className="absolute z-20 top-full left-0 right-0 mt-1 bg-popover border border-border rounded-md shadow-md max-h-48 overflow-y-auto">
+                        {filteredCounties.map((c) => (
+                          <button
+                            key={c}
+                            type="button"
+                            className="w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                            onClick={() => {
+                              setSelectedCounties((p) => [...p, c]);
+                              setCountySearch("");
+                            }}
+                          >
+                            {c}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
