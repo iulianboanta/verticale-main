@@ -15,6 +15,21 @@ import ArticleDetail from "./pages/ArticleDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import FAQ from "./pages/FAQ.tsx";
+import Autentificare from "./pages/Autentificare.tsx";
+import DashboardLayout from "./components/ghidbeauty/dashboard/DashboardLayout.tsx";
+import DashboardOverview from "./pages/dashboard/DashboardOverview.tsx";
+import DashboardListings from "./pages/dashboard/DashboardListings.tsx";
+import DashboardReviews from "./pages/dashboard/DashboardReviews.tsx";
+import DashboardMessages from "./pages/dashboard/DashboardMessages.tsx";
+import DashboardStats from "./pages/dashboard/DashboardStats.tsx";
+import DashboardOffers from "./pages/dashboard/DashboardOffers.tsx";
+import DashboardPromotions from "./pages/dashboard/DashboardPromotions.tsx";
+import DashboardProfile from "./pages/dashboard/DashboardProfile.tsx";
+import DashboardSecurity from "./pages/dashboard/DashboardSecurity.tsx";
+import DashboardSubscriptions from "./pages/dashboard/DashboardSubscriptions.tsx";
+import DashboardNotifications from "./pages/dashboard/DashboardNotifications.tsx";
+import DashboardFavorites from "./pages/dashboard/DashboardFavorites.tsx";
+import DashboardSavedSearches from "./pages/dashboard/DashboardSavedSearches.tsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -23,6 +38,10 @@ const ScrollToTop = () => {
 };
 
 const queryClient = new QueryClient();
+
+const DashboardRoute = ({ children }: { children: React.ReactNode }) => (
+  <DashboardLayout>{children}</DashboardLayout>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -42,6 +61,23 @@ const App = () => (
           <Route path="/informatii/:slug" element={<ArticleDetail />} />
           <Route path="/politica-de-confidentialitate" element={<PrivacyPolicy />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/autentificare" element={<Autentificare />} />
+
+          {/* Dashboard routes */}
+          <Route path="/dashboard" element={<DashboardRoute><DashboardOverview /></DashboardRoute>} />
+          <Route path="/dashboard/listinguri" element={<DashboardRoute><DashboardListings /></DashboardRoute>} />
+          <Route path="/dashboard/recenzii" element={<DashboardRoute><DashboardReviews /></DashboardRoute>} />
+          <Route path="/dashboard/mesaje" element={<DashboardRoute><DashboardMessages /></DashboardRoute>} />
+          <Route path="/dashboard/statistici" element={<DashboardRoute><DashboardStats /></DashboardRoute>} />
+          <Route path="/dashboard/oferte" element={<DashboardRoute><DashboardOffers /></DashboardRoute>} />
+          <Route path="/dashboard/promotii" element={<DashboardRoute><DashboardPromotions /></DashboardRoute>} />
+          <Route path="/dashboard/profil" element={<DashboardRoute><DashboardProfile /></DashboardRoute>} />
+          <Route path="/dashboard/securitate" element={<DashboardRoute><DashboardSecurity /></DashboardRoute>} />
+          <Route path="/dashboard/abonamente" element={<DashboardRoute><DashboardSubscriptions /></DashboardRoute>} />
+          <Route path="/dashboard/notificari" element={<DashboardRoute><DashboardNotifications /></DashboardRoute>} />
+          <Route path="/dashboard/favorite" element={<DashboardRoute><DashboardFavorites /></DashboardRoute>} />
+          <Route path="/dashboard/cautari-salvate" element={<DashboardRoute><DashboardSavedSearches /></DashboardRoute>} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

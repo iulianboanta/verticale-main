@@ -75,17 +75,19 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            className={
-              scrolled
-                ? "hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                : "border-white/40 text-white bg-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-            }
-          >
-            Autentificare
-          </Button>
+          <Link to="/autentificare">
+            <Button
+              variant="outline"
+              size="sm"
+              className={
+                scrolled
+                  ? "hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                  : "border-white/40 text-white bg-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary"
+              }
+            >
+              Autentificare
+            </Button>
+          </Link>
           <Link to="/adauga-companie">
             <Button
               size="sm"
