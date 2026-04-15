@@ -1,5 +1,32 @@
 import logoWhite from "@/assets/ghidbeauty-logo-white.png";
 
+const ObfuscatedEmail = () => {
+  const user = "contact";
+  const domain = "ghidbeauty.ro";
+  return (
+    <span
+      className="cursor-pointer hover:opacity-100 transition-opacity"
+      onClick={() => window.location.href = `mailto:${user}@${domain}`}
+      aria-label="Email"
+    >
+      {user}&#64;{domain}
+    </span>
+  );
+};
+
+const ObfuscatedPhone = () => {
+  const parts = ["031", "404", "44", "40"];
+  return (
+    <span
+      className="cursor-pointer hover:opacity-100 transition-opacity"
+      onClick={() => window.location.href = `tel:${parts.join("")}`}
+      aria-label="Telefon"
+    >
+      {parts.join(".")}
+    </span>
+  );
+};
+
 const Footer = () => (
   <footer id="contact" className="bg-foreground text-background">
     <div className="container py-12">
@@ -30,7 +57,6 @@ const Footer = () => (
           <ul className="space-y-2 text-sm opacity-70">
             <li><a href="/adauga-companie" className="hover:opacity-100 transition-opacity">Înscrie-ți afacerea</a></li>
             <li><a href="#" className="hover:opacity-100 transition-opacity">Planuri și prețuri</a></li>
-            <li><a href="#" className="hover:opacity-100 transition-opacity">Blog</a></li>
             <li><a href="#" className="hover:opacity-100 transition-opacity">FAQ</a></li>
           </ul>
         </div>
@@ -39,8 +65,8 @@ const Footer = () => (
         <div>
           <h4 className="text-sm font-semibold mb-3">Contact</h4>
           <ul className="space-y-2 text-sm opacity-70">
-            <li>contact@ghidbeauty.ro</li>
-            <li>+40 700 000 000</li>
+            <li><ObfuscatedEmail /></li>
+            <li><ObfuscatedPhone /></li>
             <li>București, România</li>
           </ul>
         </div>
@@ -49,7 +75,7 @@ const Footer = () => (
 
     <div className="border-t border-background/10">
       <div className="container flex flex-col items-center justify-between gap-2 py-4 text-xs opacity-50 sm:flex-row">
-        <span>© {new Date().getFullYear()} GhidBeauty.ro. Toate drepturile rezervate.</span>
+        <span>© {new Date().getFullYear()} Directories Management Systems. Toate drepturile rezervate.</span>
         <span>Realizat cu 💜 în România</span>
       </div>
     </div>
