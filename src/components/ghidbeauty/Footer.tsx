@@ -28,7 +28,7 @@ const Footer = () => (
         <div>
           <h4 className="text-sm font-semibold mb-3">Linkuri utile</h4>
           <ul className="space-y-2 text-sm opacity-70">
-            <li><a href="#" className="hover:opacity-100 transition-opacity">Înscrie-ți afacerea</a></li>
+            <li><a href="/adauga-companie" className="hover:opacity-100 transition-opacity">Înscrie-ți afacerea</a></li>
             <li><a href="#" className="hover:opacity-100 transition-opacity">Planuri și prețuri</a></li>
             <li><a href="#" className="hover:opacity-100 transition-opacity">Blog</a></li>
             <li><a href="#" className="hover:opacity-100 transition-opacity">FAQ</a></li>
