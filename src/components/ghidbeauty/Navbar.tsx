@@ -139,9 +139,11 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
             )}
           </nav>
           <div className="flex gap-3 px-4 pt-3">
-            <Button variant="outline" size="sm" className="flex-1">
-              Autentificare
-            </Button>
+            <Link to="/autentificare" className="flex-1" onClick={() => setMobileOpen(false)}>
+              <Button variant="outline" size="sm" className="w-full">
+                Autentificare
+              </Button>
+            </Link>
             <Link to="/adauga-companie" className="flex-1">
               <Button size="sm" className="w-full hover:bg-primary-foreground hover:text-primary hover:ring-2 hover:ring-primary transition-all">
                 Adaugă companie
