@@ -16,13 +16,13 @@ const categories = [
 
 const faqData: Record<string, { q: string; a: string }[]> = {
   cont: [
-    { q: "Cum îmi creez un cont pe GhidBeauty.ro?", a: "Apasă butonul „Autentificare" din meniul principal și completează formularul de înregistrare cu adresa ta de email și o parolă. Vei primi un email de confirmare pentru activarea contului." },
-    { q: "Am uitat parola. Ce pot face?", a: "Pe pagina de autentificare, apasă pe „Am uitat parola". Vei primi un email cu un link de resetare. Verifică și folderul Spam dacă nu găsești mesajul." },
+    { q: "Cum îmi creez un cont pe GhidBeauty.ro?", a: "Apasă butonul "Autentificare" din meniul principal și completează formularul de înregistrare cu adresa ta de email și o parolă. Vei primi un email de confirmare pentru activarea contului." },
+    { q: "Am uitat parola. Ce pot face?", a: "Pe pagina de autentificare, apasă pe "Am uitat parola". Vei primi un email cu un link de resetare. Verifică și folderul Spam dacă nu găsești mesajul." },
     { q: "Pot să-mi șterg contul?", a: "Da, poți solicita ștergerea contului contactându-ne la contact@ghidbeauty.ro. Datele tale vor fi eliminate conform politicii noastre de confidențialitate." },
     { q: "Ce date sunt necesare pentru crearea contului?", a: "Ai nevoie de o adresă de email validă și o parolă. Pentru listarea unei companii, vor fi necesare informații suplimentare despre afacerea ta." },
   ],
   listare: [
-    { q: "Cum îmi listez compania pe GhidBeauty.ro?", a: "Accesează pagina „Adaugă companie" din meniul principal, completează formularul cu detaliile afacerii tale și alege un plan de abonament. Listarea va fi activată după verificare." },
+    { q: "Cum îmi listez compania pe GhidBeauty.ro?", a: "Accesează pagina "Adaugă companie" din meniul principal, completează formularul cu detaliile afacerii tale și alege un plan de abonament. Listarea va fi activată după verificare." },
     { q: "Cât durează verificarea listării?", a: "Procesul de verificare durează de obicei 1-2 zile lucrătoare. Vei fi notificat prin email când listarea ta este activă." },
     { q: "Pot edita informațiile companiei după publicare?", a: "Da, te poți autentifica în contul tău și modifica oricând detaliile companiei: descriere, servicii, imagini, program de lucru etc." },
     { q: "Câte locații pot adăuga pentru o singură companie?", a: "Poți adăuga mai multe puncte de lucru pentru aceeași companie. Fiecare locație va avea propria pagină cu hartă și detalii de contact." },
@@ -33,8 +33,8 @@ const faqData: Record<string, { q: string; a: string }[]> = {
     { q: "Pot anula abonamentul oricând?", a: "Da, poți anula abonamentul în orice moment din setările contului. Vei beneficia de funcțiile premium până la expirarea perioadei plătite." },
   ],
   recenzii: [
-    { q: "Cum pot lăsa o recenzie?", a: "Accesează pagina companiei dorite și apasă butonul „Scrie o recenzie". Completează evaluarea (stele) și adaugă un comentariu despre experiența ta." },
-    { q: "Pot șterge sau modifica o recenzie?", a: "Da, poți edita sau șterge recenziile tale din contul tău. Accesează secțiunea „Recenziile mele" pentru a gestiona conținutul publicat." },
+    { q: "Cum pot lăsa o recenzie?", a: "Accesează pagina companiei dorite și apasă butonul "Scrie o recenzie". Completează evaluarea (stele) și adaugă un comentariu despre experiența ta." },
+    { q: "Pot șterge sau modifica o recenzie?", a: "Da, poți edita sau șterge recenziile tale din contul tău. Accesează secțiunea "Recenziile mele" pentru a gestiona conținutul publicat." },
     { q: "Ce se întâmplă cu recenziile false?", a: "Avem un sistem de moderare care verifică autenticitatea recenziilor. Recenziile false, spam sau care încalcă regulamentul sunt eliminate, iar conturile respective pot fi suspendate." },
     { q: "Compania poate răspunde la recenzia mea?", a: "Da, reprezentanții companiilor pot răspunde public la recenzii. Acest lucru facilitează comunicarea directă între clienți și furnizori." },
   ],
