@@ -93,10 +93,28 @@ const StepForm = ({
   const [kwInput, setKwInput] = useState("");
   const [serveOtherCounties, setServeOtherCounties] = useState(false);
   const [national, setNational] = useState(false);
+  const [selectedCounties, setSelectedCounties] = useState<string[]>([]);
+  const [countySearch, setCountySearch] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [contractAccepted, setContractAccepted] = useState(false);
   const [galleryFiles, setGalleryFiles] = useState<string[]>([]);
   const maxGallery = plan === "profesional" ? 10 : plan === "intro" ? 1 : 0;
+  const editorRef = useRef<HTMLDivElement>(null);
+
+  const filteredCounties = counties.filter(
+    (c) => !selectedCounties.includes(c) && c.toLowerCase().includes(countySearch.toLowerCase())
+  );
+
+  const execCommand = useCallback((command: string, value?: string) => {
+    document.execCommand(command, false, value);
+    editorRef.current?.focus();
+  }, []);
+
+  const handleEditorInput = () => {
+    if (editorRef.current) {
+      setDescription(editorRef.current.innerText);
+    }
+  };
 
   const isPaid = plan !== "gratuit";
   const isPro = plan === "profesional";
