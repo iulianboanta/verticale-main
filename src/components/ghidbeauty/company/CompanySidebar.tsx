@@ -59,7 +59,7 @@ const CompanySidebar = ({ company }: Props) => (
             <Checkbox id="terms" className="mt-0.5" />
             <Label htmlFor="terms" className="text-xs text-muted-foreground leading-snug cursor-pointer">
               Accept <a href="#" className="text-primary underline">termenii și condițiile</a> site-ului și{" "}
-              <a href="#" className="text-primary underline">politica de confidențialitate</a>
+              <a href="/politica-de-confidentialitate" className="text-primary underline">politica de confidențialitate</a>
             </Label>
           </div>
           <Button className="w-full gap-2 bg-foreground text-background hover:bg-foreground/90">
