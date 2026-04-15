@@ -154,7 +154,7 @@ const Contact = () => {
                       Accept{" "}
                       <a href="/termeni-si-conditii" className="text-primary underline">termenii și condițiile</a>{" "}
                       și{" "}
-                      <a href="/politica-de-confidentialitate" className="text-primary underline">politica de confidențialitate</a>
+                       <a href="/politica-de-confidentialitate" className="text-primary underline">politica de confidențialitate</a>
                     </Label>
                   </div>
 
