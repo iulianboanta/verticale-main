@@ -1,16 +1,27 @@
 
 
-## Plan: Link category cards to search page with category parameter
+## Plan: Create FAQ Page (`/faq`)
 
-**What**: Change the category grid cards on the homepage from `href="#slug"` anchors to proper links to `/cautare?q={categoryName}` (no `unde` parameter).
+**Summary**: Build an FAQ page with dummy content, matching the Privacy Policy page's design pattern (Navbar solid, hero header, sidebar + accordion layout, Footer).
 
-**File**: `src/components/ghidbeauty/CategoryGrid.tsx`
+### Structure
 
-### Changes
+Same layout as PrivacyPolicy: sticky sidebar with category navigation on desktop, collapsible ToC on mobile, and Accordion components for Q&A items.
 
-1. Import `Link` from `react-router-dom`
-2. Replace the `<a href={`#${cat.slug}`}>` with `<Link to={`/cautare?q=${encodeURIComponent(cat.name)}`}>` 
-3. Keep all existing classes and children identical
+### Files
 
-This will navigate users to the search results page with the category name pre-filled as the search query, matching how `SearchResults` reads `searchParams.get("q")`.
+**1. Create `src/pages/FAQ.tsx`**
+- Navbar variant="solid" + Footer
+- Compact hero with icon (HelpCircle), title "Întrebări frecvente", subtitle
+- FAQ categories in sidebar (e.g., Cont & Autentificare, Listare companie, Plăți & Abonamente, Recenzii, Confidențialitate, Contact)
+- Each category = a section with Accordion items (3-4 dummy Q&As per category)
+- Sticky sidebar with scroll-tracking (same IntersectionObserver pattern as PrivacyPolicy)
+- Mobile: collapsible ToC at top
+- Use existing `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent` components
+
+**2. Edit `src/App.tsx`**
+- Add route: `/faq` → `<FAQ />`
+
+**3. Edit `src/components/ghidbeauty/Footer.tsx`**
+- Add "FAQ" link pointing to `/faq`
 
