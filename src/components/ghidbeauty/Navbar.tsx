@@ -3,7 +3,8 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
-import logoWhite from "@/assets/logo_beauty_white.png";
+import logoWhiteOriginal from "@/assets/ghidbeauty-logo-white.png";
+import logoWhiteSolid from "@/assets/logo_beauty_white.png";
 
 const navLinks = [
   { label: "Despre noi", href: "/despre-noi" },
