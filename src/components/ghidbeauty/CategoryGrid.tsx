@@ -20,7 +20,7 @@ const CategoryGrid = () => {
                 <span className="text-xs font-medium text-primary-foreground text-center">
                   {cat.name}
                 </span>
-              </a>
+              </Link>
             );
           })}
         </div>
