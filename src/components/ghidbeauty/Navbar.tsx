@@ -3,7 +3,8 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
-import logoWhite from "@/assets/logo_beauty_white.png";
+import logoWhiteOriginal from "@/assets/ghidbeauty-logo-white.png";
+import logoWhiteSolid from "@/assets/logo_beauty_white.png";
 
 const navLinks = [
   { label: "Despre noi", href: "/despre-noi" },
@@ -35,7 +36,7 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
-            src={scrolled ? logo : logoWhite}
+            src={scrolled ? logo : variant === "solid" ? logoWhiteSolid : logoWhiteOriginal}
             alt="GhidBeauty.ro"
             className="h-12 transition-all duration-300"
           />
