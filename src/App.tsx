@@ -13,6 +13,7 @@ import AddCompany from "./pages/AddCompany.tsx";
 import ArticlesLanding from "./pages/ArticlesLanding.tsx";
 import ArticleDetail from "./pages/ArticleDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/adauga-companie" element={<AddCompany />} />
           <Route path="/informatii" element={<ArticlesLanding />} />
           <Route path="/informatii/:slug" element={<ArticleDetail />} />
+          <Route path="/politica-de-confidentialitate" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

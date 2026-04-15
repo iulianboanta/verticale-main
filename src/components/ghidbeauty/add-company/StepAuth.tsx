@@ -141,7 +141,7 @@ const StepAuth = ({ onNext }: { onNext: () => void }) => {
                   Sunt de acord cu{" "}
                   <a href="#" className="text-primary hover:underline">Termenii și condițiile</a>{" "}
                   și{" "}
-                  <a href="#" className="text-primary hover:underline">Politica de confidențialitate</a>.
+                  <a href="/politica-de-confidentialitate" className="text-primary hover:underline">Politica de confidențialitate</a>.
                 </label>
               </div>
 
