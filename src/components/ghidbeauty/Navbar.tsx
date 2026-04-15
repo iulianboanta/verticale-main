@@ -36,7 +36,7 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
-            src={scrolled ? logo : logoWhite}
+            src={scrolled ? logo : variant === "solid" ? logoWhiteSolid : logoWhiteOriginal}
             alt="GhidBeauty.ro"
             className="h-12 transition-all duration-300"
           />
