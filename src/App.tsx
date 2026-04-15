@@ -10,6 +10,8 @@ import SearchResults from "./pages/SearchResults.tsx";
 import SearchMapView from "./pages/SearchMapView.tsx";
 import Contact from "./pages/Contact.tsx";
 import AddCompany from "./pages/AddCompany.tsx";
+import ArticlesLanding from "./pages/ArticlesLanding.tsx";
+import ArticleDetail from "./pages/ArticleDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const ScrollToTop = () => {
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/cautare/harta" element={<SearchMapView />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/adauga-companie" element={<AddCompany />} />
+          <Route path="/informatii" element={<ArticlesLanding />} />
+          <Route path="/informatii/:slug" element={<ArticleDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
