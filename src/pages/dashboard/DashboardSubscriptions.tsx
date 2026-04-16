@@ -54,48 +54,50 @@ const DashboardSubscriptions = () => {
                   const progress = totalDays > 0 ? Math.round((daysRemaining / totalDays) * 100) : 0;
 
                   return (
-                    <tr key={l.id} className="border-b border-border/50 last:border-0">
-                      <td className="p-3">
-                        <p className="font-medium text-foreground">{l.name}</p>
-                        <p className="text-xs text-muted-foreground">{l.category}</p>
-                      </td>
-                      <td className="p-3">
-                        <Badge variant="secondary" className="text-[10px]">{l.plan}</Badge>
-                      </td>
-                      <td className="p-3 text-right text-muted-foreground hidden sm:table-cell">
-                        {isGratuit ? "Gratuit" : <><span className="font-medium text-foreground">{planPrices[l.plan]}</span> RON/luna</>}
-                      </td>
-                      <td className="p-3 text-muted-foreground hidden md:table-cell">
-                        {isGratuit ? "–" : l.activationDate}
-                      </td>
-                      <td className="p-3 text-muted-foreground hidden sm:table-cell">
-                        {isGratuit ? "Nelimitat" : l.expiryDate}
-                      </td>
-                      <td className="p-3 text-right">
-                        {(l.plan === "Gratuit" || l.plan === "Intro") && (
-                          <Button size="sm" className="text-xs h-7">
-                            <ArrowUpRight className="w-3 h-3 mr-1" /> Upgradeaza
-                          </Button>
-                        )}
-                      </td>
-                      <td className="p-3 text-right">
-                        {(l.plan === "Intro" || l.plan === "Profesional") && (
-                          <Button variant="outline" size="sm" className="text-xs h-7">
-                            <RotateCw className="w-3 h-3 mr-1" /> Prelungeste
-                          </Button>
-                        )}
-                      </td>
-                    </tr>
-                    {!isGratuit && (
-                      <tr className="border-b border-border/50 last:border-0">
-                        <td colSpan={7} className="px-3 pb-2 pt-0">
-                          <div className="flex items-center gap-2">
-                            <Progress value={progress} className="h-1 flex-1" />
-                            <span className="text-[10px] text-muted-foreground whitespace-nowrap">{daysRemaining} zile rămase</span>
-                          </div>
+                    <React.Fragment key={l.id}>
+                      <tr className={!isGratuit ? "border-b-0" : "border-b border-border/50 last:border-0"}>
+                        <td className="p-3">
+                          <p className="font-medium text-foreground">{l.name}</p>
+                          <p className="text-xs text-muted-foreground">{l.category}</p>
+                        </td>
+                        <td className="p-3">
+                          <Badge variant="secondary" className="text-[10px]">{l.plan}</Badge>
+                        </td>
+                        <td className="p-3 text-right text-muted-foreground hidden sm:table-cell">
+                          {isGratuit ? "Gratuit" : <><span className="font-medium text-foreground">{planPrices[l.plan]}</span> RON/luna</>}
+                        </td>
+                        <td className="p-3 text-muted-foreground hidden md:table-cell">
+                          {isGratuit ? "–" : l.activationDate}
+                        </td>
+                        <td className="p-3 text-muted-foreground hidden sm:table-cell">
+                          {isGratuit ? "Nelimitat" : l.expiryDate}
+                        </td>
+                        <td className="p-3 text-right">
+                          {(l.plan === "Gratuit" || l.plan === "Intro") && (
+                            <Button size="sm" className="text-xs h-7">
+                              <ArrowUpRight className="w-3 h-3 mr-1" /> Upgradeaza
+                            </Button>
+                          )}
+                        </td>
+                        <td className="p-3 text-right">
+                          {(l.plan === "Intro" || l.plan === "Profesional") && (
+                            <Button variant="outline" size="sm" className="text-xs h-7">
+                              <RotateCw className="w-3 h-3 mr-1" /> Prelungeste
+                            </Button>
+                          )}
                         </td>
                       </tr>
-                    )}
+                      {!isGratuit && (
+                        <tr className="border-b border-border/50">
+                          <td colSpan={7} className="px-3 pb-2 pt-0">
+                            <div className="flex items-center gap-2">
+                              <Progress value={progress} className="h-1 flex-1" />
+                              <span className="text-[10px] text-muted-foreground whitespace-nowrap">{daysRemaining} zile rămase</span>
+                            </div>
+                          </td>
+                        </tr>
+                      )}
+                    </React.Fragment>
                   );
                 })}
               </tbody>
