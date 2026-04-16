@@ -21,6 +21,7 @@ import FAQ from "./pages/FAQ.tsx";
 import TermeniConditii from "./pages/TermeniConditii.tsx";
 import Autentificare from "./pages/Autentificare.tsx";
 import DespreCompanie from "./pages/DespreCompanie.tsx";
+import DespreNoi from "./pages/DespreNoi.tsx";
 import DashboardLayout from "./components/ghidbeauty/dashboard/DashboardLayout.tsx";
 import DashboardOverview from "./pages/dashboard/DashboardOverview.tsx";
 import DashboardListings from "./pages/dashboard/DashboardListings.tsx";
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/termeni" element={<TermeniConditii />} />
           <Route path="/autentificare" element={<Autentificare />} />
           <Route path="/cine-suntem-noi" element={<DespreCompanie />} />
+          <Route path="/despre-noi" element={<DespreNoi />} />
 
           {/* Dashboard routes */}
           <Route path="/dashboard" element={<DashboardRoute><DashboardOverview /></DashboardRoute>} />
