@@ -42,6 +42,10 @@ const SearchResultsPage = () => {
   const [filters, setFilters] = useState<ActiveFilters>(emptyFilters);
   const [page, setPage] = useState(1);
 
+  // Ad banner visibility flags
+  const showSquareBanner = true;
+  const showSkyscraperBanner = true;
+
   // Sort results
   const sorted = useMemo(() => {
     const arr = [...searchResults];
@@ -53,7 +57,6 @@ const SearchResultsPage = () => {
       case "alpha":
         return arr.sort((a, b) => a.name.localeCompare(b.name));
       default:
-        // Relevance: featured first
         return arr.sort((a, b) => {
           const pa = a.plan === "profesional" ? 0 : a.plan === "intro" ? 1 : 2;
           const pb = b.plan === "profesional" ? 0 : b.plan === "intro" ? 1 : 2;
@@ -67,14 +70,6 @@ const SearchResultsPage = () => {
     (page - 1) * ITEMS_PER_PAGE,
     page * ITEMS_PER_PAGE
   );
-
-  // Insert ad banner after position 4
-  const resultsWithAd = paged.flatMap((item, i) => {
-    if (i === 4) {
-      return ["ad-banner", item] as const;
-    }
-    return [item] as const;
-  });
 
   const handleRemoveFilter = (type: keyof ActiveFilters, value?: string) => {
     const updated = { ...filters };
@@ -181,31 +176,22 @@ const SearchResultsPage = () => {
                     : "flex flex-col gap-3"
                 }`}
               >
-                {resultsWithAd.map((item) => {
-                  if (item === "ad-banner") {
-                    return (
-                      <div
-                        key="ad-banner"
-                        className={`banner-slot flex items-center justify-center rounded-xl border-2 border-dashed border-muted-foreground/20 bg-muted/30 ${
-                          view === "grid" ? "col-span-full h-[60px]" : "h-[60px] max-w-[600px] mx-auto w-full"
-                        }`}
-                      >
-                        <span className="text-xs text-muted-foreground">
-                          600×60 · Banner publicitar
-                        </span>
-                      </div>
-                    );
-                  }
-                  return (
-                    <SearchResultCard
-                      key={item.id}
-                      listing={item}
-                      view={view === "map" ? "list" : view}
-                    />
-                  );
-                })}
+                {paged.map((item) => (
+                  <SearchResultCard
+                    key={item.id}
+                    listing={item}
+                    view={view === "map" ? "list" : view}
+                  />
+                ))}
               </div>
             )}
+
+            {/* Mobile ad banner */}
+            <div className="lg:hidden flex items-center justify-center my-4">
+              <div className="w-[320px] h-[100px] rounded-xl border-2 border-dashed border-muted-foreground/20 bg-muted/30 flex items-center justify-center">
+                <span className="text-xs text-muted-foreground">320×100 · Banner publicitar</span>
+              </div>
+            </div>
 
             <SearchPagination
               currentPage={page}
@@ -216,6 +202,22 @@ const SearchResultsPage = () => {
               }}
             />
           </div>
+
+          {/* Ad sidebar — desktop */}
+          <aside className="hidden lg:block w-[120px] shrink-0">
+            <div className="sticky top-[8rem] flex flex-col gap-4">
+              {showSquareBanner && (
+                <div className="w-[120px] h-[120px] rounded-xl border-2 border-dashed border-muted-foreground/20 bg-muted/30 flex items-center justify-center">
+                  <span className="text-xs text-muted-foreground text-center">120×120</span>
+                </div>
+              )}
+              {showSkyscraperBanner && (
+                <div className="w-[120px] h-[600px] rounded-xl border-2 border-dashed border-muted-foreground/20 bg-muted/30 flex items-center justify-center">
+                  <span className="text-xs text-muted-foreground text-center">120×600</span>
+                </div>
+              )}
+            </div>
+          </aside>
         </div>
       </main>
 
