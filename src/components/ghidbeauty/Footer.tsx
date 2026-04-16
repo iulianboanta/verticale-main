@@ -44,7 +44,7 @@ const Footer = () => (
         <div>
           <h4 className="text-sm font-semibold mb-3">Despre noi</h4>
           <ul className="space-y-2 text-sm opacity-70">
-            <li><a href="/despre" className="hover:opacity-100 transition-opacity">Despre GhidBeauty</a></li>
+            <li><a href="/cine-suntem-noi" className="hover:opacity-100 transition-opacity">Despre GhidBeauty</a></li>
             <li><a href="#" className="hover:opacity-100 transition-opacity">Cum funcționează</a></li>
             <li><a href="/termeni" className="hover:opacity-100 transition-opacity">Termeni și condiții</a></li>
             <li><a href="/politica-de-confidentialitate" className="hover:opacity-100 transition-opacity">Politica de confidențialitate</a></li>
