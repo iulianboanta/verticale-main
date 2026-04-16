@@ -167,9 +167,12 @@ const CompanyHeader = ({ company }: Props) => {
             <div className="flex items-center gap-2">
               <Phone size={16} className="text-muted-foreground shrink-0" />
               {phoneVisible ? (
-                <a href={`tel:${company.phone}`} className="text-primary hover:underline">
+                <span
+                  className="text-primary hover:underline cursor-pointer"
+                  onClick={() => window.location.href = `tel:${company.phone.replace(/\s/g, '')}`}
+                >
                   {company.phone}
-                </a>
+                </span>
               ) : (
                 <button
                   onClick={() => setPhoneVisible(true)}
