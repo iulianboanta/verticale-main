@@ -96,7 +96,7 @@ const Contact = () => {
                 </div>
 
                 <Button variant="outline" asChild className="w-full">
-                  <Link to="/despre-noi">Despre noi</Link>
+                  <Link to="/cine-suntem-noi">Despre noi</Link>
                 </Button>
               </CardContent>
             </Card>
