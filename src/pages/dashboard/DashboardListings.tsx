@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { mockListings } from "@/data/dashboardMockData";
 
 const statusColors: Record<string, string> = {
@@ -75,55 +76,75 @@ const DashboardListings = () => {
           </CardContent>
         </Card>
       ) : (
-        <Card className="border-border/50 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-muted/50 border-b border-border">
-                  <th className="text-left p-3 text-xs font-medium text-muted-foreground">Companie</th>
-                  <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Plan</th>
-                  <th className="text-left p-3 text-xs font-medium text-muted-foreground">Status</th>
-                  <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden lg:table-cell">Expira</th>
-                  <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Data expirare</th>
-                  <th className="text-right p-3 text-xs font-medium text-muted-foreground">Actiuni</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((l) => (
-                  <tr key={l.id} className="border-b border-border/50 last:border-0 hover:bg-muted/30 transition-colors">
-                    <td className="p-3">
-                      <div className="flex items-center gap-3">
-                        <img src={l.thumbnail} alt="" className="w-10 h-10 rounded-lg bg-muted object-cover" />
-                        <div>
-                          <p className="font-medium text-foreground">{l.name}</p>
-                          <p className="text-xs text-muted-foreground">{l.category} &middot; {l.city}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="p-3 hidden md:table-cell">
-                      <Badge variant="secondary" className="text-[10px]">{l.plan}</Badge>
-                    </td>
-                    <td className="p-3">
-                      <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${statusColors[l.status]}`}>
-                        {statusLabels[l.status]}
-                      </span>
-                    </td>
-                    <td className="p-3 text-xs text-muted-foreground hidden lg:table-cell">{l.expiryDate}</td>
-                    <td className="p-3 text-right text-muted-foreground hidden sm:table-cell">{l.plan === "Gratuit" ? "Nelimitat" : l.expiryDate}</td>
-                    <td className="p-3 text-right">
-                      <div className="flex items-center justify-end gap-1">
-                        <Button variant="ghost" size="icon" className="h-7 w-7"><Edit className="w-3.5 h-3.5" /></Button>
-                        <Button variant="ghost" size="icon" className="h-7 w-7 hidden sm:flex"><BarChart3 className="w-3.5 h-3.5" /></Button>
-                        <Button variant="ghost" size="icon" className="h-7 w-7 hidden sm:flex"><Eye className="w-3.5 h-3.5" /></Button>
-                        <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive hover:text-destructive"><Trash2 className="w-3.5 h-3.5" /></Button>
-                      </div>
-                    </td>
+        <TooltipProvider>
+          <Card className="border-border/50 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-muted/50 border-b border-border">
+                    <th className="text-left p-3 text-xs font-medium text-muted-foreground">Companie</th>
+                    <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Plan</th>
+                    <th className="text-left p-3 text-xs font-medium text-muted-foreground">Status</th>
+                    <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Data expirare</th>
+                    <th className="text-right p-3 text-xs font-medium text-muted-foreground">Actiuni</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Card>
+                </thead>
+                <tbody>
+                  {filtered.map((l) => (
+                    <tr key={l.id} className="border-b border-border/50 last:border-0 hover:bg-muted/30 transition-colors">
+                      <td className="p-3">
+                        <div className="flex items-center gap-3">
+                          <img src={l.thumbnail} alt="" className="w-10 h-10 rounded-lg bg-muted object-cover" />
+                          <div>
+                            <p className="font-medium text-foreground">{l.name}</p>
+                            <p className="text-xs text-muted-foreground">{l.category} &middot; {l.city}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="p-3 hidden md:table-cell">
+                        <Badge variant="secondary" className="text-[10px]">{l.plan}</Badge>
+                      </td>
+                      <td className="p-3">
+                        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${statusColors[l.status]}`}>
+                          {statusLabels[l.status]}
+                        </span>
+                      </td>
+                      <td className="p-3 text-right text-muted-foreground hidden sm:table-cell">{l.plan === "Gratuit" ? "Nelimitat" : l.expiryDate}</td>
+                      <td className="p-3 text-right">
+                        <div className="flex items-center justify-end gap-1">
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button variant="ghost" size="icon" className="h-7 w-7"><Edit className="w-3.5 h-3.5" /></Button>
+                            </TooltipTrigger>
+                            <TooltipContent><p>Editeaza</p></TooltipContent>
+                          </Tooltip>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button variant="ghost" size="icon" className="h-7 w-7 hidden sm:flex"><BarChart3 className="w-3.5 h-3.5" /></Button>
+                            </TooltipTrigger>
+                            <TooltipContent><p>Statistici</p></TooltipContent>
+                          </Tooltip>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button variant="ghost" size="icon" className="h-7 w-7 hidden sm:flex"><Eye className="w-3.5 h-3.5" /></Button>
+                            </TooltipTrigger>
+                            <TooltipContent><p>Vizualizeaza</p></TooltipContent>
+                          </Tooltip>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive hover:text-destructive"><Trash2 className="w-3.5 h-3.5" /></Button>
+                            </TooltipTrigger>
+                            <TooltipContent><p>Sterge</p></TooltipContent>
+                          </Tooltip>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Card>
+        </TooltipProvider>
       )}
     </div>
   );
