@@ -68,6 +68,13 @@ const SearchResultsPage = () => {
     page * ITEMS_PER_PAGE
   );
 
+  // Insert ad banner after position 4
+  const resultsWithAd = paged.flatMap((item, i) => {
+    if (i === 4) {
+      return ["ad-banner", item] as const;
+    }
+    return [item] as const;
+  });
 
   const handleRemoveFilter = (type: keyof ActiveFilters, value?: string) => {
     const updated = { ...filters };
@@ -166,52 +173,36 @@ const SearchResultsPage = () => {
                   Resetează filtrele
                 </Button>
               </div>
-            ) : view === "grid" ? (
-              <>
-                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                  {paged.slice(0, 4).map((item) => (
-                    <SearchResultCard key={item.id} listing={item} view="grid" />
-                  ))}
-                </div>
-                {paged.length > 4 && (
-                  <>
-                    <div className="my-3 flex items-center justify-center rounded-xl border-2 border-dashed border-muted-foreground/20 bg-muted/30 h-[60px] max-w-[600px] mx-auto w-full">
-                      <span className="text-xs text-muted-foreground">
-                        600×60 · Banner publicitar
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                      {paged.slice(4).map((item) => (
-                        <SearchResultCard key={item.id} listing={item} view="grid" />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </>
             ) : (
-              <div className="mt-4 flex flex-col gap-3">
-                {paged.flatMap((item, i) => {
-                  const card = (
-                    <SearchResultCard
-                      key={item.id}
-                      listing={item}
-                      view="list"
-                    />
-                  );
-                  if (i === 4) {
-                    return [
+              <div
+                className={`mt-4 ${
+                  view === "grid"
+                    ? "grid grid-cols-2 lg:grid-cols-3 gap-3"
+                    : "flex flex-col gap-3"
+                }`}
+              >
+                {resultsWithAd.map((item) => {
+                  if (item === "ad-banner") {
+                    return (
                       <div
                         key="ad-banner"
-                        className="h-[60px] max-w-[600px] mx-auto w-full flex items-center justify-center rounded-xl border-2 border-dashed border-muted-foreground/20 bg-muted/30"
+                        className={`banner-slot flex items-center justify-center rounded-xl border-2 border-dashed border-muted-foreground/20 bg-muted/30 ${
+                          view === "grid" ? "col-span-full h-[60px]" : "h-[60px] max-w-[600px] mx-auto w-full"
+                        }`}
                       >
                         <span className="text-xs text-muted-foreground">
                           600×60 · Banner publicitar
                         </span>
-                      </div>,
-                      card,
-                    ];
+                      </div>
+                    );
                   }
-                  return [card];
+                  return (
+                    <SearchResultCard
+                      key={item.id}
+                      listing={item}
+                      view={view === "map" ? "list" : view}
+                    />
+                  );
                 })}
               </div>
             )}
