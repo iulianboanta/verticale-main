@@ -10,6 +10,9 @@ import SearchResults from "./pages/SearchResults.tsx";
 import SearchMapView from "./pages/SearchMapView.tsx";
 import Contact from "./pages/Contact.tsx";
 import AddCompany from "./pages/AddCompany.tsx";
+import ConfirmareFree from "./pages/ConfirmareFree.tsx";
+import Checkout from "./pages/Checkout.tsx";
+import ConfirmarePlata from "./pages/ConfirmarePlata.tsx";
 import ArticlesLanding from "./pages/ArticlesLanding.tsx";
 import ArticleDetail from "./pages/ArticleDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -57,6 +60,9 @@ const App = () => (
           <Route path="/cautare/harta" element={<SearchMapView />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/adauga-companie" element={<AddCompany />} />
+          <Route path="/adauga-companie/confirmare" element={<ConfirmareFree />} />
+          <Route path="/adauga-companie/checkout" element={<Checkout />} />
+          <Route path="/adauga-companie/confirmare-plata" element={<ConfirmarePlata />} />
           <Route path="/informatii" element={<ArticlesLanding />} />
           <Route path="/informatii/:slug" element={<ArticleDetail />} />
           <Route path="/politica-de-confidentialitate" element={<PrivacyPolicy />} />
