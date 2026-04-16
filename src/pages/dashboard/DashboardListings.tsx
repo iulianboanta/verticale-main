@@ -84,7 +84,7 @@ const DashboardListings = () => {
                   <tr className="bg-muted/50 border-b border-border">
                     <th className="text-left p-3 text-xs font-medium text-muted-foreground">Companie</th>
                     <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Plan</th>
-                    <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Promo</th>
+                    <th colSpan={2} className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Promo</th>
                     <th className="text-left p-3 text-xs font-medium text-muted-foreground">Status</th>
                     <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Data expirare</th>
                     <th className="text-right p-3 text-xs font-medium text-muted-foreground">Actiuni</th>
@@ -106,26 +106,22 @@ const DashboardListings = () => {
                         <Badge variant="secondary" className="text-[10px]">{l.plan}</Badge>
                       </td>
                       <td className="p-3 hidden md:table-cell">
-                        <div className="flex items-center gap-1.5">
-                          {(l.plan === "Gratuit" || l.plan === "Intro") ? (
-                            <Link to="/adauga-companie?step=plans">
-                              <Button variant="outline" size="sm" className="h-7 text-[11px] px-2">
-                                <ArrowUpCircle className="w-3 h-3 mr-1" /> Upgrade
-                              </Button>
-                            </Link>
-                          ) : (
-                            <div className="h-7 px-2 text-[11px] invisible">
+                        {(l.plan === "Gratuit" || l.plan === "Intro") && (
+                          <Link to="/adauga-companie?step=plans">
+                            <Button variant="outline" size="sm" className="h-7 text-[11px] px-2">
                               <ArrowUpCircle className="w-3 h-3 mr-1" /> Upgrade
-                            </div>
-                          )}
-                          {(l.plan === "Intro" || l.plan === "Profesional") && (
-                            <Link to="/adauga-companie?step=plans">
-                              <Button variant="outline" size="sm" className="h-7 text-[11px] px-2">
-                                <RefreshCw className="w-3 h-3 mr-1" /> Prelungește
-                              </Button>
-                            </Link>
-                          )}
-                        </div>
+                            </Button>
+                          </Link>
+                        )}
+                      </td>
+                      <td className="p-3 hidden md:table-cell">
+                        {(l.plan === "Intro" || l.plan === "Profesional") && (
+                          <Link to="/adauga-companie?step=plans">
+                            <Button variant="outline" size="sm" className="h-7 text-[11px] px-2">
+                              <RefreshCw className="w-3 h-3 mr-1" /> Prelungește
+                            </Button>
+                          </Link>
+                        )}
                       </td>
                       <td className="p-3">
                         <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${statusColors[l.status]}`}>
