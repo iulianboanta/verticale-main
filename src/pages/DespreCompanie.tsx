@@ -8,6 +8,24 @@ import colaj from "@/assets/despre/colaj-pn-rolocal.jpg";
 import targhetare from "@/assets/despre/targhetare.jpg";
 import expert from "@/assets/despre/expert.jpg";
 
+const ContainedShowcaseImage = ({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) => (
+  <div className="rounded-xl border border-border/60 bg-background p-4 md:p-6 overflow-hidden">
+    <img
+      src={src}
+      alt={alt}
+      className={`w-full h-auto object-contain mx-auto ${className}`}
+    />
+  </div>
+);
+
 const DespreCompanie = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -33,11 +51,14 @@ const DespreCompanie = () => {
       {/* Content */}
       <main className="flex-1">
         <div className="container py-12 max-w-4xl space-y-16">
-
           {/* Block 1 — Pagini Nationale & roLOCAL */}
           <section className="grid md:grid-cols-2 gap-8">
             <div className="rounded-2xl overflow-hidden border border-border bg-card shadow-sm">
-              <img src={paginiNationale} alt="Pagini Nationale" className="w-full h-48 object-cover" />
+              <img
+                src={paginiNationale}
+                alt="Pagini Nationale"
+                className="w-full h-56 object-cover object-center"
+              />
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <Globe className="w-4 h-4 text-primary" />
@@ -50,7 +71,11 @@ const DespreCompanie = () => {
             </div>
 
             <div className="rounded-2xl overflow-hidden border border-border bg-card shadow-sm">
-              <img src={roLocal} alt="roLOCAL" className="w-full h-48 object-cover" />
+              <img
+                src={roLocal}
+                alt="roLOCAL"
+                className="w-full h-56 object-cover object-top"
+              />
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <BookOpen className="w-4 h-4 text-primary" />
@@ -64,8 +89,12 @@ const DespreCompanie = () => {
           </section>
 
           {/* Block 2 — Description */}
-          <section className="rounded-2xl border border-border bg-card p-8 shadow-sm">
-            <img src={colaj} alt="Pagini Nationale și roLOCAL" className="w-full rounded-xl mb-6 object-cover max-h-80" />
+          <section className="rounded-2xl border border-border bg-card p-8 shadow-sm space-y-6">
+            <ContainedShowcaseImage
+              src={colaj}
+              alt="Pagini Nationale și roLOCAL"
+              className="max-h-[420px]"
+            />
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 <strong className="text-foreground">Pagini Naționale</strong> este cel mai longeviv
@@ -79,35 +108,43 @@ const DespreCompanie = () => {
           </section>
 
           {/* Block 3 — Rețea de site-uri */}
-          <section className="rounded-2xl border border-border bg-card p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-5">
+          <section className="rounded-2xl border border-border bg-card p-8 shadow-sm space-y-6">
+            <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                 <Network className="w-4.5 h-4.5 text-primary" />
               </div>
               <h2 className="text-lg font-bold text-foreground">Rețea de site-uri specializate</h2>
             </div>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="text-muted-foreground leading-relaxed">
               Operăm o rețea de site-uri specializate pe diferite segmente de activitate.
               Targhetare B2B locală și națională.
             </p>
-            <img src={targhetare} alt="Targhetare B2B" className="w-full rounded-xl object-cover max-h-80" />
+            <ContainedShowcaseImage
+              src={targhetare}
+              alt="Targhetare B2B"
+              className="max-h-[540px]"
+            />
           </section>
 
           {/* Block 4 — Expert Mediu */}
-          <section className="rounded-2xl border border-border bg-card p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-5">
+          <section className="rounded-2xl border border-border bg-card p-8 shadow-sm space-y-6">
+            <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                 <Leaf className="w-4.5 h-4.5 text-primary" />
               </div>
               <h2 className="text-lg font-bold text-foreground">Platforma Expert Mediu</h2>
             </div>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="text-muted-foreground leading-relaxed">
               Aici găsești platforma cu care îți îndeplinești toate obligațiile legale privind
               deșeurile. Vei găsi aici toate calculele, evidențele și rapoartele solicitate de
               autorități (Agenția de mediu, Garda de mediu, Fondul de mediu). Ai asistență și
               consultanță.
             </p>
-            <img src={expert} alt="Expert Mediu" className="w-full rounded-xl object-cover max-h-80" />
+            <ContainedShowcaseImage
+              src={expert}
+              alt="Expert Mediu"
+              className="max-h-[360px]"
+            />
           </section>
 
           {/* CTA */}
