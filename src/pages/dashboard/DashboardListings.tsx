@@ -107,12 +107,16 @@ const DashboardListings = () => {
                       </td>
                       <td className="p-3 hidden md:table-cell">
                         <div className="flex items-center gap-1.5">
-                          {(l.plan === "Gratuit" || l.plan === "Intro") && (
+                          {(l.plan === "Gratuit" || l.plan === "Intro") ? (
                             <Link to="/adauga-companie?step=plans">
                               <Button variant="outline" size="sm" className="h-7 text-[11px] px-2">
                                 <ArrowUpCircle className="w-3 h-3 mr-1" /> Upgrade
                               </Button>
                             </Link>
+                          ) : (
+                            <div className="h-7 px-2 text-[11px] invisible">
+                              <ArrowUpCircle className="w-3 h-3 mr-1" /> Upgrade
+                            </div>
                           )}
                           {(l.plan === "Intro" || l.plan === "Profesional") && (
                             <Link to="/adauga-companie?step=plans">
