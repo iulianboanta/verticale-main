@@ -105,6 +105,25 @@ const DashboardListings = () => {
                       <td className="p-3 hidden md:table-cell">
                         <Badge variant="secondary" className="text-[10px]">{l.plan}</Badge>
                       </td>
+                      <td className="p-3 hidden md:table-cell">
+                        <div className="flex items-center gap-1.5">
+                          {(l.plan === "Gratuit" || l.plan === "Intro") && (
+                            <Link to="/adauga-companie?step=plans">
+                              <Button variant="outline" size="sm" className="h-7 text-[11px] px-2">
+                                <ArrowUpCircle className="w-3 h-3 mr-1" /> Upgrade
+                              </Button>
+                            </Link>
+                          )}
+                          {(l.plan === "Intro" || l.plan === "Profesional") && (
+                            <Link to="/adauga-companie?step=plans">
+                              <Button variant="outline" size="sm" className="h-7 text-[11px] px-2">
+                                <RefreshCw className="w-3 h-3 mr-1" /> Prelungește
+                              </Button>
+                            </Link>
+                          )}
+                        </div>
+                      </td>
+                      </td>
                       <td className="p-3">
                         <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${statusColors[l.status]}`}>
                           {statusLabels[l.status]}
