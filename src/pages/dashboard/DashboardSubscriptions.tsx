@@ -69,18 +69,18 @@ const DashboardSubscriptions = () => {
                       {l.plan === "Gratuit" ? "Nelimitat" : l.expiryDate}
                     </td>
                     <td className="p-3 text-right">
-                      <div className="flex items-center justify-end gap-2">
-                        {(l.plan === "Intro" || l.plan === "Profesional") && (
-                          <Button variant="outline" size="sm" className="text-xs h-7">
-                            <RotateCw className="w-3 h-3 mr-1" /> Prelungeste
-                          </Button>
-                        )}
-                        {(l.plan === "Gratuit" || l.plan === "Intro") && (
-                          <Button size="sm" className="text-xs h-7">
-                            <ArrowUpRight className="w-3 h-3 mr-1" /> Upgradeaza
-                          </Button>
-                        )}
-                      </div>
+                      {(l.plan === "Gratuit" || l.plan === "Intro") && (
+                        <Button size="sm" className="text-xs h-7">
+                          <ArrowUpRight className="w-3 h-3 mr-1" /> Upgradeaza
+                        </Button>
+                      )}
+                    </td>
+                    <td className="p-3 text-right">
+                      {(l.plan === "Intro" || l.plan === "Profesional") && (
+                        <Button variant="outline" size="sm" className="text-xs h-7">
+                          <RotateCw className="w-3 h-3 mr-1" /> Prelungeste
+                        </Button>
+                      )}
                     </td>
                   </tr>
                 ))}
