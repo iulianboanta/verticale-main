@@ -35,25 +35,24 @@ const TermeniConditii = () => {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length > 0) {
-          const top = visible.reduce((a, b) =>
-            a.boundingClientRect.top < b.boundingClientRect.top ? a : b
-          );
-          setActiveSection(top.target.id);
+    const handleScroll = () => {
+      const offset = 150;
+      let current = sections[0].id;
+      for (const s of sections) {
+        const el = sectionRefs.current[s.id];
+        if (el && el.getBoundingClientRect().top <= offset) {
+          current = s.id;
         }
-      },
-      { rootMargin: "-100px 0px -60% 0px", threshold: 0.1 }
-    );
-    Object.values(sectionRefs.current).forEach((el) => {
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+      }
+      setActiveSection(current);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollTo = (id: string) => {
+    setActiveSection(id);
     sectionRefs.current[id]?.scrollIntoView({ behavior: "smooth", block: "start" });
     setTocOpen(false);
   };
