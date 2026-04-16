@@ -47,7 +47,7 @@ export const mockListings = [
     status: "in_asteptare" as const,
     expiryDate: "2026-12-01",
     viewsThisMonth: 537,
-    thumbnail: "https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=100&h=100&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
   },
 ];
 
