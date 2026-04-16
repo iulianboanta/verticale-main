@@ -1,21 +1,16 @@
 
 
-## Plan: Add "Promo" column to listings table
+## Plan: Split Promo into two sub-columns with single spanning header
 
 ### Change in `src/pages/dashboard/DashboardListings.tsx`
 
-Add a new "Promo" column after "Plan" in the table:
+**Header**: Replace the single `<th>Promo</th>` with `<th colSpan={2}>Promo</th>` so one "Promo" label spans two columns.
 
-**Header**: Add `<th>Promo</th>` after the Plan column header (line 86).
+**Cells**: Replace the single Promo `<td>` with two `<td>` elements:
+- **First td (Upgrade)**: Show Upgrade button if plan is "Gratuit" or "Intro", otherwise empty.
+- **Second td (Prelungește)**: Show Prelungește button if plan is "Intro" or "Profesional", otherwise empty.
 
-**Cell logic** per plan type:
-- **Gratuit**: Single button "Upgrade" (link to `/adauga-companie?step=plans`)
-- **Intro**: Two buttons — "Prelungește" + "Upgrade" (both link to `/adauga-companie?step=plans`)
-- **Profesional**: Single button "Prelungește" (link to `/adauga-companie?step=plans`)
-
-Buttons will be small `Link`-wrapped `Button` components with `size="sm"` and `variant="outline"` styling, using `ArrowUpCircle` icon for Upgrade and `RefreshCw` for Prelungește.
-
-Column hidden on small screens (`hidden md:table-cell`) same as Plan column.
+Each button is naturally aligned in its own column — no placeholders needed.
 
 ### Single file change
 - `src/pages/dashboard/DashboardListings.tsx`
