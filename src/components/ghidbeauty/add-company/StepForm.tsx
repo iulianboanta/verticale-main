@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -136,12 +137,18 @@ const StepForm = ({
     }
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
     if (!termsAccepted || !contractAccepted) {
       toast.error("Trebuie să accepți termenii și contractul pentru a continua.");
       return;
     }
-    onSuccess();
+    if (plan === "gratuit") {
+      navigate("/adauga-companie/confirmare");
+    } else {
+      navigate(`/adauga-companie/checkout?plan=${plan}&company=${encodeURIComponent(companyName)}&category=${encodeURIComponent(category)}&city=${encodeURIComponent(city)}`);
+    }
   };
 
   return (
