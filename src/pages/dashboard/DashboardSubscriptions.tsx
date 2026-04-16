@@ -42,7 +42,7 @@ const DashboardSubscriptions = () => {
                   <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Pret</th>
                   <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Activat</th>
                   <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Data expirare</th>
-                  <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden lg:table-cell" style={{ minWidth: 140 }}>Zile ramase</th>
+                  
                   <th colSpan={2} className="text-right p-3 text-xs font-medium text-muted-foreground">Actiuni</th>
                 </tr>
               </thead>
