@@ -20,6 +20,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import FAQ from "./pages/FAQ.tsx";
 import TermeniConditii from "./pages/TermeniConditii.tsx";
 import Autentificare from "./pages/Autentificare.tsx";
+import DespreCompanie from "./pages/DespreCompanie.tsx";
 import DashboardLayout from "./components/ghidbeauty/dashboard/DashboardLayout.tsx";
 import DashboardOverview from "./pages/dashboard/DashboardOverview.tsx";
 import DashboardListings from "./pages/dashboard/DashboardListings.tsx";
