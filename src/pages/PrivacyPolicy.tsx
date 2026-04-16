@@ -168,8 +168,8 @@ const PrivacyPolicy = () => {
               <div className="bg-card border border-border rounded-xl p-5 space-y-2 text-sm text-muted-foreground">
                 <p><strong className="text-foreground">Operator:</strong> DIRECTORIES MANAGEMENT SYSTEMS SRL</p>
                 <p><strong className="text-foreground">Adresă:</strong> Iuliu Maniu 18-20, Sector 6, București</p>
-                <p><strong className="text-foreground">Email:</strong> <a href="mailto:contact@ghidbeauty.ro" className="text-primary hover:underline">contact@ghidbeauty.ro</a></p>
-                <p><strong className="text-foreground">Telefon:</strong> <a href="tel:0314044440" className="text-primary hover:underline">031.404.44.40</a></p>
+                <p><strong className="text-foreground">Email:</strong> <span className="text-primary hover:underline cursor-pointer" onClick={() => window.location.href = `mailto:${"contact"}@${"ghidbeauty.ro"}`}>{"contact"}&#64;{"ghidbeauty.ro"}</span></p>
+                <p><strong className="text-foreground">Telefon:</strong> <span className="text-primary hover:underline cursor-pointer" onClick={() => window.location.href = `tel:${"031" + "404" + "44" + "40"}`}>{"031"}.{"404"}.{"44"}.{"40"}</span></p>
               </div>
             </section>
 

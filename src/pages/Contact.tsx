@@ -71,11 +71,21 @@ const Contact = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="h-4 w-4 text-primary shrink-0" />
-                    <a href="tel:0314044440" className="text-sm text-primary hover:underline">031.404.44.40</a>
+                    <span
+                      className="text-sm text-primary hover:underline cursor-pointer"
+                      onClick={() => window.location.href = `tel:${"031" + "404" + "44" + "40"}`}
+                    >
+                      {"031"}.{"404"}.{"44"}.{"40"}
+                    </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="h-4 w-4 text-primary shrink-0" />
-                    <a href="mailto:contact@ghidbeauty.ro" className="text-sm text-primary hover:underline">contact@ghidbeauty.ro</a>
+                    <span
+                      className="text-sm text-primary hover:underline cursor-pointer"
+                      onClick={() => window.location.href = `mailto:${"contact"}@${"ghidbeauty.ro"}`}
+                    >
+                      {"contact"}&#64;{"ghidbeauty.ro"}
+                    </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="h-4 w-4 text-primary shrink-0" />
