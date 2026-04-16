@@ -5,7 +5,7 @@ import {
   Tag, Megaphone, User, Shield, CreditCard, Bell, Heart, Search,
   LogOut, ChevronDown, Menu, X
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
@@ -62,11 +62,6 @@ const mobileNavItems = [
   { label: "Cont", href: "/dashboard/profil", icon: User },
 ];
 
-const planColors: Record<string, string> = {
-  Gratuit: "bg-muted text-muted-foreground",
-  Intro: "bg-blue-100 text-blue-700",
-  Profesional: "bg-primary/10 text-primary",
-};
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();

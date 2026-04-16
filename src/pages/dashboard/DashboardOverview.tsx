@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Eye, Phone, Building2, Star, PlusCircle, User, ArrowUpRight, BarChart3, MessageSquare, ArrowUp, ArrowDown } from "lucide-react";
+import { Eye, Phone, Building2, Star, PlusCircle, User, ArrowUpRight, BarChart3 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
