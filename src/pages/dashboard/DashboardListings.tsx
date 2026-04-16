@@ -84,7 +84,7 @@ const DashboardListings = () => {
                   <tr className="bg-muted/50 border-b border-border">
                     <th className="text-left p-3 text-xs font-medium text-muted-foreground">Companie</th>
                     <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Plan</th>
-                    <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Promo</th>
+                    <th colSpan={2} className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Promo</th>
                     <th className="text-left p-3 text-xs font-medium text-muted-foreground">Status</th>
                     <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Data expirare</th>
                     <th className="text-right p-3 text-xs font-medium text-muted-foreground">Actiuni</th>
