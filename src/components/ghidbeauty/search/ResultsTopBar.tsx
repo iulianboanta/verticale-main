@@ -138,34 +138,51 @@ const ResultsTopBar = ({
             </SelectContent>
           </Select>
 
-          <ToggleGroup
-            type="single"
-            value={view}
-            onValueChange={handleViewChange}
-            className="shrink-0 flex"
-          >
-            <ToggleGroupItem
-              value="list"
-              aria-label="Listă"
-              className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+          <TooltipProvider delayDuration={300}>
+            <ToggleGroup
+              type="single"
+              value={view}
+              onValueChange={handleViewChange}
+              className="shrink-0 flex"
             >
-              <List size={15} />
-            </ToggleGroupItem>
-            <ToggleGroupItem
-              value="grid"
-              aria-label="Grid"
-              className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-            >
-              <LayoutGrid size={15} />
-            </ToggleGroupItem>
-            <ToggleGroupItem
-              value="map"
-              aria-label="Hartă"
-              className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-            >
-              <Map size={15} />
-            </ToggleGroupItem>
-          </ToggleGroup>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <ToggleGroupItem
+                    value="list"
+                    aria-label="Listă"
+                    className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                  >
+                    <List size={15} />
+                  </ToggleGroupItem>
+                </TooltipTrigger>
+                <TooltipContent side="bottom"><p>Listă</p></TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <ToggleGroupItem
+                    value="grid"
+                    aria-label="Grid"
+                    className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                  >
+                    <LayoutGrid size={15} />
+                  </ToggleGroupItem>
+                </TooltipTrigger>
+                <TooltipContent side="bottom"><p>Grilă</p></TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <ToggleGroupItem
+                    value="map"
+                    aria-label="Hartă"
+                    className="h-8 w-8 p-0 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                  >
+                    <Map size={15} />
+                  </ToggleGroupItem>
+                </TooltipTrigger>
+                <TooltipContent side="bottom"><p>Hartă</p></TooltipContent>
+              </Tooltip>
+            </ToggleGroup>
+          </TooltipProvider>
         </div>
       </div>
 
