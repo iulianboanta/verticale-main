@@ -649,7 +649,7 @@ const StepForm = ({
             <Button variant="ghost" onClick={onBack}>
               <ArrowLeft className="w-4 h-4 mr-1" /> Înapoi
             </Button>
-            <Button onClick={handleSubmit}>Trimite spre aprobare</Button>
+            <Button onClick={handleSubmit}>Continuă</Button>
           </div>
         </div>
       </div>
