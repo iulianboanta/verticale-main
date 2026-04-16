@@ -18,6 +18,7 @@ import ArticleDetail from "./pages/ArticleDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import FAQ from "./pages/FAQ.tsx";
+import TermeniConditii from "./pages/TermeniConditii.tsx";
 import Autentificare from "./pages/Autentificare.tsx";
 import DashboardLayout from "./components/ghidbeauty/dashboard/DashboardLayout.tsx";
 import DashboardOverview from "./pages/dashboard/DashboardOverview.tsx";
@@ -67,6 +68,7 @@ const App = () => (
           <Route path="/informatii/:slug" element={<ArticleDetail />} />
           <Route path="/politica-de-confidentialitate" element={<PrivacyPolicy />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/termeni" element={<TermeniConditii />} />
           <Route path="/autentificare" element={<Autentificare />} />
 
           {/* Dashboard routes */}
