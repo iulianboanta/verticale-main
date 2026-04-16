@@ -68,13 +68,6 @@ const SearchResultsPage = () => {
     page * ITEMS_PER_PAGE
   );
 
-  // Insert ad banner after position 4
-  const resultsWithAd = paged.flatMap((item, i) => {
-    if (i === 4) {
-      return ["ad-banner", item] as const;
-    }
-    return [item] as const;
-  });
 
   const handleRemoveFilter = (type: keyof ActiveFilters, value?: string) => {
     const updated = { ...filters };
