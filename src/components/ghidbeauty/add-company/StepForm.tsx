@@ -147,7 +147,7 @@ const StepForm = ({
     if (plan === "gratuit") {
       navigate("/adauga-companie/confirmare");
     } else {
-      navigate(`/adauga-companie/checkout?plan=${plan}&company=${encodeURIComponent(companyName)}&category=${encodeURIComponent(category)}&city=${encodeURIComponent(city)}`);
+      navigate(`/adauga-companie/checkout?plan=${plan}`);
     }
   };
 
