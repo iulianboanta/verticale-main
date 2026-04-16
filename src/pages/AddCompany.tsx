@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/ghidbeauty/Navbar";
 import Footer from "@/components/ghidbeauty/Footer";
 import StepAuth from "@/components/ghidbeauty/add-company/StepAuth";
@@ -8,7 +9,9 @@ import SuccessState from "@/components/ghidbeauty/add-company/SuccessState";
 import type { Plan } from "@/components/ghidbeauty/add-company/StepPlans";
 
 const AddCompany = () => {
-  const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
+  const [searchParams] = useSearchParams();
+  const initialStep = searchParams.get("step") === "plans" ? 2 : 1;
+  const [step, setStep] = useState<1 | 2 | 3 | 4>(initialStep as 1 | 2 | 3 | 4);
   const [selectedPlan, setSelectedPlan] = useState<Plan>("gratuit");
 
   const handlePlanSelect = (plan: Plan) => {

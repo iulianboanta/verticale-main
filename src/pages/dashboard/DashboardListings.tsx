@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { PlusCircle, Search, Eye, Edit, BarChart3, Copy, Trash2, Building2 } from "lucide-react";
+import { PlusCircle, Search, Eye, Edit, BarChart3, Trash2, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -36,7 +36,7 @@ const DashboardListings = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold text-foreground">Toate listingurile</h1>
-        <Link to="/adauga-companie">
+        <Link to="/adauga-companie?step=plans">
           <Button size="sm">
             <PlusCircle className="w-4 h-4 mr-1.5" /> Adauga listing
           </Button>
@@ -69,7 +69,7 @@ const DashboardListings = () => {
             <Building2 className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-foreground mb-1">Nu ai niciun listing inca</h3>
             <p className="text-sm text-muted-foreground mb-4">Adauga primul tau listing pentru a fi vizibil in director.</p>
-            <Link to="/adauga-companie">
+            <Link to="/adauga-companie?step=plans">
               <Button><PlusCircle className="w-4 h-4 mr-1.5" /> Adauga primul listing</Button>
             </Link>
           </CardContent>
@@ -84,7 +84,7 @@ const DashboardListings = () => {
                   <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden md:table-cell">Plan</th>
                   <th className="text-left p-3 text-xs font-medium text-muted-foreground">Status</th>
                   <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden lg:table-cell">Expira</th>
-                  <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Afisari</th>
+                  <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Data expirare</th>
                   <th className="text-right p-3 text-xs font-medium text-muted-foreground">Actiuni</th>
                 </tr>
               </thead>
@@ -109,7 +109,7 @@ const DashboardListings = () => {
                       </span>
                     </td>
                     <td className="p-3 text-xs text-muted-foreground hidden lg:table-cell">{l.expiryDate}</td>
-                    <td className="p-3 text-right text-muted-foreground hidden sm:table-cell">{l.viewsThisMonth}</td>
+                    <td className="p-3 text-right text-muted-foreground hidden sm:table-cell">{l.plan === "Gratuit" ? "Nelimitat" : l.expiryDate}</td>
                     <td className="p-3 text-right">
                       <div className="flex items-center justify-end gap-1">
                         <Button variant="ghost" size="icon" className="h-7 w-7"><Edit className="w-3.5 h-3.5" /></Button>
