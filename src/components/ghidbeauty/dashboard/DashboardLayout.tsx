@@ -23,7 +23,7 @@ const navSections = [
     title: "LISTINGURILE MELE",
     items: [
       { label: "Toate listingurile", href: "/dashboard/listinguri", icon: Building2 },
-      { label: "Adauga listing nou", href: "/adauga-companie", icon: PlusCircle },
+      { label: "Adauga listing nou", href: "/adauga-companie?step=plans", icon: PlusCircle },
       { label: "Recenzii primite", href: "/dashboard/recenzii", icon: Star },
       { label: "Mesaje primite", href: "/dashboard/mesaje", icon: MessageSquare },
       { label: "Statistici & Analytics", href: "/dashboard/statistici", icon: BarChart3 },
@@ -93,9 +93,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             <p className="text-xs text-muted-foreground truncate">{mockUser.email}</p>
           </div>
         </div>
-        <span className={`mt-2 inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full ${planColors[mockUser.plan]}`}>
-          {mockUser.plan}
-        </span>
       </div>
 
       {/* Nav */}

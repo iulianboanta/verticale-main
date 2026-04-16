@@ -58,7 +58,7 @@ const DashboardOverview = () => (
 
     {/* Quick actions */}
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      <Link to="/adauga-companie">
+      <Link to="/adauga-companie?step=plans">
         <Card className="border-primary/30 bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer h-full">
           <CardContent className="p-4 flex flex-col items-center text-center gap-2">
             <PlusCircle className="w-6 h-6 text-primary" />
@@ -94,18 +94,6 @@ const DashboardOverview = () => (
       </Link>
     </div>
 
-    {/* Plan status */}
-    <Card className="border-green-200 bg-green-50">
-      <CardContent className="p-4 flex items-center gap-3">
-        <div className="w-2 h-2 rounded-full bg-green-500" />
-        <p className="text-sm text-green-700 flex-1">
-          Planul <strong>{mockUser.plan}</strong> este activ. Expira pe 15 august 2026.
-        </p>
-        <Button variant="outline" size="sm" className="text-green-700 border-green-300 hover:bg-green-100">
-          Reinnoieste
-        </Button>
-      </CardContent>
-    </Card>
 
     {/* My listings table */}
     <div>
@@ -123,7 +111,7 @@ const DashboardOverview = () => (
                 <th className="text-left p-3 text-xs font-medium text-muted-foreground">Companie</th>
                 <th className="text-left p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Plan</th>
                 <th className="text-left p-3 text-xs font-medium text-muted-foreground">Status</th>
-                <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Afisari</th>
+                <th className="text-right p-3 text-xs font-medium text-muted-foreground hidden sm:table-cell">Data expirare</th>
                 <th className="text-right p-3 text-xs font-medium text-muted-foreground">Actiuni</th>
               </tr>
             </thead>
@@ -142,7 +130,7 @@ const DashboardOverview = () => (
                       {statusLabels[l.status]}
                     </span>
                   </td>
-                  <td className="p-3 text-right hidden sm:table-cell text-muted-foreground">{l.viewsThisMonth}</td>
+                  <td className="p-3 text-right hidden sm:table-cell text-muted-foreground">{l.plan === "Gratuit" ? "Nelimitat" : l.expiryDate}</td>
                   <td className="p-3 text-right">
                     <Button variant="ghost" size="sm" className="text-xs h-7">Editare</Button>
                   </td>

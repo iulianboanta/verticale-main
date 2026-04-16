@@ -1,14 +1,19 @@
 import { useState } from "react";
-import { Star, MessageSquare } from "lucide-react";
+import { Star, MessageSquare, Flag } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 import { mockReviews } from "@/data/dashboardMockData";
 
 const DashboardReviews = () => {
   const [filter, setFilter] = useState("toate");
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [reportingId, setReportingId] = useState<string | null>(null);
+  const [reportReason, setReportReason] = useState("");
+  const [reportText, setReportText] = useState("");
 
   const totalReviews = mockReviews.length;
   const avgRating = (mockReviews.reduce((a, r) => a + r.stars, 0) / totalReviews).toFixed(1);
@@ -20,6 +25,13 @@ const DashboardReviews = () => {
     if (filter === "fara_raspuns") return !r.replied;
     return true;
   });
+
+  const handleReport = () => {
+    // Mock submit
+    setReportingId(null);
+    setReportReason("");
+    setReportText("");
+  };
 
   return (
     <div className="space-y-6">
@@ -83,14 +95,19 @@ const DashboardReviews = () => {
                     </div>
                   )}
 
-                  {!r.replied && replyingTo !== r.id && (
-                    <Button variant="outline" size="sm" className="text-xs h-7" onClick={() => setReplyingTo(r.id)}>
-                      Raspunde
+                  <div className="flex gap-2">
+                    {!r.replied && replyingTo !== r.id && (
+                      <Button variant="outline" size="sm" className="text-xs h-7" onClick={() => setReplyingTo(r.id)}>
+                        Raspunde
+                      </Button>
+                    )}
+                    <Button variant="ghost" size="sm" className="text-xs h-7 text-muted-foreground" onClick={() => setReportingId(r.id)}>
+                      <Flag className="w-3 h-3 mr-1" /> Raporteaza
                     </Button>
-                  )}
+                  </div>
 
                   {replyingTo === r.id && (
-                    <div className="space-y-2">
+                    <div className="space-y-2 mt-2">
                       <Textarea placeholder="Scrie raspunsul tau..." rows={3} className="text-sm" />
                       <div className="flex gap-2">
                         <Button size="sm" className="text-xs h-7">Trimite raspunsul</Button>
@@ -104,6 +121,44 @@ const DashboardReviews = () => {
           </Card>
         ))}
       </div>
+
+      {/* Report dialog */}
+      <Dialog open={!!reportingId} onOpenChange={(open) => !open && setReportingId(null)}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Raporteaza recenzie</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label>Motiv raportare</Label>
+              <Select value={reportReason} onValueChange={setReportReason}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecteaza motivul" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="recenzie_falsa">Recenzie falsa</SelectItem>
+                  <SelectItem value="user_fals">User fals</SelectItem>
+                  <SelectItem value="limbaj_trivial">Limbaj trivial</SelectItem>
+                  <SelectItem value="alte_motive">Alte motive</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>Descrie motivul</Label>
+              <Textarea
+                placeholder="Explica de ce raportezi aceasta recenzie..."
+                rows={4}
+                value={reportText}
+                onChange={(e) => setReportText(e.target.value)}
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setReportingId(null)}>Anuleaza</Button>
+            <Button onClick={handleReport} disabled={!reportReason}>Trimite raportul</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

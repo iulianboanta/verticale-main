@@ -173,7 +173,7 @@ export const mockFavorites = [
     city: "Bucuresti",
     rating: 4.8,
     reviewCount: 124,
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop",
   },
   {
     id: "2",
@@ -182,7 +182,7 @@ export const mockFavorites = [
     city: "Iasi",
     rating: 4.6,
     reviewCount: 87,
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=300&fit=crop",
   },
 ];
 
