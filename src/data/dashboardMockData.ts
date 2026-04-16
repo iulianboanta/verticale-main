@@ -25,7 +25,7 @@ export const mockListings = [
     status: "activ" as const,
     expiryDate: "2026-08-15",
     viewsThisMonth: 1420,
-    thumbnail: "/placeholder.svg",
+    thumbnail: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=100&h=100&fit=crop",
   },
   {
     id: "2",
@@ -36,7 +36,7 @@ export const mockListings = [
     status: "activ" as const,
     expiryDate: "2026-06-01",
     viewsThisMonth: 890,
-    thumbnail: "/placeholder.svg",
+    thumbnail: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=100&h=100&fit=crop",
   },
   {
     id: "3",
@@ -47,7 +47,7 @@ export const mockListings = [
     status: "in_asteptare" as const,
     expiryDate: "2026-12-01",
     viewsThisMonth: 537,
-    thumbnail: "/placeholder.svg",
+    thumbnail: "https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=100&h=100&fit=crop",
   },
 ];
 
