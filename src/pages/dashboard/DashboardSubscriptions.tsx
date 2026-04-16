@@ -71,16 +71,6 @@ const DashboardSubscriptions = () => {
                       <td className="p-3 text-muted-foreground hidden sm:table-cell">
                         {isGratuit ? "Nelimitat" : l.expiryDate}
                       </td>
-                      <td className="p-3 hidden lg:table-cell" style={{ minWidth: 140 }}>
-                        {isGratuit ? (
-                          <span className="text-xs text-muted-foreground">Nelimitat</span>
-                        ) : (
-                          <div className="space-y-1">
-                            <Progress value={progress} className="h-1.5" />
-                            <p className="text-[10px] text-muted-foreground">{daysRemaining} zile</p>
-                          </div>
-                        )}
-                      </td>
                       <td className="p-3 text-right">
                         {(l.plan === "Gratuit" || l.plan === "Intro") && (
                           <Button size="sm" className="text-xs h-7">
@@ -96,6 +86,16 @@ const DashboardSubscriptions = () => {
                         )}
                       </td>
                     </tr>
+                    {!isGratuit && (
+                      <tr className="border-b border-border/50 last:border-0">
+                        <td colSpan={7} className="px-3 pb-2 pt-0">
+                          <div className="flex items-center gap-2">
+                            <Progress value={progress} className="h-1 flex-1" />
+                            <span className="text-[10px] text-muted-foreground whitespace-nowrap">{daysRemaining} zile rămase</span>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
                   );
                 })}
               </tbody>
