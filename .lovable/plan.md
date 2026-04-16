@@ -1,37 +1,29 @@
 
 
-## Plan: Move progress bar to full-width row underneath each listing
+## Plan: Stacked ad banners with conditional positioning
 
-### Concept
+### Change in `src/pages/SearchResults.tsx`
 
-Remove the "Zile rămase" column from the table. Instead, render a thin full-width progress bar beneath each listing row, spanning all columns. This gives a clear visual timeline per listing without taking up a dedicated column.
+Update the right-side ad sidebar so the two banners (120×120 square and 120×600 skyscraper) are stacked in a flex column. Add a visibility flag for each banner (e.g. `showSquareBanner` and `showSkyscraperBanner` constants). When the square banner is hidden, the skyscraper naturally moves up to the top position since it's a flex column layout — no extra logic needed.
 
-### Implementation in `src/pages/dashboard/DashboardSubscriptions.tsx`
-
-1. **Remove** the "Zile rămase" `<th>` header (line 45) and the corresponding `<td>` cell (lines 74-82).
-
-2. **After each `<tr>` row**, add a second `<tr>` containing a single `<td colSpan={total columns}>` with:
-   - A thin `Progress` bar (`h-1`) spanning 100% width, no padding
-   - For "Gratuit" plan: show a full green bar or skip entirely
-   - For paid plans: show progress based on days remaining
-   - A tiny label on the right showing "{daysRemaining} zile rămase" in `text-[10px]`
-
-3. **Styling**: The progress row has no vertical padding (`py-0`), no border, and a subtle background so it visually "belongs" to the row above. The bar uses `h-1` for a thin line look.
-
-### Structure per listing
-
-```text
-┌─────────────────────────────────────────────────────┐
-│ Companie │ Plan │ Preț │ Activat │ Expirare │ Acțiuni│
-├─────────────────────────────────────────────────────┤
-│ ██████████████████████░░░░░░░  72 zile rămase       │  ← progress row
-├─────────────────────────────────────────────────────┤
-│ Companie │ Plan │ Preț │ Activat │ Expirare │ Acțiuni│
-├─────────────────────────────────────────────────────┤
-│ ██████████░░░░░░░░░░░░░░░░░░  24 zile rămase       │
-└─────────────────────────────────────────────────────┘
+The sidebar markup:
+```tsx
+<aside className="hidden lg:block w-[120px] shrink-0">
+  <div className="sticky top-[8rem] flex flex-col gap-4">
+    {showSquareBanner && (
+      <div className="w-[120px] h-[120px] ...">120×120</div>
+    )}
+    {showSkyscraperBanner && (
+      <div className="w-[120px] h-[600px] ...">120×600</div>
+    )}
+  </div>
+</aside>
 ```
 
+Both flags default to `true`. When `showSquareBanner = false`, the skyscraper slides up automatically via flexbox. Mobile banner between results and pagination remains unchanged.
+
+Also remove the old 600×60 inline banner logic (`resultsWithAd`) and render results directly from `paged`.
+
 ### Single file change
-- `src/pages/dashboard/DashboardSubscriptions.tsx`
+- `src/pages/SearchResults.tsx`
 
