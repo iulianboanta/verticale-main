@@ -44,7 +44,7 @@ const Checkout = () => {
       <Navbar variant="solid" />
       <main className="flex-1 pt-16">
         <div className="container max-w-[900px] py-10 px-4">
-          <ProgressIndicator currentStep={3} totalSteps={3} />
+          <ProgressIndicator currentStep={3} />
 
           <h2 className="text-xl font-semibold text-foreground text-center mt-6 mb-8">
             Finalizează înscrierea
