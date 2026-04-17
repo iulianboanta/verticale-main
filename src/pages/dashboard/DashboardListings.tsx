@@ -133,7 +133,9 @@ const DashboardListings = () => {
                         <div className="flex items-center justify-end gap-1">
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <Button variant="ghost" size="icon" className="h-7 w-7"><Edit className="w-3.5 h-3.5" /></Button>
+                              <Link to={`/dashboard/listinguri/${l.id}/editeaza`}>
+                                <Button variant="ghost" size="icon" className="h-7 w-7"><Edit className="w-3.5 h-3.5" /></Button>
+                              </Link>
                             </TooltipTrigger>
                             <TooltipContent><p>Editeaza</p></TooltipContent>
                           </Tooltip>

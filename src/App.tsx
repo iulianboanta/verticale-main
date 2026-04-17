@@ -36,6 +36,7 @@ import DashboardSubscriptions from "./pages/dashboard/DashboardSubscriptions.tsx
 import DashboardNotifications from "./pages/dashboard/DashboardNotifications.tsx";
 import DashboardFavorites from "./pages/dashboard/DashboardFavorites.tsx";
 import DashboardSavedSearches from "./pages/dashboard/DashboardSavedSearches.tsx";
+import DashboardEditListing from "./pages/dashboard/DashboardEditListing.tsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -78,6 +79,7 @@ const App = () => (
           {/* Dashboard routes */}
           <Route path="/dashboard" element={<DashboardRoute><DashboardOverview /></DashboardRoute>} />
           <Route path="/dashboard/listinguri" element={<DashboardRoute><DashboardListings /></DashboardRoute>} />
+          <Route path="/dashboard/listinguri/:id/editeaza" element={<DashboardRoute><DashboardEditListing /></DashboardRoute>} />
           <Route path="/dashboard/recenzii" element={<DashboardRoute><DashboardReviews /></DashboardRoute>} />
           <Route path="/dashboard/mesaje" element={<DashboardRoute><DashboardMessages /></DashboardRoute>} />
           <Route path="/dashboard/statistici" element={<DashboardRoute><DashboardStats /></DashboardRoute>} />

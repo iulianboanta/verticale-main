@@ -78,10 +78,12 @@ const StepForm = ({
   plan,
   onBack,
   onSuccess,
+  mode = "create",
 }: {
   plan: Plan;
-  onBack: () => void;
-  onSuccess: () => void;
+  onBack?: () => void;
+  onSuccess?: () => void;
+  mode?: "create" | "edit";
 }) => {
   const [description, setDescription] = useState("");
   const [schedule, setSchedule] = useState(
@@ -140,6 +142,11 @@ const StepForm = ({
   const navigate = useNavigate();
 
   const handleSubmit = () => {
+    if (mode === "edit") {
+      toast.success("Modificările au fost salvate cu succes.");
+      navigate("/dashboard/listinguri");
+      return;
+    }
     if (!termsAccepted || !contractAccepted) {
       toast.error("Trebuie să accepți termenii și contractul pentru a continua.");
       return;
@@ -152,18 +159,21 @@ const StepForm = ({
   };
 
   return (
-    <div className="w-full max-w-[860px] mx-auto px-4 sm:px-8 pt-12 pb-32">
-      <ProgressIndicator currentStep={3} />
-
-      <div className="text-center mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
-          Completează profilul companiei tale
-        </h1>
-        <div className="flex items-center justify-center gap-2 mt-2">
-          <span className="text-sm text-muted-foreground">Plan selectat:</span>
-          <Badge variant={isPro ? "default" : "secondary"}>{planLabels[plan]}</Badge>
-        </div>
-      </div>
+    <div className={`w-full max-w-[860px] mx-auto px-4 sm:px-8 ${mode === "edit" ? "pt-2 pb-32" : "pt-12 pb-32"}`}>
+      {mode === "create" && (
+        <>
+          <ProgressIndicator currentStep={3} />
+          <div className="text-center mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
+              Completează profilul companiei tale
+            </h1>
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <span className="text-sm text-muted-foreground">Plan selectat:</span>
+              <Badge variant={isPro ? "default" : "secondary"}>{planLabels[plan]}</Badge>
+            </div>
+          </div>
+        </>
+      )}
 
       <div className="space-y-5">
         {/* SECTION 1 — Identity */}
@@ -650,14 +660,28 @@ const StepForm = ({
       {/* Sticky footer */}
       <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border px-4 sm:px-8 py-3 z-40">
         <div className="max-w-[860px] mx-auto flex items-center justify-between">
-          <span className="text-sm text-muted-foreground hidden sm:block">Pasul 3 din 3</span>
-          <Badge variant="secondary" className="hidden sm:inline-flex">{planLabels[plan]}</Badge>
-          <div className="flex gap-3 ml-auto">
-            <Button variant="ghost" onClick={onBack}>
-              <ArrowLeft className="w-4 h-4 mr-1" /> Înapoi
-            </Button>
-            <Button onClick={handleSubmit}>Continuă</Button>
-          </div>
+          {mode === "create" ? (
+            <>
+              <span className="text-sm text-muted-foreground hidden sm:block">Pasul 3 din 3</span>
+              <Badge variant="secondary" className="hidden sm:inline-flex">{planLabels[plan]}</Badge>
+              <div className="flex gap-3 ml-auto">
+                <Button variant="ghost" onClick={onBack}>
+                  <ArrowLeft className="w-4 h-4 mr-1" /> Înapoi
+                </Button>
+                <Button onClick={handleSubmit}>Continuă</Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <Badge variant="secondary" className="hidden sm:inline-flex">{planLabels[plan]}</Badge>
+              <div className="flex gap-3 ml-auto">
+                <Button variant="ghost" onClick={() => navigate("/dashboard/listinguri")}>
+                  Anulează
+                </Button>
+                <Button onClick={handleSubmit}>Salvează modificările</Button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
