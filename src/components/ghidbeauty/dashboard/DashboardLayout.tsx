@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { mockUser } from "@/data/dashboardMockData";
 import logo from "@/assets/ghidbeauty-logo.png";
+import DashboardBreadcrumb from "./DashboardBreadcrumb";
 
 const navSections = [
   {
