@@ -1,6 +1,8 @@
 import { articles, articleCategories } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
+import { articleCategoryToSlug, slugify } from "@/lib/slugs";
 
 const BlogSection = () => (
   <section id="blog" className="py-16">
@@ -10,9 +12,9 @@ const BlogSection = () => (
           <h2 className="text-2xl font-bold text-foreground md:text-3xl">Articole</h2>
           <p className="mt-1 text-sm text-muted-foreground">Sfaturi, tendințe și noutăți din lumea beauty.</p>
         </div>
-        <a href="#" className="text-xs font-semibold text-primary hover:underline transition-colors">
-          Vezi toate →
-        </a>
+        <Link to="/informatii" className="text-xs font-semibold text-primary hover:underline transition-colors">
+          Vezi toate articolele →
+        </Link>
       </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_260px]">
@@ -20,7 +22,8 @@ const BlogSection = () => (
         <div className="flex flex-col gap-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((a) => (
-              <article
+              <Link
+                to={`/informatii/${slugify(a.title)}`}
                 key={a.id}
                 className="group flex flex-col overflow-hidden rounded-xl bg-card border border-border transition-all hover:-translate-y-1 hover:shadow-md"
               >
@@ -52,7 +55,7 @@ const BlogSection = () => (
                     </span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 
@@ -78,8 +81,8 @@ const BlogSection = () => (
           <ul className="flex flex-col gap-1.5">
             {articleCategories.map((c, i) => (
               <li key={c}>
-                <a
-                  href="#"
+                <Link
+                  to={`/informatii/categorie/${articleCategoryToSlug(c)}`}
                   className="group/cat flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:shadow-sm"
                 >
                   <span className="flex items-center gap-2.5">
@@ -89,7 +92,7 @@ const BlogSection = () => (
                     {c}
                   </span>
                   <span className="text-xs opacity-0 transition-opacity group-hover/cat:opacity-100">→</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
