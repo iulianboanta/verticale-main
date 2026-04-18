@@ -1,26 +1,28 @@
 
 
-## Adăugare funcționalitate apelare + WhatsApp pe sticky bar (CompanyStickyBar)
+## Aplicare funcționalitate apelare + WhatsApp pe butoanele din `CompanySidebar`
 
 ### Context
-În `CompanyStickyBar.tsx` (bara navigare apare la scroll pe pagina detalii companie) butoanele **Sună** și **WhatsApp** sunt momentan butoane fără handler. Trebuie făcute funcționale.
+În `CompanySidebar.tsx` (formularul de contact din pagina detalii companie), butoanele **Sună**, **WhatsApp** și **Website** sunt momentan butoane fără handler/link. Aplicăm același pattern folosit cu succes pe sticky bar.
 
-### Modificări in `src/components/ghidbeauty/company/CompanyStickyBar.tsx`
+### Modificări în `src/components/ghidbeauty/company/CompanySidebar.tsx`
 
-1. **Extindere props** — pe lângă `name`, `rating`, `reviewCount`, `phone`, adăugăm `whatsapp?: string` în interface.
+1. **Buton "Sună {company.phone}"**:
+   - Folosim pattern-ul `asChild` + `<a href="tel:...">` pentru a fi tratat ca user gesture nativ.
+   - `tel:` href construit prin `company.phone.replace(/[^0-9+]/g, "")`.
 
-2. **Buton "Sună"** (desktop + mobile variant):
-   - `onClick={() => window.location.href = \`tel:${company.phone.replace(/\s/g, '')}\`}`
-   - Construim numărul în runtime (consistent cu strategia anti-bot existentă din `CompanyHeader`).
+2. **Buton "WhatsApp"**:
+   - Wrap în `<a href={company.whatsapp} target="_blank" rel="noopener noreferrer">` via `asChild`.
+   - Afișat doar dacă `company.whatsapp` există.
 
-3. **Buton "WhatsApp"** (desktop + mobile variant):
-   - Înfășurat într-un `<a href={company.whatsapp} target="_blank" rel="noopener">` doar dacă `company.whatsapp` există.
-   - Dacă lipsește → ascundem ambele variante (sm + sm:hidden).
+3. **Buton "Website"**:
+   - Wrap în `<a href={company.website} target="_blank" rel="noopener noreferrer">` via `asChild`.
+   - Afișat doar dacă `company.website` există.
 
-4. **Buton "Trimite mesaj"** — rămâne fără handler activ (nu face parte din cerere) sau scroll la secțiunea de contact dacă există. Plan: scroll smooth la `#reviews-section` sau la sidebar-ul de contact — dar doar ca polish opțional. **Nu îl atingem acum** pentru a respecta strict scope-ul ("cele două butoane").
+### Note
+- Nu modificăm formularul de mesaj (rămâne `onSubmit preventDefault`) — nu face parte din scope.
+- Nu schimbăm `CompanyHeader` în acest pas (același pattern este deja folosit acolo conform contextului anterior).
 
 ### Fișiere atinse
-- `src/components/ghidbeauty/company/CompanyStickyBar.tsx` — singura modificare
-
-Nu este nevoie de schimbări în `CompanyDetail.tsx` deoarece `company` (care conține `phone` și `whatsapp`) este deja transmis ca prop către `CompanyStickyBar`.
+- `src/components/ghidbeauty/company/CompanySidebar.tsx` — singura modificare
 
