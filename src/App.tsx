@@ -95,6 +95,7 @@ const App = () => (
 
           {/* Static SEO routes for category & county indexing — keep LAST so they don't shadow explicit routes */}
           <Route path="/:cat" element={<SearchResults mode="category" />} />
+          {/* /:cat/:sub resolves to either cat-sub or cat-county inside the page based on slug lookup */}
           <Route path="/:cat/:sub" element={<SearchResults mode="cat-sub" />} />
           <Route path="/:cat/:sub/:judet" element={<SearchResults mode="cat-sub-county" />} />
 
