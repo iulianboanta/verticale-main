@@ -24,7 +24,17 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useRobotsMeta } from "@/hooks/use-robots-meta";
 import { searchResults } from "@/data/searchMockData";
+import { Link } from "react-router-dom";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const emptyFilters: ActiveFilters = {
   categories: [],
