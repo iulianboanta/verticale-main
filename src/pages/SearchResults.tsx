@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams, Link } from "react-router-dom";
 import { SlidersHorizontal, SearchX } from "lucide-react";
 import Navbar from "@/components/ghidbeauty/Navbar";
 import Footer from "@/components/ghidbeauty/Footer";
@@ -18,7 +18,21 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { searchResults } from "@/data/searchMockData";
+import { useRobotsMeta } from "@/hooks/use-robots-meta";
+import {
+  slugToCategory,
+  slugToCounty,
+  slugToSubcategory,
+} from "@/lib/slugs";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -33,22 +47,84 @@ const emptyFilters: ActiveFilters = {
   onlyCounty: false,
 };
 
-const SearchResultsPage = () => {
+export type SearchMode =
+  | "query"        // /cautare?q=&unde=
+  | "county"       // /judet/[judet]
+  | "category"     // /[cat]
+  | "cat-sub"      // /[cat]/[sub]
+  | "cat-county"   // /[cat]/[judet]
+  | "cat-sub-county"; // /[cat]/[sub]/[judet]
+
+interface Props {
+  mode?: SearchMode;
+}
+
+const SearchResultsPage = ({ mode: modeProp = "query" }: Props) => {
   const [searchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("q") || "");
-  const [location, setLocation] = useState(searchParams.get("unde") || "");
+  const params = useParams();
+
+  // Resolve URL segments → display values
+  const segCategory = params.cat ? slugToCategory(params.cat) : null;
+
+  // /:cat/:sub may actually be /[cat]/[judet] — detect via slug lookup
+  let mode: SearchMode = modeProp;
+  if (modeProp === "cat-sub" && params.sub && slugToCounty(params.sub)) {
+    mode = "cat-county";
+  }
+
+  const segSubcategory =
+    (mode === "cat-sub" || mode === "cat-sub-county") && params.cat && params.sub
+      ? slugToSubcategory(params.cat, params.sub)
+      : null;
+
+  const segCounty = params.judet
+    ? slugToCounty(params.judet)
+    : mode === "cat-county" && params.sub
+    ? slugToCounty(params.sub)
+    : null;
+
+  const initialQuery = mode === "query"
+    ? searchParams.get("q") || ""
+    : segSubcategory ?? "";
+  const initialLocation = mode === "query"
+    ? searchParams.get("unde") || ""
+    : segCounty ?? "";
+
+  const [query, setQuery] = useState(initialQuery);
+  const [location, setLocation] = useState(initialLocation);
   const [view, setView] = useState<"list" | "grid" | "map">("list");
-  const [sort, setSort] = useState("relevance");
+  const [sort, setSort] = useState(
+    searchParams.get("sort") === "views"
+      ? "reviews"
+      : searchParams.get("sort") === "recent"
+      ? "alpha"
+      : "relevance",
+  );
   const [filters, setFilters] = useState<ActiveFilters>(emptyFilters);
   const [page, setPage] = useState(1);
+
+  // SEO: static URL pages → index. Search query page → noindex.
+  useRobotsMeta(mode === "query" ? "noindex, follow" : "index, follow");
 
   // Ad banner visibility flags
   const showSquareBanner = true;
   const showSkyscraperBanner = true;
 
+  // Pre-filter by URL segments (best-effort against mock data)
+  const segmentFiltered = useMemo(() => {
+    let arr = [...searchResults];
+    if (segCategory) {
+      arr = arr.filter((r) => r.category === segCategory);
+    }
+    if (segCounty) {
+      arr = arr.filter((r) => r.county === segCounty);
+    }
+    return arr.length ? arr : searchResults; // graceful: if 0, show all
+  }, [segCategory, segCounty]);
+
   // Sort results
   const sorted = useMemo(() => {
-    const arr = [...searchResults];
+    const arr = [...segmentFiltered];
     switch (sort) {
       case "rating":
         return arr.sort((a, b) => b.rating - a.rating);
@@ -63,7 +139,7 @@ const SearchResultsPage = () => {
           return pa - pb;
         });
     }
-  }, [sort]);
+  }, [sort, segmentFiltered]);
 
   const totalPages = Math.ceil(sorted.length / ITEMS_PER_PAGE);
   const paged = sorted.slice(
@@ -96,6 +172,57 @@ const SearchResultsPage = () => {
     />
   );
 
+  // ---------- Breadcrumb ----------
+  const renderBreadcrumb = () => {
+    const items: { label: string; href?: string }[] = [{ label: "Acasă", href: "/" }];
+
+    if (mode === "query") {
+      items.push({ label: "Rezultate" });
+    } else if (mode === "county" && segCounty) {
+      items.push({ label: "Județe", href: "/judete" });
+      items.push({ label: segCounty });
+    } else if (mode === "category" && segCategory) {
+      items.push({ label: segCategory });
+    } else if (mode === "cat-sub" && segCategory && params.cat) {
+      items.push({ label: segCategory, href: `/${params.cat}` });
+      items.push({ label: segSubcategory ?? params.sub ?? "" });
+    } else if (mode === "cat-county" && segCategory && params.cat) {
+      items.push({ label: segCategory, href: `/${params.cat}` });
+      items.push({ label: segCounty ?? params.judet ?? "" });
+    } else if (mode === "cat-sub-county" && segCategory && params.cat) {
+      items.push({ label: segCategory, href: `/${params.cat}` });
+      items.push({
+        label: segSubcategory ?? params.sub ?? "",
+        href: `/${params.cat}/${params.sub}`,
+      });
+      items.push({ label: segCounty ?? params.judet ?? "" });
+    }
+
+    return (
+      <Breadcrumb className="mb-3">
+        <BreadcrumbList>
+          {items.map((it, i) => {
+            const isLast = i === items.length - 1;
+            return (
+              <span key={i} className="contents">
+                <BreadcrumbItem>
+                  {isLast || !it.href ? (
+                    <BreadcrumbPage>{it.label}</BreadcrumbPage>
+                  ) : (
+                    <BreadcrumbLink asChild>
+                      <Link to={it.href}>{it.label}</Link>
+                    </BreadcrumbLink>
+                  )}
+                </BreadcrumbItem>
+                {!isLast && <BreadcrumbSeparator />}
+              </span>
+            );
+          })}
+        </BreadcrumbList>
+      </Breadcrumb>
+    );
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar variant="solid" />
@@ -108,6 +235,8 @@ const SearchResultsPage = () => {
       />
 
       <main className="flex-1 container pt-3 mt-14 pb-6">
+        {renderBreadcrumb()}
+
         <div className="flex gap-6">
           {/* Filters sidebar — desktop */}
           <aside className="hidden lg:block w-[240px] shrink-0">

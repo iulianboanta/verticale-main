@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { romanianCounties } from "@/data/mockData";
 import { MapPin } from "lucide-react";
+import { countyToSlug } from "@/lib/slugs";
 
 const CountiesGrid = () => (
   <section id="judete" className="py-16 bg-secondary/30">
@@ -14,7 +15,7 @@ const CountiesGrid = () => (
         {romanianCounties.map((county) => (
           <Link
             key={county}
-            to={`/cautare?unde=${encodeURIComponent(county)}`}
+            to={`/judet/${countyToSlug(county)}`}
             className="group flex items-center gap-2.5 rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-muted-foreground transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-sm hover:-translate-y-0.5"
           >
             <span className="flex h-6 w-6 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-white/20 group-hover:text-primary-foreground shrink-0">

@@ -60,8 +60,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/companie/:slug" element={<CompanyDetail />} />
-          <Route path="/cautare" element={<SearchResults />} />
+          <Route path="/cautare" element={<SearchResults mode="query" />} />
           <Route path="/cautare/harta" element={<SearchMapView />} />
+          <Route path="/judet/:judet" element={<SearchResults mode="county" />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/adauga-companie" element={<AddCompany />} />
           <Route path="/adauga-companie/confirmare" element={<ConfirmareFree />} />
@@ -91,6 +92,12 @@ const App = () => (
           <Route path="/dashboard/notificari" element={<DashboardRoute><DashboardNotifications /></DashboardRoute>} />
           <Route path="/dashboard/favorite" element={<DashboardRoute><DashboardFavorites /></DashboardRoute>} />
           <Route path="/dashboard/cautari-salvate" element={<DashboardRoute><DashboardSavedSearches /></DashboardRoute>} />
+
+          {/* Static SEO routes for category & county indexing — keep LAST so they don't shadow explicit routes */}
+          <Route path="/:cat" element={<SearchResults mode="category" />} />
+          {/* /:cat/:sub resolves to either cat-sub or cat-county inside the page based on slug lookup */}
+          <Route path="/:cat/:sub" element={<SearchResults mode="cat-sub" />} />
+          <Route path="/:cat/:sub/:judet" element={<SearchResults mode="cat-sub-county" />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -24,7 +24,17 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useRobotsMeta } from "@/hooks/use-robots-meta";
 import { searchResults } from "@/data/searchMockData";
+import { Link } from "react-router-dom";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const emptyFilters: ActiveFilters = {
   categories: [],
@@ -47,6 +57,9 @@ const SearchMapView = () => {
   const [filters, setFilters] = useState<ActiveFilters>(emptyFilters);
   const [activeId, setActiveId] = useState<string | null>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+
+  // SEO: map view of query search → noindex
+  useRobotsMeta("noindex, follow");
 
   // Sort: featured first
   const sorted = useMemo(() => {
@@ -107,6 +120,21 @@ const SearchMapView = () => {
       {/* Search bar */}
       <div className="shrink-0 z-40 bg-background border-b border-border">
         <div className="container py-2">
+          <Breadcrumb className="mb-2">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild><Link to="/">Acasă</Link></BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild><Link to="/cautare">Rezultate</Link></BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Hartă</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
           <div className="flex items-center gap-3">
             <div className="flex flex-1 max-w-2xl items-center gap-2 rounded-lg border border-input bg-card px-3 py-1.5">
               <AutosuggestInput

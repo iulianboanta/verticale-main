@@ -41,6 +41,7 @@ import {
   MessageSquare,
   Lock,
 } from "lucide-react";
+import { articleCategoryToSlug } from "@/lib/slugs";
 
 /* ------------------------------------------------------------------ */
 /*  HELPERS                                                            */
@@ -179,7 +180,7 @@ const ArticleDetail = () => {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink asChild><Link to={`/informatii?category=${article.category}`}>{article.category}</Link></BreadcrumbLink>
+                <BreadcrumbLink asChild><Link to={`/informatii/categorie/${articleCategoryToSlug(article.category)}`}>{article.category}</Link></BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
