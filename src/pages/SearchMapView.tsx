@@ -120,6 +120,21 @@ const SearchMapView = () => {
       {/* Search bar */}
       <div className="shrink-0 z-40 bg-background border-b border-border">
         <div className="container py-2">
+          <Breadcrumb className="mb-2">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild><Link to="/">Acasă</Link></BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild><Link to="/cautare">Rezultate</Link></BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Hartă</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
           <div className="flex items-center gap-3">
             <div className="flex flex-1 max-w-2xl items-center gap-2 rounded-lg border border-input bg-card px-3 py-1.5">
               <AutosuggestInput
