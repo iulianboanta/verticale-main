@@ -58,6 +58,9 @@ const SearchMapView = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
+  // SEO: map view of query search → noindex
+  useRobotsMeta("noindex, follow");
+
   // Sort: featured first
   const sorted = useMemo(() => {
     const arr = [...searchResults];
