@@ -36,18 +36,28 @@ const CompanySidebar = ({ company }: Props) => (
         <CardTitle className="text-lg">Contact</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        <Button className="w-full gap-2">
-          <Phone size={16} />
-          Sună {company.phone}
+        <Button asChild className="w-full gap-2">
+          <a href={`tel:${company.phone.replace(/[^0-9+]/g, "")}`}>
+            <Phone size={16} />
+            Sună {company.phone}
+          </a>
         </Button>
-        <Button className="w-full gap-2 bg-green-600 hover:bg-green-700 text-white">
-          <MessageCircle size={16} />
-          WhatsApp
-        </Button>
-        <Button variant="outline" className="w-full gap-2">
-          <Globe size={16} />
-          Website
-        </Button>
+        {company.whatsapp && (
+          <Button asChild className="w-full gap-2 bg-green-600 hover:bg-green-700 text-white">
+            <a href={company.whatsapp} target="_blank" rel="noopener noreferrer">
+              <MessageCircle size={16} />
+              WhatsApp
+            </a>
+          </Button>
+        )}
+        {company.website && (
+          <Button asChild variant="outline" className="w-full gap-2">
+            <a href={company.website} target="_blank" rel="noopener noreferrer">
+              <Globe size={16} />
+              Website
+            </a>
+          </Button>
+        )}
 
         <Separator />
 
