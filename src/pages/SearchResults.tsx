@@ -59,15 +59,29 @@ interface Props {
   mode?: SearchMode;
 }
 
-const SearchResultsPage = ({ mode = "query" }: Props) => {
+const SearchResultsPage = ({ mode: modeProp = "query" }: Props) => {
   const [searchParams] = useSearchParams();
   const params = useParams();
 
   // Resolve URL segments → display values
-  const segCounty = params.judet ? slugToCounty(params.judet) : null;
   const segCategory = params.cat ? slugToCategory(params.cat) : null;
+
+  // /:cat/:sub may actually be /[cat]/[judet] — detect via slug lookup
+  let mode: SearchMode = modeProp;
+  if (modeProp === "cat-sub" && params.sub && slugToCounty(params.sub)) {
+    mode = "cat-county";
+  }
+
   const segSubcategory =
-    params.cat && params.sub ? slugToSubcategory(params.cat, params.sub) : null;
+    (mode === "cat-sub" || mode === "cat-sub-county") && params.cat && params.sub
+      ? slugToSubcategory(params.cat, params.sub)
+      : null;
+
+  const segCounty = params.judet
+    ? slugToCounty(params.judet)
+    : mode === "cat-county" && params.sub
+    ? slugToCounty(params.sub)
+    : null;
 
   const initialQuery = mode === "query"
     ? searchParams.get("q") || ""
