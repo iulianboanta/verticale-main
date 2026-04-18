@@ -11,7 +11,7 @@ const CategoryGrid = () => {
             return (
               <Link
                 key={cat.slug}
-                to={`/cautare?q=${encodeURIComponent(cat.name)}`}
+                to={`/${cat.slug}`}
                 className="group flex flex-col items-center gap-3 rounded-xl bg-primary p-5 shadow-sm border border-primary transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:bg-primary-dark hover:border-primary-dark"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-primary-foreground transition-colors group-hover:bg-white/30">
