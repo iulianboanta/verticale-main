@@ -32,7 +32,7 @@ const CompanyDetail = () => {
 
       <main className="flex-1 pt-16">
         <div className="container py-6">
-          <CompanyBreadcrumb category={company.category} city={company.city} name={company.name} />
+          <CompanyBreadcrumb category={company.category} city={company.city} county={company.county} name={company.name} />
           <CompanyHeader company={company} />
 
           <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
