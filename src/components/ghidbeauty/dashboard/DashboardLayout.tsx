@@ -206,6 +206,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       {/* Main content */}
       <main className="lg:ml-60 pt-14 pb-20 lg:pb-0 min-h-screen">
         <div className="p-4 sm:p-6 lg:p-8 max-w-6xl">
+          <DashboardBreadcrumb />
           {children}
         </div>
       </main>
