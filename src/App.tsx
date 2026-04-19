@@ -38,6 +38,21 @@ import DashboardFavorites from "./pages/dashboard/DashboardFavorites.tsx";
 import DashboardSavedSearches from "./pages/dashboard/DashboardSavedSearches.tsx";
 import DashboardEditListing from "./pages/dashboard/DashboardEditListing.tsx";
 
+// Admin (manage) panel
+import AdminProtected from "./components/manage/AdminProtected";
+import AdminLayout from "./components/manage/AdminLayout";
+import ManageLogin from "./pages/manage/Login";
+import ManageDashboard from "./pages/manage/Dashboard";
+import { AllListings, PendingListings, ActiveListings, ExpiredListings, RejectedListings } from "./pages/manage/listings/ListingsPages";
+import ManageEditListing from "./pages/manage/listings/EditListing";
+import { AllOrders, UnpaidProforma, ConfirmedPayments, ConfirmPaymentLanding } from "./pages/manage/orders/OrdersPages";
+import OrderDetail from "./pages/manage/orders/OrderDetail";
+import { AllUsers, NewUser } from "./pages/manage/users/UsersPages";
+import { PendingReviews, AllReviews } from "./pages/manage/reviews/ReviewsPages";
+import { ArticlesList, EditArticle, ArticleCategoriesPage } from "./pages/manage/articles/ArticlesPages";
+import { ListingCategories, SubcategoriesPage, ServicesFacilities, CountiesPage, BannersPage, SettingsPage } from "./pages/manage/admin/AdminPages";
+import { PlatformStats, ListingsReport, RevenueReport } from "./pages/manage/reports/ReportsPages";
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
@@ -92,6 +107,37 @@ const App = () => (
           <Route path="/dashboard/notificari" element={<DashboardRoute><DashboardNotifications /></DashboardRoute>} />
           <Route path="/dashboard/favorite" element={<DashboardRoute><DashboardFavorites /></DashboardRoute>} />
           <Route path="/dashboard/cautari-salvate" element={<DashboardRoute><DashboardSavedSearches /></DashboardRoute>} />
+
+          {/* Admin (manage) panel — must be before catch-all dynamic routes */}
+          <Route path="/manage/login" element={<ManageLogin />} />
+          <Route path="/manage" element={<AdminProtected><AdminLayout><ManageDashboard /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/listings" element={<AdminProtected><AdminLayout><AllListings /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/listings/pending" element={<AdminProtected><AdminLayout><PendingListings /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/listings/active" element={<AdminProtected><AdminLayout><ActiveListings /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/listings/expired" element={<AdminProtected><AdminLayout><ExpiredListings /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/listings/rejected" element={<AdminProtected><AdminLayout><RejectedListings /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/listings/:id/edit" element={<AdminProtected><AdminLayout><ManageEditListing /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/orders" element={<AdminProtected><AdminLayout><AllOrders /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/orders/unpaid" element={<AdminProtected><AdminLayout><UnpaidProforma /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/orders/confirmed" element={<AdminProtected><AdminLayout><ConfirmedPayments /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/orders/confirm" element={<AdminProtected><AdminLayout><ConfirmPaymentLanding /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/orders/:id" element={<AdminProtected><AdminLayout><OrderDetail /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/users" element={<AdminProtected><AdminLayout><AllUsers /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/users/new" element={<AdminProtected><AdminLayout><NewUser /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/reviews" element={<AdminProtected><AdminLayout><AllReviews /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/reviews/pending" element={<AdminProtected><AdminLayout><PendingReviews /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/articles" element={<AdminProtected><AdminLayout><ArticlesList /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/articles/categories" element={<AdminProtected><AdminLayout><ArticleCategoriesPage /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/articles/:id/edit" element={<AdminProtected><AdminLayout><EditArticle /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/admin/categories" element={<AdminProtected><AdminLayout><ListingCategories /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/admin/subcategories" element={<AdminProtected><AdminLayout><SubcategoriesPage /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/admin/services" element={<AdminProtected><AdminLayout><ServicesFacilities /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/admin/counties" element={<AdminProtected><AdminLayout><CountiesPage /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/admin/banners" element={<AdminProtected><AdminLayout><BannersPage /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/admin/settings" element={<AdminProtected><AdminLayout><SettingsPage /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/reports/stats" element={<AdminProtected><AdminLayout><PlatformStats /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/reports/listings" element={<AdminProtected><AdminLayout><ListingsReport /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/reports/revenue" element={<AdminProtected><AdminLayout><RevenueReport /></AdminLayout></AdminProtected>} />
 
           {/* Static SEO routes for category & county indexing — keep LAST so they don't shadow explicit routes */}
           <Route path="/:cat" element={<SearchResults mode="category" />} />
