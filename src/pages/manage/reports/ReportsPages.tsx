@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatCard from "@/components/manage/StatCard";
 import { Download, List, Users, ShoppingCart, Wallet, Eye } from "lucide-react";
-import { ResponsiveContainer, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { ResponsiveContainer, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import { manageListings, manageOrders, manageUsers, monthlyListings, revenueByMonth, listingCategoriesTree, counties } from "@/data/manageMockData";
 
 const totalRevenue = revenueByMonth.reduce((s, r) => s + r.revenue, 0);

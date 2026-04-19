@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+
 import { ChevronRight, ChevronDown, Pencil, Trash2, Plus, X, Info } from "lucide-react";
 import StatusPill from "@/components/manage/StatusPill";
 import { listingCategoriesTree, services, facilities, counties, manageBanners, platformSettings, CategoryNode } from "@/data/manageMockData";
