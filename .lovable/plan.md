@@ -1,28 +1,26 @@
 
 
-## Aplicare funcționalitate apelare + WhatsApp pe butoanele din `CompanySidebar`
+## Modificare butoane in Dashboard Overview
 
 ### Context
-În `CompanySidebar.tsx` (formularul de contact din pagina detalii companie), butoanele **Sună**, **WhatsApp** și **Website** sunt momentan butoane fără handler/link. Aplicăm același pattern folosit cu succes pe sticky bar.
+Pe pagina `/dashboard` (overview), avem doua butoane de actiune in tabele/carduri care nu au navigare:
+1. Butonul **Editare** din randurile listing-urilor (sectiunea "Listingurile mele")
+2. Butonul **Raspunde** din cardurile de recenzii (sectiunea "Recenzii recente")
 
-### Modificări în `src/components/ghidbeauty/company/CompanySidebar.tsx`
+Le transformam in butoane de tip "Administreaza" care navigheaza catre paginile dedicate de management.
 
-1. **Buton "Sună {company.phone}"**:
-   - Folosim pattern-ul `asChild` + `<a href="tel:...">` pentru a fi tratat ca user gesture nativ.
-   - `tel:` href construit prin `company.phone.replace(/[^0-9+]/g, "")`.
+### Modificari in `src/pages/dashboard/DashboardOverview.tsx`
 
-2. **Buton "WhatsApp"**:
-   - Wrap în `<a href={company.whatsapp} target="_blank" rel="noopener noreferrer">` via `asChild`.
-   - Afișat doar dacă `company.whatsapp` există.
+**1. Buton "Editare" → "Administreaza"** (linia ~135):
+- Schimbam textul din `Editare` in `Administreaza`.
+- Inlocuim `<Button>` simplu cu `<Link to="/dashboard/listinguri">` care wrap-uieste butonul (folosind `asChild`).
+- Toate randurile duc la pagina centrala `Toate listingurile`.
 
-3. **Buton "Website"**:
-   - Wrap în `<a href={company.website} target="_blank" rel="noopener noreferrer">` via `asChild`.
-   - Afișat doar dacă `company.website` există.
+**2. Buton "Raspunde" → "Administreaza"** (linia ~174):
+- Schimbam textul din `Raspunde` in `Administreaza`.
+- Eliminam conditia `!r.replied` (butonul apare la toate recenziile, fiind doar un shortcut catre pagina).
+- Wrap in `<Link to="/dashboard/recenzii">` cu `asChild`.
 
-### Note
-- Nu modificăm formularul de mesaj (rămâne `onSubmit preventDefault`) — nu face parte din scope.
-- Nu schimbăm `CompanyHeader` în acest pas (același pattern este deja folosit acolo conform contextului anterior).
-
-### Fișiere atinse
-- `src/components/ghidbeauty/company/CompanySidebar.tsx` — singura modificare
+### Fisiere atinse
+- `src/pages/dashboard/DashboardOverview.tsx` — singura modificare
 
