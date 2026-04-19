@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Despre noi", href: "/despre-noi" },
   { label: "Articole", href: "/informatii" },
   { label: "Contact", href: "/contact" },
+  { label: "Admin", href: "/manage" },
 ];
 
 const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid" }) => {
