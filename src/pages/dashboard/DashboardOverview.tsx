@@ -132,7 +132,9 @@ const DashboardOverview = () => (
                   </td>
                   <td className="p-3 text-right hidden sm:table-cell text-muted-foreground">{l.plan === "Gratuit" ? "Nelimitat" : l.expiryDate}</td>
                   <td className="p-3 text-right">
-                    <Button variant="ghost" size="sm" className="text-xs h-7">Editare</Button>
+                    <Button asChild variant="ghost" size="sm" className="text-xs h-7">
+                      <Link to="/dashboard/listinguri">Administreaza</Link>
+                    </Button>
                   </td>
                 </tr>
               ))}
@@ -170,9 +172,9 @@ const DashboardOverview = () => (
                   <p className="text-xs text-muted-foreground mb-1">{r.listingName} &middot; {r.date}</p>
                   <p className="text-sm text-foreground/80">{r.text}</p>
                 </div>
-                {!r.replied && (
-                  <Button variant="outline" size="sm" className="text-xs h-7 shrink-0">Raspunde</Button>
-                )}
+                <Button asChild variant="outline" size="sm" className="text-xs h-7 shrink-0">
+                  <Link to="/dashboard/recenzii">Administreaza</Link>
+                </Button>
               </div>
             </CardContent>
           </Card>
