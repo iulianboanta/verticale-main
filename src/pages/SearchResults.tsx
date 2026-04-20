@@ -33,6 +33,7 @@ import {
   slugToCounty,
   slugToSubcategory,
 } from "@/lib/slugs";
+import NotFound from "@/pages/NotFound";
 
 const ITEMS_PER_PAGE = 8;
 
