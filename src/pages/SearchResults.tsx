@@ -107,6 +107,19 @@ const SearchResultsPage = ({ mode: modeProp = "query" }: Props) => {
   // SEO: static URL pages → index. Search query page → noindex.
   useRobotsMeta(mode === "query" ? "noindex, follow" : "index, follow");
 
+  // Validate URL slugs against known data — invalid → 404
+  const invalidCategory = !!params.cat && !segCategory;
+  const invalidCounty =
+    (!!params.judet && !segCounty) ||
+    (mode === "cat-county" && !!params.sub && !segCounty);
+  const invalidSubcategory =
+    (mode === "cat-sub" || mode === "cat-sub-county") &&
+    !!params.sub &&
+    !segSubcategory &&
+    !(mode === "cat-sub" && params.sub && slugToCounty(params.sub));
+  const isInvalidUrl =
+    mode !== "query" && (invalidCategory || invalidCounty || invalidSubcategory);
+
   // Ad banner visibility flags
   const showSquareBanner = true;
   const showSkyscraperBanner = true;
