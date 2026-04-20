@@ -2,8 +2,8 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Search, Home, ArrowLeft, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Navbar } from "@/components/ghidbeauty/Navbar";
-import { Footer } from "@/components/ghidbeauty/Footer";
+import Navbar from "@/components/ghidbeauty/Navbar";
+import Footer from "@/components/ghidbeauty/Footer";
 
 const NotFound = () => {
   const location = useLocation();
