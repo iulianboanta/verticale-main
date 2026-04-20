@@ -161,6 +161,10 @@ const SearchResultsPage = ({ mode: modeProp = "query" }: Props) => {
     page * ITEMS_PER_PAGE
   );
 
+  if (isInvalidUrl) {
+    return <NotFound />;
+  }
+
   const handleRemoveFilter = (type: keyof ActiveFilters, value?: string) => {
     const updated = { ...filters };
     if (type === "categories" && value)
