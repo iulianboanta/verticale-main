@@ -8,10 +8,12 @@ import CompanyHeader from "@/components/ghidbeauty/company/CompanyHeader";
 import CompanyBody from "@/components/ghidbeauty/company/CompanyBody";
 import CompanySidebar from "@/components/ghidbeauty/company/CompanySidebar";
 import { companyData } from "@/data/companyMockData";
+import NotFound from "@/pages/NotFound";
 
 const CompanyDetail = () => {
   const { slug } = useParams();
   const company = companyData; // mock — would fetch by slug
+  const isValid = !slug || slug === companyData.slug;
 
   const [showStickyBar, setShowStickyBar] = useState(false);
 
@@ -24,6 +26,10 @@ const CompanyDetail = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  if (!isValid) {
+    return <NotFound />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
