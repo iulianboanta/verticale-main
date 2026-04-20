@@ -8,9 +8,16 @@ import CompanyHeader from "@/components/ghidbeauty/company/CompanyHeader";
 import CompanyBody from "@/components/ghidbeauty/company/CompanyBody";
 import CompanySidebar from "@/components/ghidbeauty/company/CompanySidebar";
 import { companyData } from "@/data/companyMockData";
+import NotFound from "@/pages/NotFound";
 
 const CompanyDetail = () => {
   const { slug } = useParams();
+
+  // Validate slug — only the mock company is "known"
+  if (slug && slug !== companyData.slug) {
+    return <NotFound />;
+  }
+
   const company = companyData; // mock — would fetch by slug
 
   const [showStickyBar, setShowStickyBar] = useState(false);
