@@ -11,12 +11,10 @@ import {
   CreditCard,
   CheckSquare,
   Users,
-  UserPlus,
   Star,
   StarHalf,
   Newspaper,
   Folder,
-  Plus,
   Tag,
   Layers,
   Sparkles,
@@ -58,7 +56,6 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
     title: "UTILIZATORI",
     items: [
       { to: "/manage/users", label: "Toți utilizatorii", icon: Users, end: true },
-      { to: "/manage/users/new", label: "Adaugă utilizator", icon: UserPlus },
     ],
   },
   {
@@ -73,7 +70,6 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
     items: [
       { to: "/manage/articles", label: "Articole", icon: Newspaper, end: true },
       { to: "/manage/articles/categories", label: "Categorii articole", icon: Folder },
-      { to: "/manage/articles/new/edit", label: "Adaugă articol", icon: Plus },
     ],
   },
   {
