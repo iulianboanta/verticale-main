@@ -26,7 +26,9 @@ import {
   BarChart3,
   TrendingUp,
   Wallet,
+  ExternalLink,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const sections: { title: string; items: { to: string; label: string; icon: any; end?: boolean }[] }[] = [
   {
@@ -98,6 +100,18 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
 const AdminSidebar = ({ onNavigate }: { onNavigate?: () => void }) => {
   return (
     <aside className="w-[220px] shrink-0 bg-card border-r h-full overflow-y-auto">
+      <div className="p-4 border-b">
+        <Button
+          variant="outline"
+          className="w-full justify-start gap-2"
+          asChild
+        >
+          <a href="/" target="_blank" rel="noopener noreferrer">
+            <ExternalLink size={16} />
+            Vezi site
+          </a>
+        </Button>
+      </div>
       <nav className="py-4">
         {sections.map((section) => (
           <div key={section.title} className="mb-4">
