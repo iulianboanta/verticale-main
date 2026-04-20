@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, Menu } from "lucide-react";
+import { LogOut, Menu, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getAdminUser, logout } from "@/lib/adminAuth";
@@ -41,6 +41,17 @@ const AdminTopBar = ({ onMenuClick }: { onMenuClick: () => void }) => {
             </Badge>
           </>
         )}
+        <Button
+          variant="ghost"
+          size="sm"
+          className="text-white/80 hover:text-white hover:bg-white/10"
+          asChild
+        >
+          <a href="/" target="_blank" rel="noopener noreferrer">
+            <ExternalLink size={16} />
+            <span className="hidden sm:inline">Vezi site</span>
+          </a>
+        </Button>
         <Button
           variant="ghost"
           size="sm"
