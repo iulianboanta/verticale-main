@@ -12,13 +12,8 @@ import NotFound from "@/pages/NotFound";
 
 const CompanyDetail = () => {
   const { slug } = useParams();
-
-  // Validate slug — only the mock company is "known"
-  if (slug && slug !== companyData.slug) {
-    return <NotFound />;
-  }
-
   const company = companyData; // mock — would fetch by slug
+  const isValid = !slug || slug === companyData.slug;
 
   const [showStickyBar, setShowStickyBar] = useState(false);
 
@@ -31,6 +26,10 @@ const CompanyDetail = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  if (!isValid) {
+    return <NotFound />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
