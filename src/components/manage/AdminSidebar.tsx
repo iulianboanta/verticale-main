@@ -33,6 +33,7 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
     items: [
       { to: "/manage/listings", label: "Listinguri", icon: List, end: true },
       { to: "/manage/admin/categories", label: "Categorii Listinguri", icon: Tag },
+      { to: "/manage/admin/services", label: "Servicii & Facilități", icon: Sparkles },
     ],
   },
   {
@@ -67,7 +68,6 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
   {
     title: "ADMINISTRARE",
     items: [
-      { to: "/manage/admin/services", label: "Servicii & Facilități", icon: Sparkles },
       { to: "/manage/admin/counties", label: "Zone & Județe", icon: MapPin },
       { to: "/manage/admin/banners", label: "Bannere publicitare", icon: ImageIcon },
       { to: "/manage/admin/settings", label: "Setări platformă", icon: Settings },
