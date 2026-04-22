@@ -2,10 +2,6 @@ import { NavLink } from "react-router-dom";
 import {
   LayoutDashboard,
   List,
-  Clock,
-  CheckCircle2,
-  XCircle,
-  AlertOctagon,
   ShoppingCart,
   FileText,
   CreditCard,
@@ -16,7 +12,6 @@ import {
   Newspaper,
   Folder,
   Tag,
-  Layers,
   Sparkles,
   MapPin,
   Image as ImageIcon,
@@ -34,13 +29,10 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
     items: [{ to: "/manage", label: "Dashboard", icon: LayoutDashboard, end: true }],
   },
   {
-    title: "LISTINGS",
+    title: "LISTINGS MANAGEMENT",
     items: [
-      { to: "/manage/listings", label: "Toate listingurile", icon: List, end: true },
-      { to: "/manage/listings/pending", label: "În așteptare aprobare", icon: Clock },
-      { to: "/manage/listings/active", label: "Listinguri active", icon: CheckCircle2 },
-      { to: "/manage/listings/expired", label: "Listinguri expirate", icon: AlertOctagon },
-      { to: "/manage/listings/rejected", label: "Listinguri respinse", icon: XCircle },
+      { to: "/manage/listings", label: "Listinguri", icon: List, end: true },
+      { to: "/manage/admin/categories", label: "Categorii Listinguri", icon: Tag },
     ],
   },
   {
@@ -75,8 +67,6 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
   {
     title: "ADMINISTRARE",
     items: [
-      { to: "/manage/admin/categories", label: "Categorii listing", icon: Tag },
-      { to: "/manage/admin/subcategories", label: "Subcategorii", icon: Layers },
       { to: "/manage/admin/services", label: "Servicii & Facilități", icon: Sparkles },
       { to: "/manage/admin/counties", label: "Zone & Județe", icon: MapPin },
       { to: "/manage/admin/banners", label: "Bannere publicitare", icon: ImageIcon },

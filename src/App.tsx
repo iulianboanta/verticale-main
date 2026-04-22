@@ -43,14 +43,14 @@ import AdminProtected from "./components/manage/AdminProtected";
 import AdminLayout from "./components/manage/AdminLayout";
 import ManageLogin from "./pages/manage/Login";
 import ManageDashboard from "./pages/manage/Dashboard";
-import { AllListings, PendingListings, ActiveListings, ExpiredListings, RejectedListings } from "./pages/manage/listings/ListingsPages";
+import { AllListings } from "./pages/manage/listings/ListingsPages";
 import ManageEditListing from "./pages/manage/listings/EditListing";
 import { AllOrders, UnpaidProforma, ConfirmedPayments, ConfirmPaymentLanding } from "./pages/manage/orders/OrdersPages";
 import OrderDetail from "./pages/manage/orders/OrderDetail";
 import { AllUsers, NewUser } from "./pages/manage/users/UsersPages";
 import { PendingReviews, AllReviews } from "./pages/manage/reviews/ReviewsPages";
 import { ArticlesList, EditArticle, ArticleCategoriesPage } from "./pages/manage/articles/ArticlesPages";
-import { ListingCategories, SubcategoriesPage, ServicesFacilities, CountiesPage, BannersPage, SettingsPage } from "./pages/manage/admin/AdminPages";
+import { ListingCategories, ServicesFacilities, CountiesPage, BannersPage, SettingsPage } from "./pages/manage/admin/AdminPages";
 import { PlatformStats, ListingsReport, RevenueReport } from "./pages/manage/reports/ReportsPages";
 
 const ScrollToTop = () => {
@@ -112,10 +112,6 @@ const App = () => (
           <Route path="/manage/login" element={<ManageLogin />} />
           <Route path="/manage" element={<AdminProtected><AdminLayout><ManageDashboard /></AdminLayout></AdminProtected>} />
           <Route path="/manage/listings" element={<AdminProtected><AdminLayout><AllListings /></AdminLayout></AdminProtected>} />
-          <Route path="/manage/listings/pending" element={<AdminProtected><AdminLayout><PendingListings /></AdminLayout></AdminProtected>} />
-          <Route path="/manage/listings/active" element={<AdminProtected><AdminLayout><ActiveListings /></AdminLayout></AdminProtected>} />
-          <Route path="/manage/listings/expired" element={<AdminProtected><AdminLayout><ExpiredListings /></AdminLayout></AdminProtected>} />
-          <Route path="/manage/listings/rejected" element={<AdminProtected><AdminLayout><RejectedListings /></AdminLayout></AdminProtected>} />
           <Route path="/manage/listings/:id/edit" element={<AdminProtected><AdminLayout><ManageEditListing /></AdminLayout></AdminProtected>} />
           <Route path="/manage/orders" element={<AdminProtected><AdminLayout><AllOrders /></AdminLayout></AdminProtected>} />
           <Route path="/manage/orders/unpaid" element={<AdminProtected><AdminLayout><UnpaidProforma /></AdminLayout></AdminProtected>} />
@@ -130,7 +126,6 @@ const App = () => (
           <Route path="/manage/articles/categories" element={<AdminProtected><AdminLayout><ArticleCategoriesPage /></AdminLayout></AdminProtected>} />
           <Route path="/manage/articles/:id/edit" element={<AdminProtected><AdminLayout><EditArticle /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/categories" element={<AdminProtected><AdminLayout><ListingCategories /></AdminLayout></AdminProtected>} />
-          <Route path="/manage/admin/subcategories" element={<AdminProtected><AdminLayout><SubcategoriesPage /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/services" element={<AdminProtected><AdminLayout><ServicesFacilities /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/counties" element={<AdminProtected><AdminLayout><CountiesPage /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/banners" element={<AdminProtected><AdminLayout><BannersPage /></AdminLayout></AdminProtected>} />
