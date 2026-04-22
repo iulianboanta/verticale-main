@@ -60,6 +60,7 @@ const OrdersTable = () => {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<OrderStatus | "all">("all");
   const [planFilter, setPlanFilter] = useState<Plan | "all">("all");
+  const [validityFilter, setValidityFilter] = useState<"all" | "active" | "expired">("all");
   const [validateOrder, setValidateOrder] = useState<ManageOrder | null>(null);
   const [deleteOrder, setDeleteOrder] = useState<ManageOrder | null>(null);
 
@@ -68,9 +69,15 @@ const OrdersTable = () => {
   const filtered = useMemo(() => orders.filter((o) => {
     if (statusFilter !== "all" && o.status !== statusFilter) return false;
     if (planFilter !== "all" && o.plan !== planFilter) return false;
+    if (validityFilter !== "all") {
+      if (!o.expiresAt) return false;
+      const days = Math.ceil((new Date(o.expiresAt).getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+      if (validityFilter === "active" && days <= 0) return false;
+      if (validityFilter === "expired" && days > 0) return false;
+    }
     if (search && !o.company.toLowerCase().includes(search.toLowerCase()) && !o.number.toLowerCase().includes(search.toLowerCase())) return false;
     return true;
-  }), [orders, search, statusFilter, planFilter]);
+  }), [orders, search, statusFilter, planFilter, validityFilter]);
 
   const handleValidate = () => {
     if (!validateOrder) return;
@@ -117,6 +124,14 @@ const OrdersTable = () => {
               {uniquePlans.map((p) => (
                 <SelectItem key={p} value={p}>{p}</SelectItem>
               ))}
+            </SelectContent>
+          </Select>
+          <Select value={validityFilter} onValueChange={(v) => setValidityFilter(v as "all" | "active" | "expired")}>
+            <SelectTrigger className="w-[180px]"><SelectValue placeholder="Valabilitate" /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Toate</SelectItem>
+              <SelectItem value="active">Active</SelectItem>
+              <SelectItem value="expired">Expirate</SelectItem>
             </SelectContent>
           </Select>
         </div>
