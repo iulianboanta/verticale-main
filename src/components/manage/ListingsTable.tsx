@@ -11,7 +11,17 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { Textarea } from "@/components/ui/textarea";
 import { Eye, Pencil, Check, X, Trash2, Search } from "lucide-react";
 import StatusPill from "@/components/manage/StatusPill";
+import { cn } from "@/lib/utils";
 import { manageListings, ManageListing, ListingStatus, Plan } from "@/data/manageMockData";
+
+type StatusTab = ListingStatus | "all";
+const statusTabs: { value: StatusTab; label: string }[] = [
+  { value: "all", label: "Toate" },
+  { value: "active", label: "Active" },
+  { value: "pending", label: "În așteptare" },
+  { value: "expired", label: "Expirate" },
+  { value: "rejected", label: "Respinse" },
+];
 
 const statusLabel: Record<ListingStatus, string> = {
   active: "Activ",
@@ -29,12 +39,14 @@ const statusVariant: Record<ListingStatus, "success" | "warning" | "muted" | "da
 const ListingsTable = ({
   initialStatus,
   hideStatusFilter,
+  defaultTab,
 }: {
   initialStatus?: ListingStatus;
   hideStatusFilter?: boolean;
+  defaultTab?: StatusTab;
 }) => {
   const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState<ListingStatus | "all">(initialStatus ?? "all");
+  const [statusFilter, setStatusFilter] = useState<StatusTab>(defaultTab ?? initialStatus ?? "all");
   const [planFilter, setPlanFilter] = useState<Plan | "all">("all");
   const [selected, setSelected] = useState<string[]>([]);
   const [viewItem, setViewItem] = useState<ManageListing | null>(null);
@@ -58,8 +70,39 @@ const ListingsTable = ({
   const toggleOne = (id: string) =>
     setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
 
+  const statusCounts = useMemo(() => {
+    const counts: Record<StatusTab, number> = { all: manageListings.length, active: 0, pending: 0, expired: 0, rejected: 0 };
+    manageListings.forEach((l) => { counts[l.status] += 1; });
+    return counts;
+  }, []);
+
   return (
     <div className="space-y-4">
+      {!hideStatusFilter && (
+        <div className="flex flex-wrap gap-1 border-b">
+          {statusTabs.map((tab) => {
+            const isActive = statusFilter === tab.value;
+            return (
+              <button
+                key={tab.value}
+                type="button"
+                onClick={() => setStatusFilter(tab.value)}
+                className={cn(
+                  "px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors",
+                  isActive
+                    ? "border-primary text-primary bg-primary/5"
+                    : "border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                )}
+              >
+                {tab.label}
+                <span className={cn("ml-1.5 text-xs", isActive ? "text-primary/80" : "text-muted-foreground/70")}>
+                  ({statusCounts[tab.value]})
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
       <Card className="p-4">
         <div className="flex flex-wrap gap-2">
           <div className="relative flex-1 min-w-[200px]">
@@ -71,18 +114,6 @@ const ListingsTable = ({
               className="pl-9"
             />
           </div>
-          {!hideStatusFilter && (
-            <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v as any)}>
-              <SelectTrigger className="w-[160px]"><SelectValue placeholder="Status" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Toate statusurile</SelectItem>
-                <SelectItem value="active">Activ</SelectItem>
-                <SelectItem value="pending">În așteptare</SelectItem>
-                <SelectItem value="expired">Expirat</SelectItem>
-                <SelectItem value="rejected">Respins</SelectItem>
-              </SelectContent>
-            </Select>
-          )}
           <Select value={planFilter} onValueChange={(v) => setPlanFilter(v as any)}>
             <SelectTrigger className="w-[160px]"><SelectValue placeholder="Plan" /></SelectTrigger>
             <SelectContent>
