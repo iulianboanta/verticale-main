@@ -68,7 +68,6 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
   {
     title: "ADMINISTRARE",
     items: [
-      { to: "/manage/admin/services", label: "Servicii & Facilități", icon: Sparkles },
       { to: "/manage/admin/counties", label: "Zone & Județe", icon: MapPin },
       { to: "/manage/admin/banners", label: "Bannere publicitare", icon: ImageIcon },
       { to: "/manage/admin/settings", label: "Setări platformă", icon: Settings },
