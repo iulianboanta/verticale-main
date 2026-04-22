@@ -45,7 +45,7 @@ import ManageLogin from "./pages/manage/Login";
 import ManageDashboard from "./pages/manage/Dashboard";
 import { AllListings } from "./pages/manage/listings/ListingsPages";
 import ManageEditListing from "./pages/manage/listings/EditListing";
-import { AllOrders, UnpaidProforma, ConfirmedPayments, ConfirmPaymentLanding } from "./pages/manage/orders/OrdersPages";
+import { AllOrders } from "./pages/manage/orders/OrdersPages";
 import OrderDetail from "./pages/manage/orders/OrderDetail";
 import { AllUsers, NewUser } from "./pages/manage/users/UsersPages";
 import { PendingReviews, AllReviews } from "./pages/manage/reviews/ReviewsPages";
@@ -114,9 +114,6 @@ const App = () => (
           <Route path="/manage/listings" element={<AdminProtected><AdminLayout><AllListings /></AdminLayout></AdminProtected>} />
           <Route path="/manage/listings/:id/edit" element={<AdminProtected><AdminLayout><ManageEditListing /></AdminLayout></AdminProtected>} />
           <Route path="/manage/orders" element={<AdminProtected><AdminLayout><AllOrders /></AdminLayout></AdminProtected>} />
-          <Route path="/manage/orders/unpaid" element={<AdminProtected><AdminLayout><UnpaidProforma /></AdminLayout></AdminProtected>} />
-          <Route path="/manage/orders/confirmed" element={<AdminProtected><AdminLayout><ConfirmedPayments /></AdminLayout></AdminProtected>} />
-          <Route path="/manage/orders/confirm" element={<AdminProtected><AdminLayout><ConfirmPaymentLanding /></AdminLayout></AdminProtected>} />
           <Route path="/manage/orders/:id" element={<AdminProtected><AdminLayout><OrderDetail /></AdminLayout></AdminProtected>} />
           <Route path="/manage/users" element={<AdminProtected><AdminLayout><AllUsers /></AdminLayout></AdminProtected>} />
           <Route path="/manage/users/new" element={<AdminProtected><AdminLayout><NewUser /></AdminLayout></AdminProtected>} />

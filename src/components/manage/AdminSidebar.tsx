@@ -3,9 +3,6 @@ import {
   LayoutDashboard,
   List,
   ShoppingCart,
-  FileText,
-  CreditCard,
-  CheckSquare,
   Users,
   Star,
   StarHalf,
@@ -34,15 +31,7 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
       { to: "/manage/listings", label: "Listinguri", icon: List, end: true },
       { to: "/manage/admin/categories", label: "Categorii Listinguri", icon: Tag },
       { to: "/manage/admin/services", label: "Servicii & Facilități", icon: Sparkles },
-    ],
-  },
-  {
-    title: "COMENZI & PLĂȚI",
-    items: [
-      { to: "/manage/orders", label: "Toate comenzile", icon: ShoppingCart, end: true },
-      { to: "/manage/orders/unpaid", label: "Proforma neachitate", icon: FileText },
-      { to: "/manage/orders/confirmed", label: "Plăți confirmate", icon: CreditCard },
-      { to: "/manage/orders/confirm", label: "Confirmă plată manuală", icon: CheckSquare },
+      { to: "/manage/orders", label: "Comenzi", icon: ShoppingCart, end: true },
     ],
   },
   {

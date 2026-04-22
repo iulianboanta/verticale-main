@@ -61,13 +61,28 @@ export type ManageOrder = {
   method: "Transfer bancar" | "Card";
   status: OrderStatus;
   createdAt: string;
+  validatedAt: string | null;
+  expiresAt: string | null;
   notes?: string;
 };
 
+const paidPlans: Plan[] = ["Intro", "Profesional"];
+
 export const manageOrders: ManageOrder[] = Array.from({ length: 22 }, (_, i) => {
-  const plan = plans[i % plans.length];
-  const base = plan === "Profesional" ? 499 : plan === "Intro" ? 199 : 0;
+  const plan = paidPlans[i % paidPlans.length];
+  const base = plan === "Profesional" ? 499 : 199;
   const statusKey: OrderStatus = (["paid", "pending", "cancelled"] as OrderStatus[])[i % 3];
+  const createdAt = dateOffset(-((i + 1) * 18));
+  let validatedAt: string | null = null;
+  let expiresAt: string | null = null;
+  if (statusKey === "paid") {
+    const validated = new Date(createdAt);
+    validated.setDate(validated.getDate() + ((i % 3) + 1));
+    validatedAt = `${validated.getFullYear()}-${pad(validated.getMonth() + 1)}-${pad(validated.getDate())}`;
+    const expires = new Date(validated);
+    expires.setDate(expires.getDate() + 365);
+    expiresAt = `${expires.getFullYear()}-${pad(expires.getMonth() + 1)}-${pad(expires.getDate())}`;
+  }
   return {
     id: `O-${2000 + i}`,
     number: `INV-${2024}${pad(i + 1)}`,
@@ -78,7 +93,9 @@ export const manageOrders: ManageOrder[] = Array.from({ length: 22 }, (_, i) => 
     vat: +(base * 0.19).toFixed(2),
     method: i % 2 === 0 ? "Transfer bancar" : "Card",
     status: statusKey,
-    createdAt: dateOffset(-((i + 1) * 3)),
+    createdAt,
+    validatedAt,
+    expiresAt,
   };
 });
 
