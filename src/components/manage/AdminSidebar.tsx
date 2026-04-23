@@ -18,6 +18,7 @@ import {
   Wallet,
   ExternalLink,
   KeyRound,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -53,6 +54,7 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
     items: [
       { to: "/manage/articles", label: "Articole", icon: Newspaper, end: true },
       { to: "/manage/articles/categories", label: "Categorii articole", icon: Folder },
+      { to: "/manage/content/emails", label: "Emails", icon: Mail },
     ],
   },
   {
