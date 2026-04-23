@@ -1,30 +1,59 @@
 
 
-## Adăugare toggle Activ/Inactiv pentru fiecare șablon email
+## Submeniu „Pagini Statice" în Administrare
 
-### Modificare în `src/pages/manage/content/EmailsPages.tsx`
-La fiecare card de șablon email (atât în tab-ul **Public** cât și **Admin**) adaug un control de activare în header-ul cardului, lângă titlu:
+### 1. Sidebar — `src/components/manage/AdminSidebar.tsx`
+În secțiunea **ADMINISTRARE**, între `Servicii` și `Setări platformă`, adaug item:
+- `Pagini Statice` → `/manage/admin/static-pages` (icon `FileText` din lucide-react).
 
-- Folosesc componenta `Switch` (shadcn — toggle modern, mai potrivit decât radio pentru on/off binar) cu label `Activ` alături.
-- Poziționare: în partea dreaptă a header-ului cardului (titlu+descriere stânga, switch dreapta).
-- State local: extind structura șabloanelor cu un câmp `active: boolean` (default `true`), gestionat prin `useState`.
-- Vizual: când `active=false`, conținutul cardului (subiect + editor + buton salvează) primește `opacity-60` ca să sugereze starea inactivă, fără să-l dezactiveze complet (admin-ul poate edita textul chiar dacă e oprit).
+### 2. Pagină nouă — `src/pages/manage/admin/StaticPages.tsx`
+Pagină în `AdminLayout` cu titlu **„Pagini Statice"** și subtitlu „Editează conținutul paginilor statice ale site-ului".
 
-### Layout card actualizat
+**Layout: split view (Tabs verticale stânga + editor dreapta)** — pe `md+` afișez `Tabs orientation=vertical`, pe mobil colapsate sus.
+
+Pagini incluse (4 tab-uri):
+1. **Despre GhidBeauty** (corespunde `/despre-noi`) — slug afișat: `/despre-noi`
+2. **Despre Companie** (corespunde `/despre-companie`) — slug afișat: `/despre-companie`
+3. **Termeni și Condiții** (corespunde `/termeni-conditii`) — slug afișat: `/termeni-conditii`
+4. **Politica de Confidențialitate** (corespunde `/privacy-policy`) — slug afișat: `/privacy-policy`
+
+Pentru fiecare pagină, în panoul din dreapta, un `Card` care conține:
+- Header card: titlul paginii + badge cu slug-ul (read-only)
+- Câmp `Titlu pagină` (Input — meta/H1)
+- Câmp `Meta descriere` (Textarea, max 160 chars, cu counter)
+- `Conținut HTML` — `RichTextEditor` (existent în `src/components/manage/RichTextEditor.tsx`), pre-populat cu un draft HTML extras din pagina actuală (text simplu paragrafe + h2/h3 — versiune editabilă, fără iconițe/imagini layout-specifice).
+- Buton vizual `Salvează modificările` (fără handler real) + buton `Previzualizează` (deschide ruta publică în tab nou prin `<a target="_blank">`).
+
+State: un `useState` cu obiect `{ [key]: { title, metaDescription, html } }`. Toate inputurile controlate. Fără persistență, fără API.
+
+### 3. Routing — `src/App.tsx`
+- Import nou: `StaticPages` din `@/pages/manage/admin/StaticPages`.
+- Rută nouă în `AdminProtected`: `/manage/admin/static-pages` → `<StaticPages />`.
+
+### Layout pagină
 ```text
-┌─ Bun venit · Trimis după înregistrare    [●━ Activ] ─┐
-│ Subiect:  [Bine ai venit pe GhidBeauty, {nume}!]      │
-│ ┌─ editor HTML ──────────────────────────────────────┐│
-│ │ ...                                                 ││
-│ └─────────────────────────────────────────────────────┘│
-│                                  [Salvează șablonul]  │
-└────────────────────────────────────────────────────────┘
+Pagini Statice
+Editează conținutul paginilor statice ale site-ului
+─────────────────────────────────────────────────────────────
+┌──────────────────┬────────────────────────────────────────┐
+│ • Despre GhidB.  │  Despre GhidBeauty   [/despre-noi]     │
+│   Despre Comp.   │  ──────────────────────────────────────│
+│   Termeni & C.   │  Titlu      [Despre noi ............]  │
+│   Politica Conf. │  Meta desc. [............] (120/160)   │
+│                  │  Conținut:                             │
+│                  │  ┌─ B I H2 H3 • 1. 🔗 ❝ ──────────────┐│
+│                  │  │ <text editabil HTML al paginii>    ││
+│                  │  └────────────────────────────────────┘│
+│                  │  [Previzualizează]  [Salvează modif.]  │
+└──────────────────┴────────────────────────────────────────┘
 ```
 
 ### Notă
-- Tab-ul **Settings** rămâne neatins (acolo sunt setări SMTP, nu șabloane).
-- Fără persistență — doar state local controlat, conform pattern-ului existent al paginii.
+- Conținutul HTML inițial = draft text simplificat, fiindcă paginile reale au layout React complex (grid, imagini, secțiuni cu icon). Editorul oferă un câmp HTML pentru text-ul de bază — pattern identic cu Articole/Emails.
+- Niciun apel API, doar UI.
 
-### Fișier atins
-- `src/pages/manage/content/EmailsPages.tsx`
+### Fișiere atinse
+- `src/components/manage/AdminSidebar.tsx` (1 item nou + import `FileText`)
+- `src/pages/manage/admin/StaticPages.tsx` (fișier nou)
+- `src/App.tsx` (1 import + 1 rută)
 
