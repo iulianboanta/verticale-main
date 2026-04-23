@@ -3,6 +3,8 @@ import Navbar from "@/components/ghidbeauty/Navbar";
 import Footer from "@/components/ghidbeauty/Footer";
 import { Shield, Database, Eye, Cookie, Clock, UserCheck, Globe, Lock, Baby, ExternalLink, FileText, Scale, AlertTriangle, Star, Building2, ChevronDown } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useStaticPageContent } from "@/lib/staticPagesContent";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const sections = [
   { id: "operator", label: "Operatorul de date", icon: Building2 },
@@ -25,6 +27,8 @@ const sections = [
 ];
 
 const PrivacyPolicy = () => {
+  const pageContent = useStaticPageContent("politica");
+  usePageMeta({ title: pageContent.seo.title, metaDescription: pageContent.seo.metaDescription });
   const [activeSection, setActiveSection] = useState("operator");
   const [tocOpen, setTocOpen] = useState(false);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -121,12 +125,12 @@ const PrivacyPolicy = () => {
             <Shield className="w-7 h-7 text-primary" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
-            Politica de confidențialitate și cookies
+            {pageContent.hero.title}
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Această politică descrie modul în care GhidBeauty.ro colectează, utilizează și protejează datele cu caracter personal, în conformitate cu GDPR.
+            {pageContent.hero.subtitle}
           </p>
-          <p className="text-xs text-muted-foreground mt-3">Ultima actualizare: 03.04.2026</p>
+          <p className="text-xs text-muted-foreground mt-3">{pageContent.hero.lastUpdated}</p>
         </div>
       </section>
 

@@ -7,6 +7,8 @@ import {
   Landmark, Gavel, ScrollText, Handshake, ChevronDown, Building2
 } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useStaticPageContent } from "@/lib/staticPagesContent";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const sections = [
   { id: "preambul", label: "Preambul", icon: Building2 },
@@ -30,6 +32,8 @@ const sections = [
 ];
 
 const TermeniConditii = () => {
+  const pageContent = useStaticPageContent("termeni");
+  usePageMeta({ title: pageContent.seo.title, metaDescription: pageContent.seo.metaDescription });
   const [activeSection, setActiveSection] = useState("preambul");
   const [tocOpen, setTocOpen] = useState(false);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -124,12 +128,12 @@ const TermeniConditii = () => {
             <Scale className="w-7 h-7 text-primary" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
-            Termeni și condiții
+            {pageContent.hero.title}
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Contract cadru privind prestarea de servicii de publicitate pe platforma GhidBeauty.ro
+            {pageContent.hero.subtitle}
           </p>
-          <p className="text-xs text-muted-foreground mt-3">Ultima actualizare: 03.04.2026</p>
+          <p className="text-xs text-muted-foreground mt-3">{pageContent.hero.lastUpdated}</p>
         </div>
       </section>
 
