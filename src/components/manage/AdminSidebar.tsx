@@ -17,6 +17,7 @@ import {
   TrendingUp,
   Wallet,
   ExternalLink,
+  KeyRound,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -59,6 +60,7 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
     items: [
       { to: "/manage/admin/counties", label: "Zone & Județe", icon: MapPin },
       { to: "/manage/admin/banners", label: "Bannere publicitare", icon: ImageIcon },
+      { to: "/manage/admin/services-keys", label: "Servicii", icon: KeyRound },
       { to: "/manage/admin/settings", label: "Setări platformă", icon: Settings },
     ],
   },

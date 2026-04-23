@@ -51,6 +51,7 @@ import { AllUsers, NewUser } from "./pages/manage/users/UsersPages";
 import { PendingReviews, AllReviews } from "./pages/manage/reviews/ReviewsPages";
 import { ArticlesList, EditArticle, ArticleCategoriesPage } from "./pages/manage/articles/ArticlesPages";
 import { ListingCategories, ServicesFacilities, CountiesPage, BannersPage, SettingsPage } from "./pages/manage/admin/AdminPages";
+import ServicesKeys from "./pages/manage/admin/ServicesKeys";
 import { PlatformStats, ListingsReport, RevenueReport } from "./pages/manage/reports/ReportsPages";
 
 const ScrollToTop = () => {
@@ -126,6 +127,7 @@ const App = () => (
           <Route path="/manage/admin/services" element={<AdminProtected><AdminLayout><ServicesFacilities /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/counties" element={<AdminProtected><AdminLayout><CountiesPage /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/banners" element={<AdminProtected><AdminLayout><BannersPage /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/admin/services-keys" element={<AdminProtected><AdminLayout><ServicesKeys /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/settings" element={<AdminProtected><AdminLayout><SettingsPage /></AdminLayout></AdminProtected>} />
           <Route path="/manage/reports/stats" element={<AdminProtected><AdminLayout><PlatformStats /></AdminLayout></AdminProtected>} />
           <Route path="/manage/reports/listings" element={<AdminProtected><AdminLayout><ListingsReport /></AdminLayout></AdminProtected>} />
