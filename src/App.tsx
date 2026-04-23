@@ -52,6 +52,7 @@ import { PendingReviews, AllReviews } from "./pages/manage/reviews/ReviewsPages"
 import { ArticlesList, EditArticle, ArticleCategoriesPage } from "./pages/manage/articles/ArticlesPages";
 import { ListingCategories, ServicesFacilities, CountiesPage, BannersPage, SettingsPage } from "./pages/manage/admin/AdminPages";
 import ServicesKeys from "./pages/manage/admin/ServicesKeys";
+import StaticPages from "./pages/manage/admin/StaticPages";
 import EmailsPages from "./pages/manage/content/EmailsPages";
 import { PlatformStats, ListingsReport, RevenueReport } from "./pages/manage/reports/ReportsPages";
 
@@ -130,6 +131,7 @@ const App = () => (
           <Route path="/manage/admin/counties" element={<AdminProtected><AdminLayout><CountiesPage /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/banners" element={<AdminProtected><AdminLayout><BannersPage /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/services-keys" element={<AdminProtected><AdminLayout><ServicesKeys /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/admin/static-pages" element={<AdminProtected><AdminLayout><StaticPages /></AdminLayout></AdminProtected>} />
           <Route path="/manage/admin/settings" element={<AdminProtected><AdminLayout><SettingsPage /></AdminLayout></AdminProtected>} />
           <Route path="/manage/reports/stats" element={<AdminProtected><AdminLayout><PlatformStats /></AdminLayout></AdminProtected>} />
           <Route path="/manage/reports/listings" element={<AdminProtected><AdminLayout><ListingsReport /></AdminLayout></AdminProtected>} />

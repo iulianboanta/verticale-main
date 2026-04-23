@@ -19,6 +19,7 @@ import {
   ExternalLink,
   KeyRound,
   Mail,
+  FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -63,6 +64,7 @@ const sections: { title: string; items: { to: string; label: string; icon: any; 
       { to: "/manage/admin/counties", label: "Zone & Județe", icon: MapPin },
       { to: "/manage/admin/banners", label: "Bannere publicitare", icon: ImageIcon },
       { to: "/manage/admin/services-keys", label: "Servicii", icon: KeyRound },
+      { to: "/manage/admin/static-pages", label: "Pagini Statice", icon: FileText },
       { to: "/manage/admin/settings", label: "Setări platformă", icon: Settings },
     ],
   },
