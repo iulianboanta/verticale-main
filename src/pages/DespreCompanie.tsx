@@ -1,6 +1,8 @@
 import Navbar from "@/components/ghidbeauty/Navbar";
 import Footer from "@/components/ghidbeauty/Footer";
 import { Building2, Globe, BookOpen, Leaf, Network, ArrowRight } from "lucide-react";
+import { useStaticPageContent } from "@/lib/staticPagesContent";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 import paginiNationale from "@/assets/despre/pagini-nationale.jpg";
 import roLocal from "@/assets/despre/rolocal.jpg";
