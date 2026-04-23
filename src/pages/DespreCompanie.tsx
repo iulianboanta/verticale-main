@@ -29,6 +29,9 @@ const ContainedShowcaseImage = ({
 );
 
 const DespreCompanie = () => {
+  const c = useStaticPageContent("despre-companie");
+  usePageMeta({ title: c.seo.title, metaDescription: c.seo.metaDescription });
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar variant="solid" />
@@ -41,11 +44,10 @@ const DespreCompanie = () => {
             <Building2 className="w-7 h-7 text-primary" />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Despre Companie
+            {c.hero.title}
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Descoperiți povestea din spatele Directories Management Systems — operatorul
-            platformei GhidBeauty.ro și al unei rețele de ghiduri de afaceri cu tradiție.
+            {c.hero.subtitle}
           </p>
         </div>
       </section>
@@ -58,16 +60,16 @@ const DespreCompanie = () => {
             <div className="rounded-2xl overflow-hidden border border-border bg-card shadow-sm">
               <img
                 src={paginiNationale}
-                alt="Pagini Nationale"
+                alt={c.paginiNationale.title}
                 className="w-full h-56 object-cover object-center"
               />
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <Globe className="w-4 h-4 text-primary" />
-                  <h2 className="text-lg font-bold text-foreground">Pagini Naționale</h2>
+                  <h2 className="text-lg font-bold text-foreground">{c.paginiNationale.title}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Ghid Național B2B
+                  {c.paginiNationale.description}
                 </p>
               </div>
             </div>
@@ -75,16 +77,16 @@ const DespreCompanie = () => {
             <div className="rounded-2xl overflow-hidden border border-border bg-card shadow-sm">
               <img
                 src={roLocal}
-                alt="roLOCAL"
+                alt={c.roLocal.title}
                 className="w-full h-56 object-cover object-top"
               />
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <BookOpen className="w-4 h-4 text-primary" />
-                  <h2 className="text-lg font-bold text-foreground">roLOCAL</h2>
+                  <h2 className="text-lg font-bold text-foreground">{c.roLocal.title}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Ghid Local B2C București
+                  {c.roLocal.description}
                 </p>
               </div>
             </div>
@@ -98,14 +100,8 @@ const DespreCompanie = () => {
               className="max-h-[420px]"
             />
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                <strong className="text-foreground">Pagini Naționale</strong> este cel mai longeviv
-                ghid de afaceri B2B din România cu 28 de ani de apariție continuă.
-              </p>
-              <p>
-                <strong className="text-foreground">roLOCAL</strong> este un produs nou, local,
-                B2C, cu apariție în București.
-              </p>
+              <p>{c.description.paginiText}</p>
+              <p>{c.description.rolocalText}</p>
             </div>
           </section>
 
@@ -115,11 +111,10 @@ const DespreCompanie = () => {
               <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                 <Network className="w-4.5 h-4.5 text-primary" />
               </div>
-              <h2 className="text-lg font-bold text-foreground">Rețea de site-uri specializate</h2>
+              <h2 className="text-lg font-bold text-foreground">{c.retea.title}</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Operăm o rețea de site-uri specializate pe diferite segmente de activitate.
-              Targhetare B2B locală și națională.
+              {c.retea.paragraph}
             </p>
             <ContainedShowcaseImage
               src={targhetare}
@@ -134,13 +129,10 @@ const DespreCompanie = () => {
               <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                 <Leaf className="w-4.5 h-4.5 text-primary" />
               </div>
-              <h2 className="text-lg font-bold text-foreground">Platforma Expert Mediu</h2>
+              <h2 className="text-lg font-bold text-foreground">{c.expertMediu.title}</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Aici găsești platforma cu care îți îndeplinești toate obligațiile legale privind
-              deșeurile. Vei găsi aici toate calculele, evidențele și rapoartele solicitate de
-              autorități (Agenția de mediu, Garda de mediu, Fondul de mediu). Ai asistență și
-              consultanță.
+              {c.expertMediu.paragraph}
             </p>
             <ContainedShowcaseImage
               src={expert}
@@ -155,7 +147,7 @@ const DespreCompanie = () => {
               href="/contact"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium hover:bg-primary/90 transition-colors"
             >
-              Contactează-ne
+              {c.cta}
               <ArrowRight className="w-4 h-4" />
             </a>
           </section>

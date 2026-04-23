@@ -3,6 +3,8 @@ import Navbar from "@/components/ghidbeauty/Navbar";
 import Footer from "@/components/ghidbeauty/Footer";
 import { Shield, Database, Eye, Cookie, Clock, UserCheck, Globe, Lock, Baby, ExternalLink, FileText, Scale, AlertTriangle, Star, Building2, ChevronDown } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useStaticPageContent } from "@/lib/staticPagesContent";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const sections = [
   { id: "operator", label: "Operatorul de date", icon: Building2 },

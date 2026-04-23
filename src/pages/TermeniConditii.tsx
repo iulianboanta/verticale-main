@@ -7,6 +7,8 @@ import {
   Landmark, Gavel, ScrollText, Handshake, ChevronDown, Building2
 } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useStaticPageContent } from "@/lib/staticPagesContent";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const sections = [
   { id: "preambul", label: "Preambul", icon: Building2 },
