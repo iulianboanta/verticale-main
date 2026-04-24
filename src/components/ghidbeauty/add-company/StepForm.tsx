@@ -79,11 +79,15 @@ const StepForm = ({
   onBack,
   onSuccess,
   mode = "create",
+  hideStickyFooter = false,
+  hideTermsAcceptance = false,
 }: {
   plan: Plan;
   onBack?: () => void;
   onSuccess?: () => void;
   mode?: "create" | "edit";
+  hideStickyFooter?: boolean;
+  hideTermsAcceptance?: boolean;
 }) => {
   const [description, setDescription] = useState("");
   const [schedule, setSchedule] = useState(
@@ -159,7 +163,7 @@ const StepForm = ({
   };
 
   return (
-    <div className={`w-full max-w-[860px] mx-auto px-4 sm:px-8 ${mode === "edit" ? "pt-2 pb-32" : "pt-12 pb-32"}`}>
+    <div className={`w-full max-w-[860px] mx-auto ${hideStickyFooter ? "px-0 pt-0 pb-2" : `px-4 sm:px-8 ${mode === "edit" ? "pt-2 pb-32" : "pt-12 pb-32"}`}`}>
       {mode === "create" && (
         <>
           <ProgressIndicator currentStep={3} />
@@ -631,33 +635,36 @@ const StepForm = ({
         </Section>
 
         {/* Terms */}
-        <div className="space-y-3 pt-2">
-          <label className="flex items-start gap-2 text-sm cursor-pointer">
-            <Checkbox
-              checked={termsAccepted}
-              onCheckedChange={(v) => setTermsAccepted(!!v)}
-              className="mt-0.5"
-            />
-            <span>
-              Am citit și sunt de acord cu{" "}
-              <a href="#" className="text-primary hover:underline">Termenii și condițiile</a> *
-            </span>
-          </label>
-          <label className="flex items-start gap-2 text-sm cursor-pointer">
-            <Checkbox
-              checked={contractAccepted}
-              onCheckedChange={(v) => setContractAccepted(!!v)}
-              className="mt-0.5"
-            />
-            <span>
-              Am citit și sunt de acord cu{" "}
-              <a href="#" className="text-primary hover:underline">Contractul de publicitate</a> *
-            </span>
-          </label>
-        </div>
+        {!hideTermsAcceptance && (
+          <div className="space-y-3 pt-2">
+            <label className="flex items-start gap-2 text-sm cursor-pointer">
+              <Checkbox
+                checked={termsAccepted}
+                onCheckedChange={(v) => setTermsAccepted(!!v)}
+                className="mt-0.5"
+              />
+              <span>
+                Am citit și sunt de acord cu{" "}
+                <a href="#" className="text-primary hover:underline">Termenii și condițiile</a> *
+              </span>
+            </label>
+            <label className="flex items-start gap-2 text-sm cursor-pointer">
+              <Checkbox
+                checked={contractAccepted}
+                onCheckedChange={(v) => setContractAccepted(!!v)}
+                className="mt-0.5"
+              />
+              <span>
+                Am citit și sunt de acord cu{" "}
+                <a href="#" className="text-primary hover:underline">Contractul de publicitate</a> *
+              </span>
+            </label>
+          </div>
+        )}
       </div>
 
       {/* Sticky footer */}
+      {!hideStickyFooter && (
       <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border px-4 sm:px-8 py-3 z-40">
         <div className="max-w-[860px] mx-auto flex items-center justify-between">
           {mode === "create" ? (
@@ -684,6 +691,7 @@ const StepForm = ({
           )}
         </div>
       </div>
+      )}
     </div>
   );
 };

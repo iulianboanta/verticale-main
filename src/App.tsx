@@ -115,6 +115,7 @@ const App = () => (
           <Route path="/manage/login" element={<ManageLogin />} />
           <Route path="/manage" element={<AdminProtected><AdminLayout><ManageDashboard /></AdminLayout></AdminProtected>} />
           <Route path="/manage/listings" element={<AdminProtected><AdminLayout><AllListings /></AdminLayout></AdminProtected>} />
+          <Route path="/manage/listings/new/edit" element={<AdminProtected><AdminLayout><ManageEditListing /></AdminLayout></AdminProtected>} />
           <Route path="/manage/listings/:id/edit" element={<AdminProtected><AdminLayout><ManageEditListing /></AdminLayout></AdminProtected>} />
           <Route path="/manage/orders" element={<AdminProtected><AdminLayout><AllOrders /></AdminLayout></AdminProtected>} />
           <Route path="/manage/orders/:id" element={<AdminProtected><AdminLayout><OrderDetail /></AdminLayout></AdminProtected>} />
