@@ -691,6 +691,7 @@ const StepForm = ({
           )}
         </div>
       </div>
+      )}
     </div>
   );
 };
