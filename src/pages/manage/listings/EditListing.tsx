@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,63 +7,62 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
 import { manageListings } from "@/data/manageMockData";
+import StepForm from "@/components/ghidbeauty/add-company/StepForm";
+import type { Plan } from "@/components/ghidbeauty/add-company/StepPlans";
+
+const planMap: Record<string, Plan> = {
+  Gratuit: "gratuit",
+  Intro: "intro",
+  Profesional: "profesional",
+};
 
 const EditListing = () => {
   const { id } = useParams();
-  const listing = manageListings.find((l) => l.id === id) ?? manageListings[0];
+  const navigate = useNavigate();
+  const isNew = id === "new";
+  const listing = !isNew ? manageListings.find((l) => l.id === id) ?? manageListings[0] : null;
+
+  const initialPlan: Plan = listing ? (planMap[listing.plan] ?? "profesional") : "profesional";
+
+  const handleSave = () => {
+    toast.success(isNew ? "Listing creat cu succes." : "Modificările au fost salvate.");
+    navigate("/manage/listings");
+  };
 
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
-        <Button asChild variant="ghost" size="sm"><Link to="/manage/listings"><ArrowLeft size={14} /> Înapoi</Link></Button>
+        <Button asChild variant="ghost" size="sm">
+          <Link to="/manage/listings"><ArrowLeft size={14} /> Înapoi</Link>
+        </Button>
       </div>
-      <h1 className="text-2xl font-semibold">Editează listing — {listing.name}</h1>
+      <h1 className="text-2xl font-semibold">
+        {isNew ? "Adaugă listing nou" : `Editează listing — ${listing?.name}`}
+      </h1>
 
-      <div className="grid lg:grid-cols-3 gap-4">
-        <div className="lg:col-span-2 space-y-4">
-          <Card className="p-5 space-y-4">
-            <h2 className="font-semibold">Informații generale</h2>
-            <div><Label>Denumire companie</Label><Input defaultValue={listing.name} className="mt-1" /></div>
-            <div><Label>Descriere</Label><Textarea defaultValue="Descriere salon..." rows={4} className="mt-1" /></div>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <div><Label>Telefon</Label><Input defaultValue="+40 712 345 678" className="mt-1" /></div>
-              <div><Label>Email</Label><Input defaultValue={listing.ownerEmail} className="mt-1" /></div>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <div><Label>Oraș</Label><Input defaultValue={listing.city} className="mt-1" /></div>
-              <div><Label>Adresă</Label><Input defaultValue="Str. Exemplu nr. 12" className="mt-1" /></div>
-            </div>
-          </Card>
-
-          <Card className="p-5 space-y-4">
-            <h2 className="font-semibold">Categorii & Servicii</h2>
-            <div><Label>Categorie principală</Label>
-              <Select defaultValue={listing.category}>
-                <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value={listing.category}>{listing.category}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div><Label>Servicii oferite</Label><Textarea placeholder="Tuns, vopsit, manichiură..." rows={3} className="mt-1" /></div>
-            <div><Label>Facilități</Label><Textarea placeholder="Wi-Fi, parcare..." rows={2} className="mt-1" /></div>
-          </Card>
-
-          <Card className="p-5 space-y-2">
-            <h2 className="font-semibold">Galerie foto</h2>
-            <div className="grid grid-cols-3 gap-2">
-              {[1,2,3].map((i) => <div key={i} className="aspect-square bg-muted rounded" />)}
-            </div>
-            <Button variant="outline" size="sm" className="mt-2">Încarcă imagini</Button>
+      <div className="grid lg:grid-cols-[1fr_340px] gap-6 items-start">
+        {/* Left — full StepForm (same as front-end Step 3) */}
+        <div className="min-w-0">
+          <Card className="p-4 sm:p-6">
+            <StepForm
+              plan={initialPlan}
+              mode={isNew ? "create" : "edit"}
+              hideStickyFooter
+              hideTermsAcceptance
+            />
           </Card>
         </div>
 
-        <div className="space-y-4">
+        {/* Right — Admin sidebar (sticky) */}
+        <aside className="lg:sticky lg:top-4 space-y-4">
           <Card className="p-5 space-y-4 border-primary/30">
             <h2 className="font-semibold text-primary">Panou Admin</h2>
-            <div><Label>Status</Label>
-              <Select defaultValue={listing.status}>
+
+            <div>
+              <Label>Status</Label>
+              <Select defaultValue={listing?.status ?? "pending"}>
                 <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="active">Activ</SelectItem>
@@ -73,8 +72,10 @@ const EditListing = () => {
                 </SelectContent>
               </Select>
             </div>
-            <div><Label>Plan override</Label>
-              <Select defaultValue={listing.plan}>
+
+            <div>
+              <Label>Plan override</Label>
+              <Select defaultValue={listing?.plan ?? "Gratuit"}>
                 <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="Gratuit">Gratuit</SelectItem>
@@ -83,17 +84,37 @@ const EditListing = () => {
                 </SelectContent>
               </Select>
             </div>
-            <div><Label>Dată expirare plan</Label><Input type="date" defaultValue={listing.expiresAt} className="mt-1" /></div>
-            <div><Label>Note interne (admin)</Label><Textarea placeholder="Vizibile doar pentru admin..." rows={3} className="mt-1" /></div>
-            <div className="flex items-center justify-between"><Label>Verified badge</Label><Switch defaultChecked={listing.verified} /></div>
-            <div className="flex items-center justify-between"><Label>Featured (Recomandat)</Label><Switch defaultChecked={listing.featured} /></div>
+
+            <div>
+              <Label>Dată expirare plan</Label>
+              <Input type="date" defaultValue={listing?.expiresAt} className="mt-1" />
+            </div>
+
+            <div>
+              <Label>Note interne (admin)</Label>
+              <Textarea placeholder="Vizibile doar pentru admin..." rows={3} className="mt-1" />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <Label>Verified badge</Label>
+              <Switch defaultChecked={listing?.verified} />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <Label>Featured (Recomandat)</Label>
+              <Switch defaultChecked={listing?.featured} />
+            </div>
           </Card>
 
           <div className="flex gap-2">
-            <Button className="flex-1">Salvează modificări</Button>
-            <Button variant="outline" asChild><Link to="/manage/listings">Anulează</Link></Button>
+            <Button className="flex-1" onClick={handleSave}>
+              {isNew ? "Creează listing" : "Salvează modificări"}
+            </Button>
+            <Button variant="outline" asChild>
+              <Link to="/manage/listings">Anulează</Link>
+            </Button>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   );
