@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhiteOriginal from "@/assets/ghidbeauty-logo-white.png";
 import logoWhiteSolid from "@/assets/logo_beauty_white.png";
+import { useVertical } from "@/lib/vertical";
 
 const navLinks = [
   { label: "Despre noi", href: "/despre-noi" },
@@ -16,6 +17,8 @@ const navLinks = [
 const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid" }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { vertical } = useVertical();
+  const isBeauty = vertical.key === "beauty";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -36,11 +39,22 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img
-            src={scrolled ? logo : variant === "solid" ? logoWhiteSolid : logoWhiteOriginal}
-            alt="GhidBeauty.ro"
-            className="h-12 transition-all duration-300"
-          />
+          {isBeauty ? (
+            <img
+              src={scrolled ? logo : variant === "solid" ? logoWhiteSolid : logoWhiteOriginal}
+              alt={vertical.brand}
+              className="h-12 transition-all duration-300"
+            />
+          ) : (
+            <span
+              className={`text-xl font-semibold tracking-tight transition-colors ${
+                scrolled ? "text-foreground" : "text-white"
+              }`}
+              style={{ fontFamily: '"Cormorant Garamond", Georgia, serif' }}
+            >
+              {vertical.brand}
+            </span>
+          )}
         </Link>
 
         {/* Desktop nav */}
