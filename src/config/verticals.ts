@@ -1,8 +1,9 @@
 import heroBeauty from "@/assets/hero-bg.jpg";
 import heroFunerare from "@/assets/hero-funerare.jpg";
 import heroVeterinari from "@/assets/hero-veterinari.jpg";
+import heroTractari from "@/assets/hero-tractari.jpg";
 
-export type VerticalKey = "beauty" | "funerare" | "veterinari";
+export type VerticalKey = "beauty" | "funerare" | "veterinari" | "tractari";
 
 export interface VerticalConfig {
   key: VerticalKey;
@@ -87,6 +88,27 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de servicii veterinare din România. Conectăm proprietarii de animale cu medici veterinari de încredere.",
     email: "contact@ghidveterinari.ro",
     phone: "0314044442",
+  },
+  tractari: {
+    key: "tractari",
+    brand: "GhidTractari.ro",
+    domain: "ghidtractari.ro",
+    tagline: {
+      prefix: "Ajutor rapid când ai",
+      highlight: "nevoie urgentă",
+      suffix: "de tractare",
+    },
+    subtitle:
+      "Tractări auto, asistență rutieră, depanări, remorci și transport vehicule — profesioniști disponibili non-stop în toată România.",
+    searchPlaceholders: {
+      ce: "Ce cauți? (ex: tractare, asistență rutieră)",
+      unde: "Unde? (oraș sau județ)",
+    },
+    heroImage: heroTractari,
+    footerDescription:
+      "Director de servicii de tractare și asistență rutieră din România. Găsim rapid soluția potrivită pentru orice problemă auto.",
+    email: "contact@ghidtractari.ro",
+    phone: "0314044443",
   },
 };
 
