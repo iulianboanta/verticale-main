@@ -3,12 +3,13 @@ import { Search, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AutosuggestInput, { ceSuggestions, undeSuggestions } from "@/components/ghidbeauty/search/AutosuggestInput";
-import heroBg from "@/assets/hero-bg.jpg";
+import { useVertical } from "@/lib/vertical";
 
 const HeroSection = () => {
   const [ceValue, setCeValue] = useState("");
   const [undeValue, setUndeValue] = useState("");
   const navigate = useNavigate();
+  const { vertical } = useVertical();
 
   const handleSearch = () => {
     const params = new URLSearchParams();
@@ -20,37 +21,36 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden pt-28 pb-36 md:pt-40 md:pb-48">
       <img
-        src={heroBg}
+        src={vertical.heroImage}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
         width={1920}
         height={800}
       />
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/50" />
 
       <div className="container relative z-10 flex flex-col items-center text-center">
         <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem] drop-shadow-lg">
-          Găsește profesioniștii din{" "}
-          <span className="text-primary-glow">beauty</span> lângă tine
+          {vertical.tagline.prefix}{" "}
+          <span className="text-primary-glow italic">{vertical.tagline.highlight}</span>
+          {vertical.tagline.suffix ? <> {vertical.tagline.suffix}</> : null}
         </h1>
         <p className="mt-4 max-w-xl text-base text-white/80 md:text-lg drop-shadow">
-          Saloane, spa-uri, studiouri de unghii, cosmetică, tatuaje și mai mult
-          — toate într-un singur loc.
+          {vertical.subtitle}
         </p>
 
-        {/* Search bar */}
         <div className="mt-8 w-full max-w-2xl">
           <div className="flex flex-col gap-3 rounded-2xl bg-card p-2 shadow-lg sm:flex-row sm:items-center sm:rounded-full">
             <AutosuggestInput
               icon={<Search size={18} />}
-              placeholder="Ce cauți? (ex: salon, manichiură)"
+              placeholder={vertical.searchPlaceholders.ce}
               suggestions={ceSuggestions}
               value={ceValue}
               onChange={setCeValue}
             />
             <AutosuggestInput
               icon={<MapPin size={18} />}
-              placeholder="Unde? (oraș sau județ)"
+              placeholder={vertical.searchPlaceholders.unde}
               suggestions={undeSuggestions}
               value={undeValue}
               onChange={setUndeValue}

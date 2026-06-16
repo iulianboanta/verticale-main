@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { VerticalProvider } from "@/lib/vertical";
+import VerticalSwitcher from "@/components/VerticalSwitcher";
 import Index from "./pages/Index.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
 import SearchResults from "./pages/SearchResults.tsx";
@@ -70,11 +72,13 @@ const DashboardRoute = ({ children }: { children: React.ReactNode }) => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
+    <VerticalProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <VerticalSwitcher />
+        <BrowserRouter>
+          <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/companie/:slug" element={<CompanyDetail />} />
@@ -148,7 +152,8 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </TooltipProvider>
+      </TooltipProvider>
+    </VerticalProvider>
   </QueryClientProvider>
 );
 
