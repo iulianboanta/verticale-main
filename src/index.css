@@ -89,6 +89,66 @@
     --sidebar-border: 270 10% 18%;
     --sidebar-ring: 270 28% 59%;
   }
+
+  /* ===== Funerare vertical theme ===== */
+  :root[data-theme="funerare"] {
+    --background: 40 25% 97%;
+    --foreground: 215 28% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 16%;
+
+    --primary: 215 25% 24%;
+    --primary-foreground: 40 30% 96%;
+
+    --primary-light: 40 25% 93%;
+    --primary-dark: 215 30% 16%;
+    --primary-glow: 38 45% 72%;
+
+    --secondary: 40 18% 92%;
+    --secondary-foreground: 215 28% 16%;
+
+    --muted: 40 15% 93%;
+    --muted-foreground: 215 12% 40%;
+
+    --accent: 38 42% 52%;
+    --accent-foreground: 40 30% 98%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 15% 86%;
+    --input: 40 15% 86%;
+    --ring: 215 25% 24%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 40 22% 95%;
+    --sidebar-foreground: 215 20% 28%;
+    --sidebar-primary: 215 25% 24%;
+    --sidebar-primary-foreground: 40 30% 96%;
+    --sidebar-accent: 40 18% 90%;
+    --sidebar-accent-foreground: 215 28% 16%;
+    --sidebar-border: 40 15% 85%;
+    --sidebar-ring: 215 25% 24%;
+  }
+
+  :root[data-theme="funerare"] body {
+    font-family: "Source Sans 3", system-ui, sans-serif;
+  }
+  :root[data-theme="funerare"] h1,
+  :root[data-theme="funerare"] h2,
+  :root[data-theme="funerare"] h3,
+  :root[data-theme="funerare"] h4,
+  :root[data-theme="funerare"] h5,
+  :root[data-theme="funerare"] h6 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
 }
 
 @layer base {
@@ -108,10 +168,10 @@
 @layer utilities {
   .bg-hero {
     background-image:
-      radial-gradient(ellipse at 20% 50%, hsl(270 40% 75% / 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, hsl(270 28% 59% / 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 60% 80%, hsl(30 85% 55% / 0.05) 0%, transparent 50%),
-      linear-gradient(135deg, hsl(270 28% 59% / 0.03) 0%, hsl(270 35% 95%) 50%, hsl(0 0% 100%) 100%);
+      radial-gradient(ellipse at 20% 50%, hsl(var(--primary-glow) / 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, hsl(var(--accent) / 0.05) 0%, transparent 50%),
+      linear-gradient(135deg, hsl(var(--primary) / 0.03) 0%, hsl(var(--primary-light)) 50%, hsl(var(--background)) 100%);
   }
 
   .card-premium {
