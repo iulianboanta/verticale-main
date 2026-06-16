@@ -149,6 +149,66 @@
     font-weight: 500;
     letter-spacing: -0.01em;
   }
+
+  /* ===== Veterinari vertical theme ===== */
+  :root[data-theme="veterinari"] {
+    --background: 170 30% 98%;
+    --foreground: 175 30% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 175 30% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 175 30% 14%;
+
+    --primary: 170 55% 38%;
+    --primary-foreground: 170 30% 98%;
+
+    --primary-light: 170 45% 94%;
+    --primary-dark: 175 60% 24%;
+    --primary-glow: 170 55% 70%;
+
+    --secondary: 170 25% 94%;
+    --secondary-foreground: 175 30% 14%;
+
+    --muted: 170 20% 95%;
+    --muted-foreground: 175 12% 40%;
+
+    --accent: 35 92% 60%;
+    --accent-foreground: 30 40% 14%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 170 20% 88%;
+    --input: 170 20% 88%;
+    --ring: 170 55% 38%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 170 28% 96%;
+    --sidebar-foreground: 175 22% 24%;
+    --sidebar-primary: 170 55% 38%;
+    --sidebar-primary-foreground: 170 30% 98%;
+    --sidebar-accent: 170 25% 92%;
+    --sidebar-accent-foreground: 175 30% 14%;
+    --sidebar-border: 170 20% 86%;
+    --sidebar-ring: 170 55% 38%;
+  }
+
+  :root[data-theme="veterinari"] body {
+    font-family: "Nunito Sans", system-ui, sans-serif;
+  }
+  :root[data-theme="veterinari"] h1,
+  :root[data-theme="veterinari"] h2,
+  :root[data-theme="veterinari"] h3,
+  :root[data-theme="veterinari"] h4,
+  :root[data-theme="veterinari"] h5,
+  :root[data-theme="veterinari"] h6 {
+    font-family: "Nunito", system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
 }
 
 @layer base {

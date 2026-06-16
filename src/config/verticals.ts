@@ -1,7 +1,8 @@
 import heroBeauty from "@/assets/hero-bg.jpg";
 import heroFunerare from "@/assets/hero-funerare.jpg";
+import heroVeterinari from "@/assets/hero-veterinari.jpg";
 
-export type VerticalKey = "beauty" | "funerare";
+export type VerticalKey = "beauty" | "funerare" | "veterinari";
 
 export interface VerticalConfig {
   key: VerticalKey;
@@ -65,6 +66,27 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de servicii funerare din România. Vă oferim sprijin discret și profesionist în momentele dificile.",
     email: "contact@ghidfunerare.ro",
     phone: "0314044441",
+  },
+  veterinari: {
+    key: "veterinari",
+    brand: "GhidVeterinari.ro",
+    domain: "ghidveterinari.ro",
+    tagline: {
+      prefix: "Grijă și încredere pentru",
+      highlight: "prietenii blănoși",
+      suffix: "",
+    },
+    subtitle:
+      "Cabinete veterinare, clinici, urgențe 24/7, toaletaj, pet shops și farmacii veterinare — toți specialiștii într-un singur loc.",
+    searchPlaceholders: {
+      ce: "Ce cauți? (ex: veterinar, urgențe, toaletaj)",
+      unde: "Unde? (oraș sau județ)",
+    },
+    heroImage: heroVeterinari,
+    footerDescription:
+      "Director de servicii veterinare din România. Conectăm proprietarii de animale cu medici veterinari de încredere.",
+    email: "contact@ghidveterinari.ro",
+    phone: "0314044442",
   },
 };
 
