@@ -2,8 +2,18 @@ import heroBeauty from "@/assets/hero-bg.jpg";
 import heroFunerare from "@/assets/hero-funerare.jpg";
 import heroVeterinari from "@/assets/hero-veterinari.jpg";
 import heroTractari from "@/assets/hero-tractari.jpg";
+import heroGradinite from "@/assets/hero-gradinite.jpg";
+import heroUsi from "@/assets/hero-usi.jpg";
+import heroCuratenie from "@/assets/hero-curatenie.jpg";
 
-export type VerticalKey = "beauty" | "funerare" | "veterinari" | "tractari";
+export type VerticalKey =
+  | "beauty"
+  | "funerare"
+  | "veterinari"
+  | "tractari"
+  | "gradinite"
+  | "usi"
+  | "curatenie";
 
 export interface VerticalConfig {
   key: VerticalKey;
@@ -109,6 +119,69 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de servicii de tractare și asistență rutieră din România. Găsim rapid soluția potrivită pentru orice problemă auto.",
     email: "contact@ghidtractari.ro",
     phone: "0314044443",
+  },
+  gradinite: {
+    key: "gradinite",
+    brand: "GhidGradinite.ro",
+    domain: "ghidgradinite.ro",
+    tagline: {
+      prefix: "Cea mai bună",
+      highlight: "grădiniță",
+      suffix: "pentru copilul tău",
+    },
+    subtitle:
+      "Grădinițe private și de stat, creșe, after-school și programe educaționale — găsește locul perfect pentru copilul tău.",
+    searchPlaceholders: {
+      ce: "Ce cauți? (ex: grădiniță, creșă, after-school)",
+      unde: "Unde? (oraș sau sector)",
+    },
+    heroImage: heroGradinite,
+    footerDescription:
+      "Director de grădinițe și creșe din România. Te ajutăm să găsești locul potrivit pentru copilul tău.",
+    email: "contact@ghidgradinite.ro",
+    phone: "0314044444",
+  },
+  usi: {
+    key: "usi",
+    brand: "GhidUsi.ro",
+    domain: "ghidusi.ro",
+    tagline: {
+      prefix: "Uși și tâmplărie pe",
+      highlight: "măsura casei tale",
+      suffix: "",
+    },
+    subtitle:
+      "Uși de interior și exterior, tâmplărie PVC și lemn, uși metalice, automatizări și montaj profesionist — direct de la specialiști.",
+    searchPlaceholders: {
+      ce: "Ce cauți? (ex: uși interior, tâmplărie PVC)",
+      unde: "Unde? (oraș sau județ)",
+    },
+    heroImage: heroUsi,
+    footerDescription:
+      "Director de producători, distribuitori și montatori de uși din România. Soluții pentru orice tip de proiect.",
+    email: "contact@ghidusi.ro",
+    phone: "0314044445",
+  },
+  curatenie: {
+    key: "curatenie",
+    brand: "GhidCuratenie.ro",
+    domain: "ghidcuratenie.ro",
+    tagline: {
+      prefix: "Servicii de curățenie",
+      highlight: "impecabile",
+      suffix: "lângă tine",
+    },
+    subtitle:
+      "Firme de curățenie pentru locuințe, birouri, scări de bloc, post-construcție și curățenie industrială — profesioniști verificați.",
+    searchPlaceholders: {
+      ce: "Ce cauți? (ex: curățenie apartament, birouri)",
+      unde: "Unde? (oraș sau județ)",
+    },
+    heroImage: heroCuratenie,
+    footerDescription:
+      "Director de firme de curățenie din România. Conectăm clienții cu echipe profesioniste, verificate și de încredere.",
+    email: "contact@ghidcuratenie.ro",
+    phone: "0314044446",
   },
 };
 
