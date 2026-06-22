@@ -92,48 +92,48 @@
 
   /* ===== Funerare vertical theme ===== */
   :root[data-theme="funerare"] {
-    --background: 40 25% 97%;
-    --foreground: 215 28% 16%;
+    --background: 35 18% 96%;
+    --foreground: 22 28% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 28% 16%;
+    --card-foreground: 22 28% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 16%;
+    --popover-foreground: 22 28% 14%;
 
-    --primary: 215 25% 24%;
-    --primary-foreground: 40 30% 96%;
+    --primary: 22 22% 25%;
+    --primary-foreground: 35 30% 96%;
 
-    --primary-light: 40 25% 93%;
-    --primary-dark: 215 30% 16%;
-    --primary-glow: 38 45% 72%;
+    --primary-light: 35 18% 93%;
+    --primary-dark: 18 26% 16%;
+    --primary-glow: 34 30% 68%;
 
-    --secondary: 40 18% 92%;
-    --secondary-foreground: 215 28% 16%;
+    --secondary: 32 14% 90%;
+    --secondary-foreground: 22 28% 14%;
 
-    --muted: 40 15% 93%;
-    --muted-foreground: 215 12% 40%;
+    --muted: 32 12% 92%;
+    --muted-foreground: 22 12% 38%;
 
-    --accent: 38 42% 52%;
-    --accent-foreground: 40 30% 98%;
+    --accent: 34 24% 52%;
+    --accent-foreground: 35 30% 98%;
 
     --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 15% 86%;
-    --input: 40 15% 86%;
-    --ring: 215 25% 24%;
+    --border: 32 12% 84%;
+    --input: 32 12% 84%;
+    --ring: 22 22% 25%;
 
     --radius: 0.25rem;
 
-    --sidebar-background: 40 22% 95%;
-    --sidebar-foreground: 215 20% 28%;
-    --sidebar-primary: 215 25% 24%;
-    --sidebar-primary-foreground: 40 30% 96%;
-    --sidebar-accent: 40 18% 90%;
-    --sidebar-accent-foreground: 215 28% 16%;
-    --sidebar-border: 40 15% 85%;
-    --sidebar-ring: 215 25% 24%;
+    --sidebar-background: 35 16% 94%;
+    --sidebar-foreground: 22 20% 24%;
+    --sidebar-primary: 22 22% 25%;
+    --sidebar-primary-foreground: 35 30% 96%;
+    --sidebar-accent: 32 14% 88%;
+    --sidebar-accent-foreground: 22 28% 14%;
+    --sidebar-border: 32 12% 83%;
+    --sidebar-ring: 22 22% 25%;
   }
 
   :root[data-theme="funerare"] body {
@@ -148,6 +148,11 @@
     font-family: "Cormorant Garamond", Georgia, serif;
     font-weight: 500;
     letter-spacing: -0.01em;
+  }
+
+  :root[data-theme="funerare"] .hero-title {
+    font-size: clamp(2.5rem, 8vw, 3.75rem);
+    line-height: 1.1;
   }
 
   /* ===== Veterinari vertical theme ===== */

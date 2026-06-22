@@ -30,7 +30,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/50" />
 
       <div className="container relative z-10 flex flex-col items-center text-center">
-        <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem] drop-shadow-lg">
+        <h1 className="hero-title max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-5xl lg:text-[3.5rem] drop-shadow-lg">
           {vertical.tagline.prefix}{" "}
           <span className="text-primary-glow italic">{vertical.tagline.highlight}</span>
           {vertical.tagline.suffix ? <> {vertical.tagline.suffix}</> : null}
