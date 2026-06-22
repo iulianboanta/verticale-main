@@ -1,24 +1,29 @@
-Plan pentru ajustarea temei **funerare**:
+## Plan: Aplica nuanța „taupe-antracit cald" pentru tema funerare
 
-1. **Actualizează paleta de culori în `src/index.css`** pentru `:root[data-theme="funerare"]`:
-   - `primary`: maro-închis cald (aprox. `#4A3B32`, HSL ~22 22% 25%).
-   - `primary-dark`: maro profund pentru hover/stări active (aprox. `#32261F`, HSL ~18 26% 16%).
-   - `primary-light`: crem-sidef cald pentru suprafețe (aprox. `#EFEBE6`, HSL ~35 18% 93%).
-   - `primary-glow`: nuanță de bronz sidefat pentru accente (aprox. `#C4B095`, HSL ~34 30% 62%).
-   - `accent`: maro-mijlociu/bronz (`#9E8A6E`, HSL ~34 24% 52%).
-   - Ajustează `secondary`, `muted`, `border`, `sidebar-*` pentru a rămâne în aceeași familie caldă, sobră.
-   - Păstrează fonturile existente: `Cormorant Garamond` pentru titluri și `Source Sans 3` pentru body.
+### Obiectiv
+Înlocuiesc paleta maro actuală a temei `:root[data-theme="funerare"]` cu varianta recomandată **taupe-antracit cald**, care adaugă gri antracit în maro pentru un look mai sobru, elegant și mai puțin pământiu, fără să devină rece/steril.
 
-2. **Îmbunătățește lizibilitatea hero-ului pe mobile**:
-   - În `src/components/ghidbeauty/HeroSection.tsx`, adaugă o clasă suplimentară pe `<h1>` (ex. `hero-title`) și ridică ușor opacitatea overlay-ului pentru funerare (`bg-black/55` în loc de `bg-black/50` doar pe tema funerare, sau uniform pentru mai bun contrast).
-   - În `src/index.css`, adaugă o regulă dedicată temei funerare care mărește fontul hero-ului pe ecrane mici:
-     ```css
-     :root[data-theme="funerare"] .hero-title {
-       font-size: clamp(2.25rem, 7vw, 3.5rem);
-     }
-     ```
-   - Opțional: crește shadow-ul textului (`drop-shadow-2xl` / `text-shadow`) doar pentru tema funerare pentru contrast îmbunătățit.
+### Modificări
+1. **Actualizez variabilele CSS pentru tema `funerare` în `src/index.css`**:
+   - `--background`: taupe foarte deschis (`#F0EDE8`)
+   - `--foreground`: antracit-maro închis (`#595049`)
+   - `--primary`: antracit-maro închis (`#595049`) pentru butoane, linkuri, accente principale
+   - `--primary-foreground`: alb-sidef (`#F7F6F4`)
+   - `--primary-light`: taupe deschis (`#F0EDE8`)
+   - `--primary-dark`: maro-antracit închis (`#3E3935`)
+   - `--primary-glow`: bej-sidef cald (`#A8987E`) pentru elemente luminoase/hero highlight
+   - `--accent`: bronz-antracit (`#7A6F66`)
+   - `--secondary`, `--muted`, `--border`: nuanțe intermediate de taupe/gri cald
+   - `--sidebar-*`: sincronizate cu aceeași paletă
 
-3. **Verificare**:
-   - Comută pe verticala funerare cu switcher-ul existent.
-   - Testează pe viewport mobile (în preview, ~375–414 px) că titlul hero-ului se citește confortabil și paleta maro se vede coerent pe toată pagina.
+2. **Păstrez ajustările existente pentru hero**:
+   - Dimensiunea fontului hero (`clamp(2.5rem, 8vw, 3.75rem)` în CSS) și `leading-[1.1]` rămân neschimbate.
+
+3. **Verificare vizuală**:
+   - După aplicare, deschid ruta `/funerare` (sau subdomeniul corespunzător) în preview pe viewport mobil pentru a confirma contrastul titlului hero și calitatea generală a noii culori.
+
+### Rezultat așteptat
+Tema funerare devine mai sobră și mai urbană, cu maro „șters" spre gri antracit, păstrând totuși o căldură subtilă potrivită domeniului sensibil.
+
+### Fișiere modificate
+- `src/index.css`
