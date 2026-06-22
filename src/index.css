@@ -92,48 +92,48 @@
 
   /* ===== Funerare vertical theme ===== */
   :root[data-theme="funerare"] {
-    --background: 35 18% 96%;
-    --foreground: 22 28% 14%;
+    --background: 34 12% 93%;
+    --foreground: 26 10% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 22 28% 14%;
+    --card-foreground: 26 10% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 22 28% 14%;
+    --popover-foreground: 26 10% 18%;
 
-    --primary: 22 22% 25%;
-    --primary-foreground: 35 30% 96%;
+    --primary: 28 8% 32%;
+    --primary-foreground: 36 18% 96%;
 
-    --primary-light: 35 18% 93%;
-    --primary-dark: 18 26% 16%;
-    --primary-glow: 34 30% 68%;
+    --primary-light: 32 10% 92%;
+    --primary-dark: 26 10% 20%;
+    --primary-glow: 34 18% 64%;
 
-    --secondary: 32 14% 90%;
-    --secondary-foreground: 22 28% 14%;
+    --secondary: 32 8% 88%;
+    --secondary-foreground: 26 10% 18%;
 
-    --muted: 32 12% 92%;
-    --muted-foreground: 22 12% 38%;
+    --muted: 32 8% 90%;
+    --muted-foreground: 28 6% 40%;
 
-    --accent: 34 24% 52%;
-    --accent-foreground: 35 30% 98%;
+    --accent: 30 10% 46%;
+    --accent-foreground: 36 18% 97%;
 
-    --destructive: 0 70% 45%;
+    --destructive: 0 60% 42%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 32 12% 84%;
-    --input: 32 12% 84%;
-    --ring: 22 22% 25%;
+    --border: 30 8% 82%;
+    --input: 30 8% 82%;
+    --ring: 28 8% 32%;
 
     --radius: 0.25rem;
 
-    --sidebar-background: 35 16% 94%;
-    --sidebar-foreground: 22 20% 24%;
-    --sidebar-primary: 22 22% 25%;
-    --sidebar-primary-foreground: 35 30% 96%;
-    --sidebar-accent: 32 14% 88%;
-    --sidebar-accent-foreground: 22 28% 14%;
-    --sidebar-border: 32 12% 83%;
-    --sidebar-ring: 22 22% 25%;
+    --sidebar-background: 33 10% 92%;
+    --sidebar-foreground: 28 8% 26%;
+    --sidebar-primary: 28 8% 32%;
+    --sidebar-primary-foreground: 36 18% 96%;
+    --sidebar-accent: 32 8% 86%;
+    --sidebar-accent-foreground: 26 10% 18%;
+    --sidebar-border: 30 8% 81%;
+    --sidebar-ring: 28 8% 32%;
   }
 
   :root[data-theme="funerare"] body {
