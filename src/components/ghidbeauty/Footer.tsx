@@ -23,18 +23,16 @@ const Footer = () => {
         <div className="grid gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
-          {isBeauty ? (
-            <img src={logoWhite} alt={vertical.brand} className="h-8" />
-          ) : vertical.logoWhite ? (
-            <img src={vertical.logoWhite} alt={vertical.brand} className="h-8" />
-          ) : (
-            <span
-              className="text-xl font-semibold"
-              style={{ fontFamily: '"Cormorant Garamond", Georgia, serif' }}
-            >
-              {vertical.brand}
-            </span>
-          )}
+            {isBeauty ? (
+              <img src={logoWhite} alt={vertical.brand} className="h-8" />
+            ) : (
+              <span
+                className="text-xl font-semibold"
+                style={{ fontFamily: '"Cormorant Garamond", Georgia, serif' }}
+              >
+                {vertical.brand}
+              </span>
+            )}
             <p className="mt-3 text-sm opacity-70 leading-relaxed">
               {vertical.footerDescription}
             </p>
