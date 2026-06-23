@@ -5,6 +5,8 @@ import heroTractari from "@/assets/hero-tractari.jpg";
 import heroGradinite from "@/assets/hero-gradinite.jpg";
 import heroUsi from "@/assets/hero-usi.jpg";
 import heroCuratenie from "@/assets/hero-curatenie.jpg";
+import funerareLogo from "@/assets/funerare-logo.png";
+import funerareLogoWhite from "@/assets/funerare-logo-white.png";
 
 export type VerticalKey =
   | "beauty"
