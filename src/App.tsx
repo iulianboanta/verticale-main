@@ -78,6 +78,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <VerticalSwitcher />
+        <UsiThemeSwitcher />
         <BrowserRouter>
           <ScrollToTop />
         <Routes>
