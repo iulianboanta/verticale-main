@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhiteOriginal from "@/assets/ghidbeauty-logo-white.png";
 import logoWhiteSolid from "@/assets/logo_beauty_white.png";
+import funerareLogo from "@/assets/funerare-logo.png";
+import funerareLogoWhite from "@/assets/funerare-logo-white.png";
 import { useVertical } from "@/lib/vertical";
 
 const navLinks = [
