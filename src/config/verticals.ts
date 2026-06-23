@@ -21,6 +21,8 @@ export interface VerticalConfig {
   key: VerticalKey;
   brand: string;
   domain: string;
+  logo?: string;
+  logoWhite?: string;
   tagline: {
     prefix: string;
     highlight: string;
