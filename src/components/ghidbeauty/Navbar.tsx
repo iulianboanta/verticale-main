@@ -41,11 +41,17 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          {isBeauty ? (
+        {isBeauty ? (
             <img
               src={scrolled ? logo : variant === "solid" ? logoWhiteSolid : logoWhiteOriginal}
               alt={vertical.brand}
               className="h-12 transition-all duration-300"
+            />
+          ) : vertical.logo ? (
+            <img
+              src={scrolled ? vertical.logo : vertical.logoWhite || vertical.logo}
+              alt={vertical.brand}
+              className="h-10 transition-all duration-300"
             />
           ) : (
             <span
