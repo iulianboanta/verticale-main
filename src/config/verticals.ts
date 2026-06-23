@@ -5,6 +5,8 @@ import heroTractari from "@/assets/hero-tractari.jpg";
 import heroGradinite from "@/assets/hero-gradinite.jpg";
 import heroUsi from "@/assets/hero-usi.jpg";
 import heroCuratenie from "@/assets/hero-curatenie.jpg";
+import funerareLogoFilled from "@/assets/funerare-logo-filled.png";
+import funerareLogoWhite from "@/assets/funerare-logo-white.png";
 
 export type VerticalKey =
   | "beauty"
@@ -19,6 +21,8 @@ export interface VerticalConfig {
   key: VerticalKey;
   brand: string;
   domain: string;
+  logo?: string;
+  logoWhite?: string;
   tagline: {
     prefix: string;
     highlight: string;
@@ -61,6 +65,8 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
     key: "funerare",
     brand: "GhidFunerare.ro",
     domain: "ghidfunerare.ro",
+    logo: funerareLogoFilled,
+    logoWhite: funerareLogoWhite,
     tagline: {
       prefix: "Sprijin și demnitate în",
       highlight: "momentele dificile",
