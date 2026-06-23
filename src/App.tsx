@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { VerticalProvider } from "@/lib/vertical";
 import VerticalSwitcher from "@/components/VerticalSwitcher";
-import UsiThemeSwitcher from "@/components/dev/UsiThemeSwitcher";
 import Index from "./pages/Index.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
 import SearchResults from "./pages/SearchResults.tsx";
@@ -78,7 +77,6 @@ const App = () => (
         <Toaster />
         <Sonner />
         <VerticalSwitcher />
-        <UsiThemeSwitcher />
         <BrowserRouter>
           <ScrollToTop />
         <Routes>
