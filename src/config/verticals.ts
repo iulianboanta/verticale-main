@@ -65,6 +65,8 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
     key: "funerare",
     brand: "GhidFunerare.ro",
     domain: "ghidfunerare.ro",
+    logo: funerareLogo,
+    logoWhite: funerareLogoWhite,
     tagline: {
       prefix: "Sprijin și demnitate în",
       highlight: "momentele dificile",
