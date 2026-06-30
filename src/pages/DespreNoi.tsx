@@ -37,7 +37,7 @@ const DespreNoi = () => {
 
       {/* Hero */}
       <section className="relative min-h-[520px] flex items-center overflow-hidden">
-        <img src={heroImg} alt="Salon beauty modern" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={images.hero} alt="Salon beauty modern" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/60 to-transparent" />
         <div className="container relative z-10 py-32 md:py-40">
           <div className="max-w-xl text-white space-y-5">
@@ -87,7 +87,7 @@ const DespreNoi = () => {
             <p className="text-muted-foreground leading-relaxed">{c.about.paragraph2}</p>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-xl border border-border/40">
-            <img src={reteaImg} alt="Rețea GhidBeauty" className="w-full h-auto object-cover" loading="lazy" />
+            <img src={images.retea} alt="Rețea GhidBeauty" className="w-full h-auto object-cover" loading="lazy" />
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@ const DespreNoi = () => {
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 rounded-2xl overflow-hidden shadow-xl border border-border/40">
-              <img src={clientiImg} alt="Clienți fericiți" className="w-full h-auto object-cover" loading="lazy" />
+              <img src={images.clienti} alt="Clienți fericiți" className="w-full h-auto object-cover" loading="lazy" />
             </div>
             <div className="order-1 md:order-2 space-y-5">
               <span className="inline-block rounded-full bg-accent/20 text-accent px-3 py-1 text-xs font-semibold uppercase tracking-wider">
@@ -160,7 +160,7 @@ const DespreNoi = () => {
               </Link>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-xl border border-border/40">
-              <img src={profesionistiImg} alt="Profesionist beauty" className="w-full h-auto object-cover" loading="lazy" />
+              <img src={images.profesionisti} alt="Profesionist beauty" className="w-full h-auto object-cover" loading="lazy" />
             </div>
           </div>
         </div>
