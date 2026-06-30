@@ -187,6 +187,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de producători, distribuitori și montatori de uși din România. Soluții pentru orice tip de proiect.",
     email: "contact@ghidusi.ro",
     phone: "0314044445",
+    ctaImages: { register: ctaRegisterUsi, upgrade: ctaUpgradeUsi },
   },
   curatenie: {
     key: "curatenie",
