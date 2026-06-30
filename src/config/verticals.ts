@@ -7,6 +7,18 @@ import heroUsi from "@/assets/hero-usi.jpg";
 import heroCuratenie from "@/assets/hero-curatenie.jpg";
 import ctaRegisterFunerare from "@/assets/cta-register-funerare.jpg";
 import ctaUpgradeFunerare from "@/assets/cta-upgrade-funerare.jpg";
+import ctaRegisterBeauty from "@/assets/cta-register-beauty.jpg";
+import ctaUpgradeBeauty from "@/assets/cta-upgrade-beauty.jpg";
+import ctaRegisterVeterinari from "@/assets/cta-register-veterinari.jpg";
+import ctaUpgradeVeterinari from "@/assets/cta-upgrade-veterinari.jpg";
+import ctaRegisterTractari from "@/assets/cta-register-tractari.jpg";
+import ctaUpgradeTractari from "@/assets/cta-upgrade-tractari.jpg";
+import ctaRegisterGradinite from "@/assets/cta-register-gradinite.jpg";
+import ctaUpgradeGradinite from "@/assets/cta-upgrade-gradinite.jpg";
+import ctaRegisterUsi from "@/assets/cta-register-usi.jpg";
+import ctaUpgradeUsi from "@/assets/cta-upgrade-usi.jpg";
+import ctaRegisterCuratenie from "@/assets/cta-register-curatenie.jpg";
+import ctaUpgradeCuratenie from "@/assets/cta-upgrade-curatenie.jpg";
 
 export type VerticalKey =
   | "beauty"
