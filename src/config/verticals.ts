@@ -5,6 +5,8 @@ import heroTractari from "@/assets/hero-tractari.jpg";
 import heroGradinite from "@/assets/hero-gradinite.jpg";
 import heroUsi from "@/assets/hero-usi.jpg";
 import heroCuratenie from "@/assets/hero-curatenie.jpg";
+import ctaRegisterFunerare from "@/assets/cta-register-funerare.jpg";
+import ctaUpgradeFunerare from "@/assets/cta-upgrade-funerare.jpg";
 
 export type VerticalKey =
   | "beauty"
@@ -33,6 +35,10 @@ export interface VerticalConfig {
   footerDescription: string;
   email: string;
   phone: string;
+  ctaImages?: {
+    register: string;
+    upgrade: string;
+  };
 }
 
 export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
