@@ -5,18 +5,30 @@ import Navbar from "@/components/ghidbeauty/Navbar";
 import Footer from "@/components/ghidbeauty/Footer";
 import { useStaticPageContent } from "@/lib/staticPagesContent";
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { useVertical } from "@/lib/vertical";
+import { funerareDespreContent } from "@/lib/funerareContent";
 
 import heroImg from "@/assets/despre-noi/hero-beauty.jpg";
 import clientiImg from "@/assets/despre-noi/clienti.jpg";
 import profesionistiImg from "@/assets/despre-noi/profesionisti.jpg";
 import reteaImg from "@/assets/despre-noi/retea.jpg";
+import heroFunerareImg from "@/assets/despre-noi/hero-funerare.jpg";
+import clientiFunerareImg from "@/assets/despre-noi/familii-funerare.jpg";
+import profesionistiFunerareImg from "@/assets/despre-noi/profesionisti-funerare.jpg";
+import reteaFunerareImg from "@/assets/despre-noi/retea-funerare.jpg";
 
 // Icons stay in code (admin only edits text). Order matches default benefits arrays.
 const clientIcons = [Search, Star, MapPin, Shield];
 const proIcons = [TrendingUp, Users, Heart, CheckCircle];
 
 const DespreNoi = () => {
-  const c = useStaticPageContent("despre-ghidbeauty");
+  const stored = useStaticPageContent("despre-ghidbeauty");
+  const { vertical } = useVertical();
+  const isFunerare = vertical.key === "funerare";
+  const c = isFunerare ? funerareDespreContent : stored;
+  const images = isFunerare
+    ? { hero: heroFunerareImg, clienti: clientiFunerareImg, profesionisti: profesionistiFunerareImg, retea: reteaFunerareImg }
+    : { hero: heroImg, clienti: clientiImg, profesionisti: profesionistiImg, retea: reteaImg };
   usePageMeta({ title: c.seo.title, metaDescription: c.seo.metaDescription });
 
   return (
