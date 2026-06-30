@@ -32,7 +32,7 @@ const CtaBanner = ({ variant }: Props) => {
       <div className="container">
         <div className="relative overflow-hidden rounded-2xl h-32 md:h-36">
           <img
-            src={c.image}
+            src={image}
             alt=""
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
