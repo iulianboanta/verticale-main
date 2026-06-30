@@ -25,6 +25,8 @@ const content = {
 
 const CtaBanner = ({ variant }: Props) => {
   const c = content[variant];
+  const { vertical } = useVertical();
+  const image = vertical.ctaImages?.[variant] ?? c.image;
   return (
     <section className="py-4">
       <div className="container">
