@@ -74,6 +74,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Directorul #1 de beauty din România. Conectăm clienții cu profesioniștii din industria frumuseții.",
     email: "contact@ghidbeauty.ro",
     phone: "0314044440",
+    ctaImages: { register: ctaRegisterBeauty, upgrade: ctaUpgradeBeauty },
   },
   funerare: {
     key: "funerare",
