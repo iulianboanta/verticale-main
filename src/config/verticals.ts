@@ -7,6 +7,18 @@ import heroUsi from "@/assets/hero-usi.jpg";
 import heroCuratenie from "@/assets/hero-curatenie.jpg";
 import ctaRegisterFunerare from "@/assets/cta-register-funerare.jpg";
 import ctaUpgradeFunerare from "@/assets/cta-upgrade-funerare.jpg";
+import ctaRegisterBeauty from "@/assets/cta-register-beauty.jpg";
+import ctaUpgradeBeauty from "@/assets/cta-upgrade-beauty.jpg";
+import ctaRegisterVeterinari from "@/assets/cta-register-veterinari.jpg";
+import ctaUpgradeVeterinari from "@/assets/cta-upgrade-veterinari.jpg";
+import ctaRegisterTractari from "@/assets/cta-register-tractari.jpg";
+import ctaUpgradeTractari from "@/assets/cta-upgrade-tractari.jpg";
+import ctaRegisterGradinite from "@/assets/cta-register-gradinite.jpg";
+import ctaUpgradeGradinite from "@/assets/cta-upgrade-gradinite.jpg";
+import ctaRegisterUsi from "@/assets/cta-register-usi.jpg";
+import ctaUpgradeUsi from "@/assets/cta-upgrade-usi.jpg";
+import ctaRegisterCuratenie from "@/assets/cta-register-curatenie.jpg";
+import ctaUpgradeCuratenie from "@/assets/cta-upgrade-curatenie.jpg";
 
 export type VerticalKey =
   | "beauty"
@@ -62,6 +74,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Directorul #1 de beauty din România. Conectăm clienții cu profesioniștii din industria frumuseții.",
     email: "contact@ghidbeauty.ro",
     phone: "0314044440",
+    ctaImages: { register: ctaRegisterBeauty, upgrade: ctaUpgradeBeauty },
   },
   funerare: {
     key: "funerare",
@@ -108,6 +121,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de servicii veterinare din România. Conectăm proprietarii de animale cu medici veterinari de încredere.",
     email: "contact@ghidveterinari.ro",
     phone: "0314044442",
+    ctaImages: { register: ctaRegisterVeterinari, upgrade: ctaUpgradeVeterinari },
   },
   tractari: {
     key: "tractari",
@@ -129,6 +143,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de servicii de tractare și asistență rutieră din România. Găsim rapid soluția potrivită pentru orice problemă auto.",
     email: "contact@ghidtractari.ro",
     phone: "0314044443",
+    ctaImages: { register: ctaRegisterTractari, upgrade: ctaUpgradeTractari },
   },
   gradinite: {
     key: "gradinite",
@@ -150,6 +165,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de grădinițe și creșe din România. Te ajutăm să găsești locul potrivit pentru copilul tău.",
     email: "contact@ghidgradinite.ro",
     phone: "0314044444",
+    ctaImages: { register: ctaRegisterGradinite, upgrade: ctaUpgradeGradinite },
   },
   usi: {
     key: "usi",
@@ -171,6 +187,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de producători, distribuitori și montatori de uși din România. Soluții pentru orice tip de proiect.",
     email: "contact@ghidusi.ro",
     phone: "0314044445",
+    ctaImages: { register: ctaRegisterUsi, upgrade: ctaUpgradeUsi },
   },
   curatenie: {
     key: "curatenie",
@@ -192,6 +209,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de firme de curățenie din România. Conectăm clienții cu echipe profesioniste, verificate și de încredere.",
     email: "contact@ghidcuratenie.ro",
     phone: "0314044446",
+    ctaImages: { register: ctaRegisterCuratenie, upgrade: ctaUpgradeCuratenie },
   },
 };
 
