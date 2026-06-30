@@ -83,6 +83,10 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de servicii funerare din România. Vă oferim sprijin discret și profesionist în momentele dificile.",
     email: "contact@ghidfunerare.ro",
     phone: "0314044441",
+    ctaImages: {
+      register: ctaRegisterFunerare,
+      upgrade: ctaUpgradeFunerare,
+    },
   },
   veterinari: {
     key: "veterinari",

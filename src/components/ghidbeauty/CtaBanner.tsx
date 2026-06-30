@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import ctaRegister from "@/assets/cta-register.jpg";
 import ctaUpgrade from "@/assets/cta-upgrade.jpg";
+import { useVertical } from "@/lib/vertical";
 
 interface Props {
   variant: "register" | "upgrade";
