@@ -209,6 +209,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de firme de curățenie din România. Conectăm clienții cu echipe profesioniste, verificate și de încredere.",
     email: "contact@ghidcuratenie.ro",
     phone: "0314044446",
+    ctaImages: { register: ctaRegisterCuratenie, upgrade: ctaUpgradeCuratenie },
   },
 };
 
