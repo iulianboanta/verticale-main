@@ -121,6 +121,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de servicii veterinare din România. Conectăm proprietarii de animale cu medici veterinari de încredere.",
     email: "contact@ghidveterinari.ro",
     phone: "0314044442",
+    ctaImages: { register: ctaRegisterVeterinari, upgrade: ctaUpgradeVeterinari },
   },
   tractari: {
     key: "tractari",
