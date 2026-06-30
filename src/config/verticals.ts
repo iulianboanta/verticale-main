@@ -165,6 +165,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de grădinițe și creșe din România. Te ajutăm să găsești locul potrivit pentru copilul tău.",
     email: "contact@ghidgradinite.ro",
     phone: "0314044444",
+    ctaImages: { register: ctaRegisterGradinite, upgrade: ctaUpgradeGradinite },
   },
   usi: {
     key: "usi",
