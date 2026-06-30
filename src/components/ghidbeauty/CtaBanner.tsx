@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import ctaRegister from "@/assets/cta-register.jpg";
 import ctaUpgrade from "@/assets/cta-upgrade.jpg";
+import { useVertical } from "@/lib/vertical";
 
 interface Props {
   variant: "register" | "upgrade";
@@ -24,12 +25,14 @@ const content = {
 
 const CtaBanner = ({ variant }: Props) => {
   const c = content[variant];
+  const { vertical } = useVertical();
+  const image = vertical.ctaImages?.[variant] ?? c.image;
   return (
     <section className="py-4">
       <div className="container">
         <div className="relative overflow-hidden rounded-2xl h-32 md:h-36">
           <img
-            src={c.image}
+            src={image}
             alt=""
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
