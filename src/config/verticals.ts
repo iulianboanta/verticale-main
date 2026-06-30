@@ -143,6 +143,7 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
       "Director de servicii de tractare și asistență rutieră din România. Găsim rapid soluția potrivită pentru orice problemă auto.",
     email: "contact@ghidtractari.ro",
     phone: "0314044443",
+    ctaImages: { register: ctaRegisterTractari, upgrade: ctaUpgradeTractari },
   },
   gradinite: {
     key: "gradinite",
