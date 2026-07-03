@@ -4,12 +4,24 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AutosuggestInput, { ceSuggestions, undeSuggestions } from "@/components/ghidbeauty/search/AutosuggestInput";
 import { useVertical } from "@/lib/vertical";
+import { useVeterinariVariant } from "@/lib/veterinariVariant";
 
 const HeroSection = () => {
   const [ceValue, setCeValue] = useState("");
   const [undeValue, setUndeValue] = useState("");
   const navigate = useNavigate();
-  const { vertical } = useVertical();
+  const { vertical: baseVertical } = useVertical();
+  const { variant: vetVariant } = useVeterinariVariant();
+  const vertical =
+    baseVertical.key === "veterinari"
+      ? {
+          ...baseVertical,
+          heroImage: vetVariant.heroImage,
+          tagline: vetVariant.tagline,
+          subtitle: vetVariant.subtitle,
+          searchPlaceholders: vetVariant.searchPlaceholders,
+        }
+      : baseVertical;
 
   const handleSearch = () => {
     const params = new URLSearchParams();
