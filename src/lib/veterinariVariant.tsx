@@ -48,7 +48,7 @@ export const VET_VARIANTS: Record<VetVariantKey, VetVariant> = {
       suffix: "",
     },
     subtitle:
-      "De la câini și pisici, până la iepuri, păsări, rozătoare sau reptile — cabinete veterinare, clinici, urgențe 24/7, toaletaj, pet shops și farmacii veterinare, toți specialiștii într-un singur loc.",
+      "Veterinari, urgențe 24/7, toaletaj, pet shops și farmacii veterinare — toți specialiștii într-un singur loc.",
     searchPlaceholders: {
       ce: "Ce cauți? (ex: veterinar, urgențe, exotice, toaletaj)",
       unde: "Unde? (oraș sau județ)",
