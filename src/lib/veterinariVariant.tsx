@@ -43,14 +43,14 @@ export const VET_VARIANTS: Record<VetVariantKey, VetVariant> = {
     label: "V2 — Companioni de familie",
     heroImage: heroV2,
     tagline: {
-      prefix: "Îngrijire completă pentru",
+      prefix: "Medici veterinari pentru",
       highlight: "toți companionii tăi",
       suffix: "",
     },
     subtitle:
-      "Câini, pisici, iepuri, păsări, rozătoare sau reptile — cabinete și clinici veterinare, urgențe 24/7, toaletaj și pet shops, toate într-un singur loc.",
+      "De la câini și pisici, până la iepuri, păsări, rozătoare sau reptile — cabinete veterinare, clinici, urgențe 24/7, toaletaj, pet shops și farmacii veterinare, toți specialiștii într-un singur loc.",
     searchPlaceholders: {
-      ce: "Ce cauți? (ex: veterinar, exotice, toaletaj)",
+      ce: "Ce cauți? (ex: veterinar, urgențe, exotice, toaletaj)",
       unde: "Unde? (oraș sau județ)",
     },
   },
