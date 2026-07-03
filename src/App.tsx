@@ -157,6 +157,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
       </TooltipProvider>
+      </VeterinariVariantProvider>
     </VerticalProvider>
   </QueryClientProvider>
 );
