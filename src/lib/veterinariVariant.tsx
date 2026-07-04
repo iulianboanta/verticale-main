@@ -40,11 +40,11 @@ export const VET_VARIANTS: Record<VetVariantKey, VetVariant> = {
   },
   v2: {
     key: "v2",
-    label: "V2 — Companioni de familie",
+    label: "V2 — Prieteni necuvântători",
     heroImage: heroV2,
     tagline: {
       prefix: "Medici veterinari pentru",
-      highlight: "toți companionii tăi",
+      highlight: "toți prietenii necuvântători",
       suffix: "",
     },
     subtitle:
