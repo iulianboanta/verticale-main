@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Ghidul Veterinarilor">
+  <path fill="currentColor" d="M44 12h40a8 8 0 0 1 8 8v24h24a8 8 0 0 1 8 8v24a8 8 0 0 1-8 8H92v24a8 8 0 0 1-8 8H44a8 8 0 0 1-8-8V84H12a8 8 0 0 1-8-8V52a8 8 0 0 1 8-8h24V20a8 8 0 0 1 8-8Z"/>
+  <path fill="#ffffff" d="M64 34c-14.36 0-26 11.42-26 25.5 0 18 26 44.5 26 44.5s26-26.5 26-44.5C90 45.42 78.36 34 64 34Z"/>
+  <path fill="currentColor" d="M64 40c-11.6 0-21 9.18-21 20.5 0 15 21 37 21 37s21-22 21-37C85 49.18 75.6 40 64 40Z"/>
+  <g fill="#ffffff">
+    <ellipse cx="64" cy="76" rx="8.5" ry="6.5"/>
+    <ellipse cx="55" cy="63" rx="2.8" ry="4"/>
+    <ellipse cx="64" cy="58" rx="2.8" ry="4"/>
+    <ellipse cx="73" cy="63" rx="2.8" ry="4"/>
+  </g>
+</svg>
