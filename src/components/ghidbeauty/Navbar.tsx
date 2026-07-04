@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhiteOriginal from "@/assets/ghidbeauty-logo-white.png";
 import logoWhiteSolid from "@/assets/logo_beauty_white.png";
+import vetLogo from "@/assets/ghidveterinari-logo.svg";
+import vetLogoDark from "@/assets/ghidveterinari-logo-dark.svg";
 import { useVertical } from "@/lib/vertical";
 
 const navLinks = [
@@ -19,6 +21,7 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
   const [mobileOpen, setMobileOpen] = useState(false);
   const { vertical } = useVertical();
   const isBeauty = vertical.key === "beauty";
+  const isVet = vertical.key === "veterinari";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
