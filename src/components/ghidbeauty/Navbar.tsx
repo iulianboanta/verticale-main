@@ -48,6 +48,12 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
               alt={vertical.brand}
               className="h-12 transition-all duration-300"
             />
+          ) : isVet ? (
+            <img
+              src={scrolled ? vetLogo : vetLogoDark}
+              alt={vertical.brand}
+              className="h-10 md:h-11 transition-all duration-300"
+            />
           ) : (
             <span
               className={`text-xl font-semibold tracking-tight transition-colors ${
