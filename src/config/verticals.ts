@@ -106,14 +106,14 @@ export const VERTICALS: Record<VerticalKey, VerticalConfig> = {
     brand: "GhidVeterinari.ro",
     domain: "ghidveterinari.ro",
     tagline: {
-      prefix: "Grijă și încredere pentru",
-      highlight: "prietenii blănoși",
+      prefix: "Medici veterinari pentru",
+      highlight: "toți prietenii necuvântători",
       suffix: "",
     },
     subtitle:
-      "Cabinete veterinare, clinici, urgențe 24/7, toaletaj, pet shops și farmacii veterinare — toți specialiștii într-un singur loc.",
+      "Veterinari, urgențe 24/7, toaletaj, pet shops și farmacii veterinare — toți specialiștii într-un singur loc.",
     searchPlaceholders: {
-      ce: "Ce cauți? (ex: veterinar, urgențe, toaletaj)",
+      ce: "Ce cauți? (ex: veterinar, urgențe, exotice, toaletaj)",
       unde: "Unde? (oraș sau județ)",
     },
     heroImage: heroVeterinari,
