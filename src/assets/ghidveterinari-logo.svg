@@ -4,11 +4,10 @@
     <path fill="#ffffff" d="M64 34c-14.36 0-26 11.42-26 25.5 0 18 26 44.5 26 44.5s26-26.5 26-44.5C90 45.42 78.36 34 64 34Z"/>
     <path fill="currentColor" d="M64 40c-11.6 0-21 9.18-21 20.5 0 15 21 37 21 37s21-22 21-37C85 49.18 75.6 40 64 40Z"/>
     <g fill="#ffffff">
-      <ellipse cx="64" cy="68" rx="9" ry="7"/>
-      <ellipse cx="52" cy="56" rx="4" ry="5.5"/>
-      <ellipse cx="76" cy="56" rx="4" ry="5.5"/>
-      <ellipse cx="46" cy="66" rx="3.5" ry="4.5"/>
-      <ellipse cx="82" cy="66" rx="3.5" ry="4.5"/>
+      <ellipse cx="64" cy="76" rx="8" ry="6"/>
+      <ellipse cx="55" cy="62" rx="3" ry="4.5"/>
+      <ellipse cx="64" cy="58" rx="3" ry="4.5"/>
+      <ellipse cx="73" cy="62" rx="3" ry="4.5"/>
     </g>
   </g>
   <g font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="700">
