@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AutosuggestInput, { ceSuggestions, undeSuggestions } from "@/components/ghidbeauty/search/AutosuggestInput";
 import { useVertical } from "@/lib/vertical";
+import { useVetHeroVariant } from "@/lib/veterinariHeroVariant";
 
 const HeroSection = () => {
   const [ceValue, setCeValue] = useState("");
   const [undeValue, setUndeValue] = useState("");
   const navigate = useNavigate();
   const { vertical } = useVertical();
+  const { heroImage: vetHero } = useVetHeroVariant();
+  const heroImage = vertical.key === "veterinari" ? vetHero : vertical.heroImage;
 
   const handleSearch = () => {
     const params = new URLSearchParams();
@@ -21,7 +24,7 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden pt-28 pb-36 md:pt-40 md:pb-48">
       <img
-        src={vertical.heroImage}
+        src={heroImage}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
         width={1920}

@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { VerticalProvider } from "@/lib/vertical";
 import VerticalSwitcher from "@/components/VerticalSwitcher";
+import VetHeroVariantSwitcher from "@/components/dev/VetHeroVariantSwitcher";
+import { VetHeroVariantProvider } from "@/lib/veterinariHeroVariant";
 import Index from "./pages/Index.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
 import SearchResults from "./pages/SearchResults.tsx";
@@ -73,10 +75,12 @@ const DashboardRoute = ({ children }: { children: React.ReactNode }) => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <VerticalProvider>
+      <VetHeroVariantProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
         <VerticalSwitcher />
+        <VetHeroVariantSwitcher />
         <BrowserRouter>
           <ScrollToTop />
         <Routes>
@@ -153,6 +157,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
       </TooltipProvider>
+      </VetHeroVariantProvider>
     </VerticalProvider>
   </QueryClientProvider>
 );
