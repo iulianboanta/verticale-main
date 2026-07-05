@@ -20,7 +20,6 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { vertical } = useVertical();
-  const { light: vetLogoLight, dark: vetLogoDark } = useVetLogoVariant();
   const isBeauty = vertical.key === "beauty";
   const isVet = vertical.key === "veterinari";
 
