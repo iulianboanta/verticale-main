@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1720 420" role="img" aria-label="ghidulveterinarilor.ro" preserveAspectRatio="xMidYMid meet">
+  <g fill="#5CC9BB">
+    <rect x="20" y="125" width="120" height="120"/>
+    <rect x="140" y="15" width="120" height="120"/>
+    <rect x="140" y="235" width="120" height="120"/>
+    <rect x="260" y="125" width="120" height="120"/>
+    <path d="M200 125c-55 0-100 45-100 100 0 75 100 180 100 180s100-105 100-180c0-55-45-100-100-100z"/>
+  </g>
+  <g fill="#0F172A">
+    <circle cx="200" cy="200" r="28"/>
+    <circle cx="170" cy="180" r="20"/>
+    <circle cx="230" cy="180" r="20"/>
+    <circle cx="180" cy="225" r="18"/>
+    <circle cx="220" cy="225" r="18"/>
+  </g>
+  <text x="450" y="270" font-family="'Manrope','Segoe UI','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="140" fill="#FFFFFF" textLength="1240" lengthAdjust="spacing">ghidulveterinarilor<tspan fill="#5CC9BB">.ro</tspan></text>
+</svg>
