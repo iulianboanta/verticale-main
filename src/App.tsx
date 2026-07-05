@@ -157,7 +157,6 @@ const App = () => (
         </Routes>
       </BrowserRouter>
       </TooltipProvider>
-      </VetLogoVariantProvider>
       </VetHeroVariantProvider>
     </VerticalProvider>
   </QueryClientProvider>
