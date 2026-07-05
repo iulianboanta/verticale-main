@@ -50,7 +50,7 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
             />
           ) : isVet ? (
             <img
-              src={scrolled || variant === "solid" ? vetLogoLight : vetLogoDark}
+              src={scrolled || variant === "solid" ? vetLogoAsset.url : vetLogoWhiteAsset.url}
               alt={vertical.brand}
               className="h-10 md:h-11 transition-all duration-300"
             />
