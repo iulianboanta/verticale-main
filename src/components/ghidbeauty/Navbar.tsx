@@ -5,9 +5,8 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhiteOriginal from "@/assets/ghidbeauty-logo-white.png";
 import logoWhiteSolid from "@/assets/logo_beauty_white.png";
-import vetLogo from "@/assets/ghidveterinari-logo.svg";
-import vetLogoDark from "@/assets/ghidveterinari-logo-dark.svg";
 import { useVertical } from "@/lib/vertical";
+import { useVetLogoVariant } from "@/lib/veterinariLogoVariant";
 
 const navLinks = [
   { label: "Despre noi", href: "/despre-noi" },
@@ -20,6 +19,7 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { vertical } = useVertical();
+  const { light: vetLogoLight, dark: vetLogoDark } = useVetLogoVariant();
   const isBeauty = vertical.key === "beauty";
   const isVet = vertical.key === "veterinari";
 
@@ -50,7 +50,7 @@ const Navbar = ({ variant = "transparent" }: { variant?: "transparent" | "solid"
             />
           ) : isVet ? (
             <img
-              src={scrolled ? vetLogo : vetLogoDark}
+              src={scrolled || variant === "solid" ? vetLogoLight : vetLogoDark}
               alt={vertical.brand}
               className="h-10 md:h-11 transition-all duration-300"
             />
