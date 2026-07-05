@@ -78,11 +78,13 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <VerticalProvider>
       <VetHeroVariantProvider>
+      <VetLogoVariantProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
         <VerticalSwitcher />
         <VetHeroVariantSwitcher />
+        <VetLogoVariantSwitcher />
         <BrowserRouter>
           <ScrollToTop />
         <Routes>
