@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/ghidbeauty-logo.png";
 import logoWhiteOriginal from "@/assets/ghidbeauty-logo-white.png";
 import logoWhiteSolid from "@/assets/logo_beauty_white.png";
+import vetLogoAsset from "@/assets/vetlogo/logo.png.asset.json";
+import vetLogoWhiteAsset from "@/assets/vetlogo/logo-white.png.asset.json";
 import { useVertical } from "@/lib/vertical";
-import { useVetLogoVariant } from "@/lib/veterinariLogoVariant";
 
 const navLinks = [
   { label: "Despre noi", href: "/despre-noi" },
