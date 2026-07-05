@@ -7,9 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { VerticalProvider } from "@/lib/vertical";
 import VerticalSwitcher from "@/components/VerticalSwitcher";
 import VetHeroVariantSwitcher from "@/components/dev/VetHeroVariantSwitcher";
-import VetLogoVariantSwitcher from "@/components/dev/VetLogoVariantSwitcher";
 import { VetHeroVariantProvider } from "@/lib/veterinariHeroVariant";
-import { VetLogoVariantProvider } from "@/lib/veterinariLogoVariant";
 import Index from "./pages/Index.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
 import SearchResults from "./pages/SearchResults.tsx";
@@ -78,13 +76,11 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <VerticalProvider>
       <VetHeroVariantProvider>
-      <VetLogoVariantProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
         <VerticalSwitcher />
         <VetHeroVariantSwitcher />
-        <VetLogoVariantSwitcher />
         <BrowserRouter>
           <ScrollToTop />
         <Routes>
@@ -161,7 +157,6 @@ const App = () => (
         </Routes>
       </BrowserRouter>
       </TooltipProvider>
-      </VetLogoVariantProvider>
       </VetHeroVariantProvider>
     </VerticalProvider>
   </QueryClientProvider>
