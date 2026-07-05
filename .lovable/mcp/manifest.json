@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "ghid-directory-mcp",
+      "version": "0.1.0",
+      "title": "Ghid Directory MCP"
+    },
+    "tools": [
+      {
+        "name": "list_verticals",
+        "title": "List directory verticals",
+        "description": "List all business directory verticals available on the platform (beauty, veterinari, funerare, etc.).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_listings",
+        "title": "Search business listings",
+        "description": "Search directory listings by free-text query, category, or city. All filters are optional; when none are provided, returns the top listings.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "description": "Free-text query matched against listing name and category.",
+              "type": "string",
+              "minLength": 1
+            },
+            "category": {
+              "description": "Category name to filter by (e.g. Saloane, Spa & Wellness).",
+              "type": "string",
+              "minLength": 1
+            },
+            "city": {
+              "description": "City name to filter by.",
+              "type": "string",
+              "minLength": 1
+            },
+            "limit": {
+              "description": "Max number of results (default 10).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_listing",
+        "title": "Get listing details",
+        "description": "Fetch full details for a directory listing by its id.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The listing id (e.g. '1')."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
