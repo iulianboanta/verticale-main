@@ -82,6 +82,7 @@ const App = () => (
         <Sonner />
         <VerticalSwitcher />
         <VetHeroVariantSwitcher />
+        <TractariPaletteSwitcher />
         <BrowserRouter>
           <ScrollToTop />
         <Routes>
