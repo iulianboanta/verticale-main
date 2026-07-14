@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { VerticalProvider } from "@/lib/vertical";
 import VerticalSwitcher from "@/components/VerticalSwitcher";
 import VetHeroVariantSwitcher from "@/components/dev/VetHeroVariantSwitcher";
+import TractariPaletteSwitcher from "@/components/dev/TractariPaletteSwitcher";
 import { VetHeroVariantProvider } from "@/lib/veterinariHeroVariant";
 import Index from "./pages/Index.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
